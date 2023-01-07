@@ -18,7 +18,7 @@ const MainView = () => {
                     {groupId ? (
                         <ChatView />
                     ) : (
-                        <p>Select a group or conversations first...</p>
+                    <div class="chatcontainer"> <p>Select a group or conversations first...</p></div>
                     )}
                 </>
             ) : (

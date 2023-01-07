@@ -8,7 +8,8 @@ function SideBar() {
     const toggle = useSelector((state) => state.sidebar);
 
     return (
-        <div>
+        <div className="sidebarcontainer">
+             <div className="sidebar-content">
             {toggle == "groups" && (
                 <>
                     <h1>Group List</h1>
@@ -22,6 +23,7 @@ function SideBar() {
                     <GetRecentChats />
                 </>
             )}
+            </div>
         </div>
     );
 }

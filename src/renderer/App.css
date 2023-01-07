@@ -2,16 +2,31 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   position: relative;
-  color: white;
+  color: #34485E;
   height: 100vh;
-  background: linear-gradient(
+  /* background: linear-gradient(
     200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
+    #a1d6ff -29.09%,
+    #4a97df 51.77%,
+    #2c509e 129.35%
+  ); */
   font-family: sans-serif;
   overflow-y: hidden;
   display: flex;
@@ -20,23 +35,29 @@ body {
 }
 
 button {
-  background-color: white;
-  padding: 10px 20px;
+  background-color: #0890EB;
+  color: white;
+  width: 100%;
+  height:100%;
+  padding: 15px 20px;
   border-radius: 10px;
   border: none;
   appearance: none;
-  font-size: 1.3rem;
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+  font-size: 1.2rem;
+  /* box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.14); */
   transition: all ease-in 0.1s;
   cursor: pointer;
   opacity: 0.9;
 }
 
+
 button:hover {
-  transform: scale(1.05);
-  opacity: 1;
+  /* transform: scale(1.05); */
+  opacity: 2;
 }
+
+
 
 li {
   list-style: none;
@@ -44,9 +65,9 @@ li {
 
 a {
   text-decoration: none;
-  height: fit-content;
-  width: fit-content;
   margin: 10px;
+  font-weight: bold;
+  color: #34AEFF;
 }
 
 a:hover {
@@ -60,3 +81,483 @@ a:hover {
   align-items: center;
   margin: 20px 0;
 }
+
+
+/************************************************
+	************************************************
+									Users Login
+	************************************************
+************************************************/
+
+
+.centered-container-form {
+
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.form-container {
+width: 320px;
+}
+
+.subheader {
+  color: rgb(56, 56, 56);
+  padding-bottom: 50;
+}
+
+
+/* 
+label{
+  display:block; 
+  position:relative; 
+  bottom:-10px; 
+  width:fit-content; 
+  left:10px; 
+  padding:0px 5px; 
+  background-color:white;
+  color: rgb(56, 56, 56);
+  font-size: 0.8em;
+}
+
+input{
+  border:1.5px solid #bfbfbf; 
+  height: 30px; 
+  width:300px;
+  padding:10px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+ 
+}
+input:focus-within{
+  outline:none;
+  border:1.5px solid #0890EB;
+} */
+
+
+.login-logo 
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  padding: 5%;
+}
+
+
+.forgotpass 
+{
+  padding-top: 2%;
+  font-size: 0.8em;
+}
+
+.register
+{
+  font-size: 0.8em;
+  padding-top: 10px;
+ 
+  color:  rgb(56, 56, 56);
+}
+
+
+.container{
+  position: relative;
+  max-width:245px;
+  width: 100%;
+  border-radius:6px;
+  background-color: #fff;
+
+}
+
+.container .input-box{
+  position:relative;
+  height: 50px;
+}
+
+.input-box input{
+  position:absolute;
+  outline:none;
+  height:100%;
+  width:100%;
+  border: 2px solid #ccc;
+  padding: 0 35px 0 15px;
+  transition: all 0.2s linear;
+  border-radius:6px;
+}
+
+.input-box :is(label, i){
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color:#999;
+  transition: all 0.2s linear;
+}
+
+.input-box label{
+  left: 15px ;
+  pointer-events: none;
+  font-size: 16px;
+  font-weight:400;
+  padding:0px 5px; 
+}
+.input-box i {
+  left:250px;
+  cursor: pointer;
+  font-size:20px;
+}
+
+input:is(:focus, :valid) ~ i{
+  color:#0890EB;
+}
+
+input:is(:focus, :valid) ~ label{
+  color:#0890EB;
+  top:0;
+  font-weight: 500;
+  background-color: #fff;
+  padding:0px 5px; 
+  font-size: 12px;
+ 
+
+}
+
+input:is(:focus){
+  border-color: #0890EB;
+}
+
+
+
+/************************************************
+	************************************************
+									Account Signup
+	************************************************
+************************************************/
+
+
+/************************************************
+	************************************************
+									Navigation
+	************************************************
+************************************************/
+
+.sidenavcontainer{
+  float:left; 
+  width:100px;  
+  height: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+}
+
+.btn-group {
+  text-align: center;
+
+}
+
+.btn-container{
+  top: 20px;
+  position: relative;
+  padding-bottom: 10%;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+ 
+
+ }
+ 
+.nav-btn{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  padding: 17px 0px;
+  background-color: #fff;
+}
+
+.btn-container i {
+  cursor: pointer;
+  font-size:x-large;
+  color:#34485E;
+}
+
+.nav-btn:focus i {
+  color:#3298DB;
+  
+}
+
+.nav-btn:hover{
+  background-color: rgb(236, 236, 236);
+
+}
+
+.btn-container-avatar{
+  text-align: center;
+  padding-bottom: 40px;
+  justify-content: space-between;
+}
+
+/************************************************
+	************************************************
+									Sidebar
+	************************************************
+************************************************/
+
+.sidebarcontainer{
+position: fixed;
+ width:250px;
+ height: 100%;
+ margin-left: 120px;
+ border-right: 1px solid rgba(200,200,200,0.4);
+
+}
+
+.sidebar-content
+{
+
+float: left;
+}
+
+/************************************************
+	************************************************
+									Sidebar
+	************************************************
+************************************************/
+
+
+.chatcontainer{
+  float:right;
+  width:60%;
+  height: 100%;
+  position: fixed;
+  margin-left: 40%;
+  flex-direction: row;
+}
+
+
+/************************************************
+	************************************************
+									Settings
+	************************************************
+************************************************/
+
+/* Circle Avatar Styles */
+
+.circle {
+	line-height: 0;		/* remove line-height */ 
+	display: inline-block;	/* circle wraps image */
+	margin: 5px;
+  border: 4px solid rgba(200,200,200,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 48px;
+  width: 48px;
+}
+.circle img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+.circle:hover {
+	transition: ease-out 0.2s;
+  border: 4px solid rgba(0,0,0,0.2);
+  -webkit-transition: ease-out 0.2s;
+}
+a.circle {
+  color: transparent;
+} /* IE fix: removes blue border */	
+
+.btn-logout {
+  background-color: transparent;
+  color:#999;
+}
+
+span
+{
+  color:#999;
+}
+
+.btn-container-avatar .wrapper{
+  position: relative;
+  justify-content: space-between;
+}
+
+.wrapper .menu
+{
+padding:13px;
+position: absolute;
+width: 150px;
+left:50px;
+bottom:30px;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+opacity: 0;
+transition: 0.2s ease;
+z-index:1;
+
+}
+
+.item i {
+  color:#999;
+  font-size: 20px;
+}
+
+.item:focus i
+{
+  color:#3298DB;
+}
+
+.btn-container-avatar:hover .menu {
+  opacity: 1;
+  pointer-events: auto;
+  display: block;
+}
+
+.content .item
+{
+  list-style: none;
+  font-size: 15px;
+  height: 50px;  
+  display: flex;
+  cursor: pointer;
+  padding: 0 5px 0 10px;
+  align-items: center;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+.content .item:hover{
+  background-color: rgb(213, 213, 213);
+}
+
+.content .item span{
+  font-size: 19px;
+  margin-left: 8px;
+}
+
+
+/************************************************
+	************************************************
+									Chat View
+	************************************************
+************************************************/
+
+.chatview
+{
+  flex-direction: column;
+}
+
+
+.message-area
+{
+  height: 70%;
+  width: 100%;
+  position: relative;
+ 
+}
+
+.header {
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  height: 10%;
+  width: 100%;
+  position: relative;
+}
+
+.title {
+  margin-left:10px;
+  font-size: 14px;
+  font-weight: bold; 
+}
+
+.footer-btn 
+{
+  background-color: transparent;
+  color: #34485E;
+}
+
+
+.footer
+{
+ 
+
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  height: 20%;
+  padding:2%;
+  width: 100%;
+  display: inline-block;
+ 
+}
+.footer i 
+{
+  position: absolute;
+  cursor: pointer;
+  color: #0890EB;
+  
+}
+
+.textarea_style 
+{
+  
+  overflow:hidden;
+  resize:none;
+  padding:1em;
+  margin-top:2%;
+  height: 3vh;
+  width: 50vw;
+  background-color: rgb(233, 233, 233);
+  border-color: transparent ;
+  border-radius: 5px;
+  outline: none;
+  
+}
+
+.form-footer-container
+{
+ flex-direction: row;
+ width: 100%;
+}
+
+.message-fieldarea
+{
+width: 100%;
+position: relative;
+}
+
+.fieldicon-area
+{
+  width: 18%;
+  position: relative;
+}
+
+.fieldicon 
+{
+  width:18%;
+  justify-content: center;
+  position:absolute;
+  bottom: 100px;
+
+  
+}
+
+.footer-icon-btn
+{
+  background-color: #34AEFF;
+  width: 18%;
+  padding: 0;
+  position: relative;
+  justify-content: space-between;
+}
+
+.fieldicon i 
+{
+  color: #34485E;
+}
+

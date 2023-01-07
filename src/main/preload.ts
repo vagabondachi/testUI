@@ -19,6 +19,12 @@ const electronHandler = {
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
+     resizeOnLogin(){
+      ipcRenderer.send("on-login");
+    },
+    resizeOnLogout(){
+      ipcRenderer.send("on-logout");
+    },
   },
 };
 

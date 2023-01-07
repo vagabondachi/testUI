@@ -70,27 +70,65 @@ function Chat() {
   };
 
   return (
-    <>
-      <h1>Conversation Name: {groupName}</h1>
+    <div className='chatcontainer'>
+
+      <div className='header'>
+        <div className='title'>
+      <h1> {groupName}</h1></div></div>
+
+      <div className='message-area'>
       <ul>
         {messages.map((message) => (
           <li key={message.id}>
             {message.sender}: {message.text}
           </li>
         ))}
-      </ul>
+      </ul></div>
+
+
+      <div className='footer'>
+     
+    
+<div className='form-footer-container'>
       <form onSubmit={handleSubmit}>
-        <label>
-          Message:
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </label>
-        <button type="submit">Send Message</button>
+        
+      <div className='message-fieldarea'>
+        <textarea 
+        className='textarea_style'
+        name="text" 
+        rows="14"  
+        wrap="soft" 
+        placeholder='Write Message...' 
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+            >
+            </textarea>
+            </div>
+      {/* <div className='fieldicon-area'>
+      <div className='fieldicon'>
+        <button className="footer-btn" type="submit">
+          <i className="ri-send-plane-fill"></i>
+          </button>
+          </div>
+
+          <div className='fieldicon'>
+          <button className="footer-btn" type="submit">
+          <i class="ri-mic-2-fill"></i>
+          </button>
+          </div>
+          </div> */}
+          
+          <div className='fieldicon-area'>
+          <button className="footer-icon-btn" type="submit">
+          <i className="ri-send-plane-fill"></i>
+          </button>
+          </div>
+
       </form>
-    </>
+</div>
+  
+</div>
+    </div>
   );
 }
 
