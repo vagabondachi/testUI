@@ -34,7 +34,7 @@ function Registration() {
   return (
     <div className="centered-container-form">  
       <form onSubmit={handleSubmit}>
-      <div className='header'>Create an account</div>
+      <div className='loginheader'>Create an account</div>
       <br/>
       
       <div className='form-container'>
@@ -91,8 +91,9 @@ function Registration() {
       </form>
       {error && <p>{error}</p>}
 
-      <div className='register'>
-      <Link to="/login">Already have an account?</Link>
+      <div className='login-option'>
+        Already have an account?
+      <Link to="/login">Sign In</Link>
       </div>
     </div>
   );

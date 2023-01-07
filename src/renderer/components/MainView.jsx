@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 import SideNav from "./SideNav";
 import { useSelector } from "react-redux";
 import Login from "./Login";
-
+import Idle from '../../../assets/icons/startconvopage-art.png';
 const MainView = () => {
     const user = useSelector((state) => state.user);
     const groupId = useSelector((state) => state.groupId); // get current value of groupId from the store
@@ -18,7 +18,20 @@ const MainView = () => {
                     {groupId ? (
                         <ChatView />
                     ) : (
-                    <div class="chatcontainer"> <p>Select a group or conversations first...</p></div>
+                    <div class="chatcontainer"> 
+                    <div className="idle-content">
+
+                        <div className="idle-item">
+                    <img src={Idle} alt="idle-logo" className="idle-img">
+                    </img>
+                    </div>
+                    
+                    <div className="idle-item">
+                        <p>Maybe the imaginary can be real...</p>
+                        </div>
+
+                        </div>
+                        </div>
                     )}
                 </>
             ) : (

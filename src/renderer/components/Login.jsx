@@ -94,7 +94,7 @@ const Login = () => {
         </div>
       </form>
      
-    <div className='register'>
+    <div className='login-option'>
           New user?<Link to="/register">Create an account</Link>
       
       </div>
