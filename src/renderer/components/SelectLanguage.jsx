@@ -43,8 +43,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="userLanguage"
-          value="en"
-          checked={userLanguage === 'en'}
+          value="en-US"
+          checked={userLanguage === 'en-US'}
           onChange={handleLanguageChange}
         />
         English
@@ -61,8 +61,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="userLanguage"
-          value="jp"
-          checked={userLanguage === 'jp'}
+          value="ja-JP"
+          checked={userLanguage === 'ja-JP'}
           onChange={handleLanguageChange}
         />
         Japanese
@@ -70,8 +70,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="userLanguage"
-          value="tl"
-          checked={userLanguage === 'tl'}
+          value="fil-PH	"
+          checked={userLanguage === 'fil-PH	'}
           onChange={handleLanguageChange}
         />
         Tagalog
@@ -95,8 +95,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="translateToLanguage"
-          value="zh"
-          checked={translateToLanguage === 'zh'}
+          value="zh-CN"
+          checked={translateToLanguage === 'zh-CN'}
           onChange={handleLanguageChange}
         />
         Chinese
@@ -104,8 +104,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="translateToLanguage"
-          value="jp"
-          checked={translateToLanguage === 'jp'}
+          value="ja"
+          checked={translateToLanguage === 'ja'}
           onChange={handleLanguageChange}
         />
         Japanese
