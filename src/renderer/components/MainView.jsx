@@ -27,7 +27,8 @@ const MainView = () => {
                     </div>
                     
                     <div className="idle-item">
-                        <p>Maybe the imaginary can be real...</p>
+                        <p>Being alone in our world can be fun sometimes,
+                            <br/> but it can be better with someone around!</p>
                         </div>
 
                         </div>

@@ -12,7 +12,7 @@ function SideBar() {
              <div className="sidebar-content">
             {toggle == "groups" && (
                 <>
-                    <h1>Group List</h1>
+                    <h1>Discover</h1>
                     <GroupList />
                 </>
             )}

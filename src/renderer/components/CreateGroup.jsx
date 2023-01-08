@@ -26,6 +26,9 @@ function CreateGroupForm() {
   };
 
   return (
+    <div id="myModal" className='modal'>
+      <div className='modal-content'>
+        <span class="close">&times;</span>
     <form onSubmit={handleSubmit}>
       <label>
         Group Name:
@@ -37,6 +40,8 @@ function CreateGroupForm() {
       </label>
       <button type="submit">Create Group</button>
     </form>
+    </div>
+    </div>
   );
 }
 
