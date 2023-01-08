@@ -32,66 +32,59 @@ function Registration() {
   };
 
   return (
-    <div className="centered-container-form">  
+    <div className="centered-container-form">
       <form onSubmit={handleSubmit}>
-      <div className='form-container'>
-      <div className='loginheader'>Create an account</div>
-      <br/>  
-      <div className="container">
-        <div className='input-box'>
-          <input
-            type="text"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-         />  
-          <label for="password">
-          Email address
-          </label>
-        </div> 
-        </div>
-        <br/>
+        <div className="form-container">
+          <div className="loginheader">Create an account</div>
+          <br />
+          <div className="container">
+            <div className="input-box">
+              <input
+                type="text"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
+              <label for="password">Email address</label>
+            </div>
+          </div>
+          <br />
 
-        <div className="container">
-        <div className='input-box'>
-          <input
-              type="text"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              required
-         />  
-          <label for="password">
-          Username
-          </label>
-        </div> 
-        </div>
-        <br/>
+          <div className="container">
+            <div className="input-box">
+              <input
+                type="text"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+                required
+              />
+              <label for="password">Username</label>
+            </div>
+          </div>
+          <br />
 
-        <div className="container">
-        <div className='input-box'>
-          <input
-           type="password"
-           value={password}
-           onChange={(event) => setPassword(event.target.value)}
-           required
-         />  
-          <label for="password">
-          Password
-          </label>
-        </div> 
-        </div>
-        <br/>
-        <br/>
-       
-        <button type="submit">Continue</button>
-        </div>
+          <div className="container">
+            <div className="input-box">
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <br />
+          <br />
 
+          <button type="submit">Continue</button>
+        </div>
       </form>
       {error && <p>{error}</p>}
 
-      <div className='login-option'>
+      <div className="login-option">
         Already have an account?
-      <Link to="/login">Sign In</Link>
+        <Link to="/login">Sign In</Link>
       </div>
     </div>
   );
