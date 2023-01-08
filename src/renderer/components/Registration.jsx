@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
+
+  const user = useSelector((state) => state.user);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,12 +29,24 @@ function Registration() {
           .catch((error) => {
             console.log(error);
           });
+        firebase.firestore().collection('users').doc(user.user.uid).set({
+          userId: user.user.uid,
+          userLanguage: 'en',
+          translateToLanguage: 'en',
+        });
       })
       .catch((error) => {
         setError(error.message);
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      // if user is logged in, redirect to home page
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <div className="centered-container-form">
@@ -45,7 +62,7 @@ function Registration() {
                 onChange={(event) => setEmail(event.target.value)}
                 required
               />
-              <label for="password">Email address</label>
+              <label htmlFor="password">Email address</label>
             </div>
           </div>
           <br />
@@ -58,7 +75,7 @@ function Registration() {
                 onChange={(event) => setUsername(event.target.value)}
                 required
               />
-              <label for="password">Username</label>
+              <label htmlFor="password">Username</label>
             </div>
           </div>
           <br />
@@ -71,7 +88,7 @@ function Registration() {
                 onChange={(event) => setPassword(event.target.value)}
                 required
               />
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
             </div>
           </div>
           <br />

@@ -2,6 +2,7 @@ import React from 'react';
 import GroupList from './GroupList';
 import GetRecentChats from './GetRecentChats';
 import { useSelector } from 'react-redux';
+import Settings from './SettingsView';
 
 function SideBar() {
   /* Getting the state of the sidebar from the redux store. */
@@ -24,8 +25,12 @@ function SideBar() {
             <GetRecentChats />
           </>
         )}
-        {/* </div>
-        </div> */}
+        {toggle == 'settings' && (
+          <>
+            <h1>Settings</h1>
+            <Settings />
+          </>
+        )}
       </div>
     </div>
   );

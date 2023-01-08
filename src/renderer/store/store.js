@@ -25,6 +25,16 @@ function Reducer(state = initialState, action) {
         ...state,
         sidebar: action.sidebar,
       };
+    case 'SET_USERLANG':
+      return {
+        ...state,
+        userLang: action.userLang,
+      };
+    case 'SET_LANGUAGE_TRANSLATE_TO':
+      return {
+        ...state,
+        languageTranslateTo: action.languageTranslateTo,
+      };
     default:
       return state;
   }

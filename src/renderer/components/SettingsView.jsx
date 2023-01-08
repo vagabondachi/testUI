@@ -1,7 +1,12 @@
 import React from 'react';
+import SelectLanguage from './SelectLanguage';
 
 const Settings = () => {
-  return <div>Settings</div>;
+  return (
+    <>
+      <SelectLanguage />
+    </>
+  );
 };
 
 export default Settings;

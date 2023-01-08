@@ -10,7 +10,6 @@ function SideNav() {
           <button
             className="nav-btn"
             onClick={() => {
-              console.log('Clicked on Home');
               store.dispatch({
                 type: 'SET_SIDEBAR_VIEW',
                 sidebar: 'chats',
@@ -27,7 +26,6 @@ function SideNav() {
           <button
             className="nav-btn"
             onClick={() => {
-              console.log('Clicked on Groups');
               store.dispatch({
                 type: 'SET_SIDEBAR_VIEW',
                 sidebar: 'groups',
@@ -69,7 +67,15 @@ function SideNav() {
         <div className="wrapper">
           <div className="content">
             <ul className="menu">
-              <li className="item">
+              <li
+                className="item"
+                onClick={() => {
+                  store.dispatch({
+                    type: 'SET_SIDEBAR_VIEW',
+                    sidebar: 'settings',
+                  });
+                }}
+              >
                 <i className="ri-settings-4-fill"></i>
                 <span>Settings</span>
               </li>
