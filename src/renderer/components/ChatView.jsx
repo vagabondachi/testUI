@@ -87,14 +87,11 @@ function Chat() {
 
 
       <div className='footer'>
-     
-    
-<div className='form-footer-container'>
+       
       <form onSubmit={handleSubmit}>
-        
-      <div className='message-fieldarea'>
-        <textarea 
-        className='textarea_style'
+      <div className='form-footer-container'>
+      <div className='textarea-container'>
+        <textarea  
         name="text" 
         rows="14"  
         wrap="soft" 
@@ -110,21 +107,21 @@ function Chat() {
           <i className="ri-send-plane-fill"></i>
           </button>
           </div>
-          <div className='fieldicon'>
+       
+          </div> */}
+             <div className='fieldicon'>
           <button className="footer-btn" type="submit">
           <i class="ri-mic-2-fill"></i>
           </button>
           </div>
-          </div> */}
-          
-          <div className='fieldicon-area'>
+          <div className='btn-footer-container'>
           <button className="footer-icon-btn" type="submit">
           <i className="ri-send-plane-fill"></i>
           </button>
           </div>
-
+          </div>
       </form>
-</div>
+
   
 </div>
     </div>

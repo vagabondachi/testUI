@@ -36,10 +36,7 @@ function Registration() {
       <form onSubmit={handleSubmit}>
       <div className='form-container'>
       <div className='loginheader'>Create an account</div>
-      <br/>
-      
-   
-         
+      <br/>  
       <div className="container">
         <div className='input-box'>
           <input
