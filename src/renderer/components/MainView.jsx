@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import ChatView from "./ChatView";
 import SideBar from "./SideBar";
 import SideNav from "./SideNav";
@@ -18,7 +17,7 @@ const MainView = () => {
                     {groupId ? (
                         <ChatView />
                     ) : (
-                    <div class="chatcontainer"> 
+                    <div className="chatcontainer"> 
                     <div className="idle-content">
 
                         <div className="idle-item">

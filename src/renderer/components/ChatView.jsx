@@ -70,38 +70,37 @@ function Chat() {
   };
 
   return (
-    <div className='chatcontainer'>
+    <div className="chatcontainer">
+      <div className="header">
+        <div className="title">
+          <h1> {groupName}</h1>
+        </div>
+      </div>
 
-      <div className='header'>
-        <div className='title'>
-      <h1> {groupName}</h1></div></div>
+      <div className="message-area">
+        <ul>
+          {messages.map((message) => (
+            <li key={message.id}>
+              {message.sender}: {message.text}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <div className='message-area'>
-      <ul>
-        {messages.map((message) => (
-          <li key={message.id}>
-            {message.sender}: {message.text}
-          </li>
-        ))}
-      </ul></div>
-
-
-      <div className='footer'>
-       
-      <form onSubmit={handleSubmit}>
-      <div className='form-footer-container'>
-      <div className='textarea-container'>
-        <textarea  
-        name="text" 
-        rows="14"  
-        wrap="soft" 
-        placeholder='Write Message...' 
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-            >
-            </textarea>
+      <div className="footer">
+        <form onSubmit={handleSubmit}>
+          <div className="form-footer-container">
+            <div className="textarea-container">
+              <textarea
+                name="text"
+                rows="14"
+                wrap="soft"
+                placeholder="Write Message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
             </div>
-      {/* <div className='fieldicon-area'>
+            {/* <div className='fieldicon-area'>
       <div className='fieldicon'>
         <button className="footer-btn" type="submit">
           <i className="ri-send-plane-fill"></i>
@@ -109,21 +108,20 @@ function Chat() {
           </div>
        
           </div> */}
-             <div className='fieldicon'>
-          <button className="footer-btn" type="submit">
-          <i class="ri-mic-2-fill"></i>
-          </button>
-          </div>
-          <div className='btn-footer-container'>
-          <button className="footer-icon-btn" type="submit">
-          <i className="ri-send-plane-fill"></i>
-          </button>
-          </div>
-          </div>
-      </form>
+            <div className="fieldicon">
+              <button className="footer-btn" type="submit">
+                <i className="ri-mic-2-fill"></i>
+              </button>
+            </div>
 
-  
-</div>
+            <div className="btn-footer-container">
+              <button className="footer-icon-btn" type="submit">
+                <i className="ri-send-plane-fill"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

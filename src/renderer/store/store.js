@@ -19,6 +19,7 @@ function Reducer(state = initialState, action) {
             return {
                 ...state,
                 user: action.user,
+                
             };
         case "SET_SIDEBAR_VIEW":
             return {
