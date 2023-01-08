@@ -110,7 +110,7 @@ function Chat() {
           </div> */}
             <div className="fieldicon">
               <button className="footer-btn" type="submit">
-                <i className="ri-mic-2-fill"></i>
+                <i class="ri-mic-2-fill"></i>
               </button>
             </div>
             <div className="btn-footer-container">
