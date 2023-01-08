@@ -32,6 +32,8 @@ const Login = () => {
       .signInWithEmailAndPassword(email, password)
       .catch((error) => {
         setError(error.message);
+        
+
       });
       window.electron.ipcRenderer.sendMessage('on-login');
   };
@@ -41,15 +43,18 @@ const Login = () => {
       // if user is logged in, redirect to home page
       navigate('/');
     }
+
+  
   }, [user]);
 
   return (
     
     <div  className="centered-container-form">  
       <form onSubmit={handleSubmit}>
+            <div className='form-container'>
         <img src={Logo} alt="chat logo" className='login-logo' />
         <br/>
-        <div className='form-container'>
+    
           
         <div className="container">
         <div className='input-box'>

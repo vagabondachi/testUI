@@ -110,7 +110,6 @@ function Chat() {
           <i className="ri-send-plane-fill"></i>
           </button>
           </div>
-
           <div className='fieldicon'>
           <button className="footer-btn" type="submit">
           <i class="ri-mic-2-fill"></i>

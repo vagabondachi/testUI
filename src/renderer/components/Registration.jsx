@@ -34,10 +34,11 @@ function Registration() {
   return (
     <div className="centered-container-form">  
       <form onSubmit={handleSubmit}>
+      <div className='form-container'>
       <div className='loginheader'>Create an account</div>
       <br/>
       
-      <div className='form-container'>
+   
          
       <div className="container">
         <div className='input-box'>

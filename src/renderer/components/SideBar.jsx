@@ -9,21 +9,24 @@ function SideBar() {
 
     return (
         <div className="sidebarcontainer">
-             <div className="sidebar-content">
+            <div className="sidebar-content">
+             {/* <div className="sidebarcontainer">
+            <div className="sidebar-content"> */}
             {toggle == "groups" && (
                 <>
                     <h1>Discover</h1>
                     <GroupList />
                 </>
             )}
-
             {toggle == "chats" && (
                 <>
                     <h1>Recent Chats</h1>
                     <GetRecentChats />
                 </>
             )}
-            </div>
+        {/* </div>
+        </div> */}
+        </div>
         </div>
     );
 }

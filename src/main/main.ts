@@ -9,11 +9,12 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, contentTracing } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+
 
 class AppUpdater {
   constructor() {
@@ -35,18 +36,16 @@ ipcMain.on('ipc-example', async (event, arg) => {
 ipcMain.on('on-login', () => {
   mainWindow?.setSize(1024,700);
   mainWindow?.center();
+  mainWindow?.setResizable(true);
   console.log("im login");
 })
 
 ipcMain.on('on-logout', () => {
   mainWindow?.setSize(400,700);
   mainWindow?.center();
+  mainWindow?.setResizable(false);
   console.log("im logout");
 })
-
-
-
-
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -86,18 +85,22 @@ const createWindow = async () => {
     return path.join(RESOURCES_PATH, ...paths);
   };
 
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 400,
     height: 700,
+    resizable:false,
     autoHideMenuBar: true,
     icon: 'assets/icons/logo.ico',
     webPreferences: {
+      sandbox: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
   });
+
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
