@@ -8,7 +8,11 @@ function Logout() {
     window.electron.ipcRenderer.sendMessage('on-logout');
   }
 
-  return <button className="btn-logout" onClick={handleLogout}>Log out</button>;
+  return (
+    <button className="btn-logout" onClick={handleLogout}>
+      Log out
+    </button>
+  );
 }
 
 export default Logout;
