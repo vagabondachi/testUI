@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import store from '../store/store';
 import SendChatMessage from './SendChatMessage';
+import translateIcon from '../../../assets/translate.png';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -11,19 +12,6 @@ function Chat() {
 
   const state = store.getState();
   const groupId = state.groupId;
-  const translate_to_code = state.languageTranslateTo;
-
-  const translate = async (text) => {
-    const resp = await fetch('http://localhost:5000/translate', {
-      method: 'POST',
-      body: JSON.stringify({ text }),
-      headers: {
-        'X-translate-to-code': translate_to_code,
-      },
-    });
-    const data = await resp.json();
-    return data.message;
-  };
 
   /* Listening to the database and updating the messages array. */
   useEffect(() => {
@@ -49,9 +37,12 @@ function Chat() {
       });
   }, [groupId]);
 
+  const handleTranslate = (id) => {
+    //this would change the message text to translated_message from the document id provided
+  };
+
   return (
     <div className="chatcontainer">
-
       <div className="header">
         <div className="title">
           <h1> {groupName}</h1>
@@ -63,12 +54,21 @@ function Chat() {
           {messages.map((message) => (
             <li key={message.id}>
               {message.sender}: {message.text}
+              <img
+                style={{
+                  height: '20px',
+                  margin: '0 5px 0 0',
+                }}
+                src={translateIcon}
+                onClick={() => {
+                  handleTranslate(message.id);
+                }}
+              />
             </li>
           ))}
         </ul>
       </div>
       <SendChatMessage />
-
     </div>
   );
 }

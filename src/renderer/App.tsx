@@ -11,13 +11,17 @@ import store from './store/store';
 
 const App = () => {
   useEffect(() => {
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: 'AIzaSyDsQ24yFVJB9kJ3XeKAga4-1lBv0x6Zctw',
-      authDomain: 'fir-app-f33d1.firebaseapp.com',
-      projectId: 'fir-app-f33d1',
-      storageBucket: 'fir-app-f33d1.appspot.com',
-      messagingSenderId: '491863644679',
-      appId: '1:491863644679:web:1b736d3f0e7bebdf4b28a2',
+      apiKey: 'AIzaSyBAvguKI5lZZaGS9cx3UdAsRqkP57MlvHo',
+      authDomain: 'weedle-470ae.firebaseapp.com',
+      databaseURL:
+        'https://weedle-470ae-default-rtdb.asia-southeast1.firebasedatabase.app',
+      projectId: 'weedle-470ae',
+      storageBucket: 'weedle-470ae.appspot.com',
+      messagingSenderId: '771482276211',
+      appId: '1:771482276211:web:eb346d018899e9caa0f506',
+      measurementId: 'G-5VH55E8VQK',
     };
 
     firebase.initializeApp(firebaseConfig);

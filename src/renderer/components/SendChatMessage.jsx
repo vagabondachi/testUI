@@ -3,18 +3,31 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import RecordRTC from 'recordrtc';
 import store from '../store/store';
+
 const SendChatMessage = () => {
   const [message, setMessage] = useState('');
   const db = firebase.firestore();
   const state = store.getState();
   const groupId = state.groupId;
+  const translate_to_code = state.languageTranslateTo;
+
+  const translate = async (text) => {
+    const resp = await fetch('http://localhost:5000/translate', {
+      method: 'POST',
+      body: JSON.stringify({ text }),
+      headers: {
+        'X-translate-to-code': translate_to_code,
+      },
+    });
+    const data = await resp.json();
+    return data.message;
+  };
+
   /**
    * When the user submits the form, the message is added to the database and the user is added to the
    * members array.
    */
-
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     db.collection('conversations')
@@ -23,6 +36,7 @@ const SendChatMessage = () => {
       .add({
         sender: firebase.auth().currentUser.displayName,
         text: message,
+        original_text: message,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(function () {
@@ -41,7 +55,6 @@ const SendChatMessage = () => {
         latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
       });
   };
-
 
   return (
     <div className="footer">
@@ -65,10 +78,10 @@ const SendChatMessage = () => {
       </form>
 
       <div className="fieldicon">
-            <button className="footer-btn">
-              <i className="ri-mic-2-fill"></i>
-            </button>
-          </div>
+        <button className="footer-btn">
+          <i className="ri-mic-2-fill"></i>
+        </button>
+      </div>
     </div>
   );
 };
