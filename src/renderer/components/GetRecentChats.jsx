@@ -52,8 +52,7 @@ function RecentChats() {
             <img height="42" width="42" src={faker.image.avatar()} />
           </div>
           {conversation.name} <br />
-          {conversation.latest_time_message &&
-            conversation.latest_time_message.toDate().toLocaleString()}
+          {getFormattedTime(conversation.latest_time_message.toDate().toLocaleString())}
         </li>
       ))}
     </ul>
