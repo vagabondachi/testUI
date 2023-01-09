@@ -53,7 +53,7 @@ function RecentChats() {
           </div>
           {conversation.name} <br />
           {conversation.latest_time_message &&
-            getFormattedTime(conversation.latest_time_message.toDate())}
+            conversation.latest_time_message.toDate().toLocaleString()}
         </li>
       ))}
     </ul>
