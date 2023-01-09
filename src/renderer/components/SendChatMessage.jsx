@@ -3,27 +3,31 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import RecordRTC from 'recordrtc';
 import store from '../store/store';
+import bannedWords from './bannedWords';
 
 const SendChatMessage = () => {
   const [message, setMessage] = useState('');
   const db = firebase.firestore();
   const state = store.getState();
   const groupId = state.groupId;
-  const translate_to_code = state.languageTranslateTo;
+  const userLang = state.userLang;
+  const [recorder, setRecorder] = useState(null);
+  const [isRecording, setRecordingStatus] = useState(false);
 
-  const translate = async (text) => {
-    const resp = await fetch(
-      'https://jellyfish-app-4424e.ondigitalocean.app/translate',
-      {
-        method: 'POST',
-        body: JSON.stringify({ text }),
-        headers: {
-          'X-translate-to-code': translate_to_code,
-        },
+  const censor = (text) => {
+    const words = text.split(' ');
+    for (let i = 0; i < words.length; i++) {
+      if (bannedWords.includes(words[i].toLowerCase())) {
+        if (words[i].length === 1) {
+          words[i] = '*';
+        } else {
+          const firstLetter = words[i][0];
+          const asterisks = '*'.repeat(words[i].length - 1);
+          words[i] = firstLetter + asterisks;
+        }
       }
-    );
-    const data = await resp.json();
-    return data.message;
+    }
+    return words.join(' ');
   };
 
   /**
@@ -33,14 +37,12 @@ const SendChatMessage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Add the message to the chat before the translation happens
     db.collection('conversations')
       .doc(groupId)
       .collection('messages')
       .add({
         sender: firebase.auth().currentUser.displayName,
-        text: message,
-        translated_text: '', // Set the translated text to an empty string initially
+        text: censor(message),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(function () {
@@ -58,25 +60,54 @@ const SendChatMessage = () => {
         ),
         latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
       });
+  };
 
-    // Translate the message in the background and update the translated text in the database
-    const translatedText = await translate(message);
-    db.collection('conversations')
-      .doc(groupId)
-      .collection('messages')
-      .where('text', '==', message)
-      .where('sender', '==', firebase.auth().currentUser.displayName)
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          doc.ref.update({
-            translated_text: translatedText,
-          });
-        });
-      })
-      .catch(function (error) {
-        console.error('Error updating translated text: ', error);
+  const startRecording = () => {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      const newRecorder = RecordRTC(stream, {
+        type: 'audio',
+        mimeType: 'audio/mp3',
       });
+
+      newRecorder.startRecording();
+      setRecorder(newRecorder);
+    });
+    setRecordingStatus(true);
+  };
+
+  const stopRecording = () => {
+    recorder.stopRecording(() => {
+      const audioBlob = recorder.getBlob();
+
+      // Create a new form object and add the audio file to it.
+      const form = new FormData();
+      form.append('mp3_file', audioBlob);
+
+      // Send the form to the API endpoint using fetch with a custom header.
+      fetch('https://jellyfish-app-4424e.ondigitalocean.app/upload_mp3', {
+        method: 'POST',
+        body: form,
+        headers: {
+          'X-speech-language-code': userLang,
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.error(
+              `Request failed with status ${response.status}: ${response.statusText}`
+            );
+          }
+        })
+        .then((responseBody) => {
+          setMessage(responseBody.message);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+    setRecordingStatus(false);
   };
 
   return (
@@ -101,9 +132,17 @@ const SendChatMessage = () => {
       </form>
 
       <div className="fieldicon">
-        <button className="footer-btn">
-          <i className="ri-mic-2-fill"></i>
-        </button>
+        {isRecording ? (
+          <button className="footer-btn" onClick={stopRecording}>
+            <i className="ri-mic-2-fill"></i>
+            stop
+          </button>
+        ) : (
+          <button className="footer-btn" onClick={startRecording}>
+            <i className="ri-mic-2-fill"></i>
+            start
+          </button>
+        )}
       </div>
     </div>
   );
