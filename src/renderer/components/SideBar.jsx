@@ -17,10 +17,16 @@ function SideBar() {
         </>
       )}
       {toggle == 'chats' && (
-        <>
-          <h1>Recent Chats</h1>
+        <div className="containerchats">
+          <form class="nosubmit">
+            <input
+              class="nosubmit"
+              type="search"
+              placeholder="Search group..."
+            />
+          </form>
           <GetRecentChats />
-        </>
+        </div>
       )}
       {toggle == 'settings' && (
         <>

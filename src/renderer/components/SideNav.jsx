@@ -19,7 +19,8 @@ function SideNav() {
           >
             <div className="sideborder"></div>
             <i className="ri-question-answer-fill"></i>
-            <span> Direct Message</span>
+
+            <span> Group Message</span>
           </button>
         </div>
 
@@ -57,6 +58,7 @@ function SideNav() {
       </div>
 
       <div className="btn-container-avatar">
+        <hr />
         <div className="circle">
           <img height="54" width="53" src={faker.image.avatar()} />
         </div>

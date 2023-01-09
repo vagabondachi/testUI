@@ -30,6 +30,20 @@ function RecentChats() {
 
   return (
     <div className="recents">
+      <div className="add-channel">
+        <div className="label-add">
+          <p className="p-texts">Group Messages</p>
+        </div>
+        <div className="btn-add-container">
+          <button className="btn-create-group">
+            {' '}
+            <span> Create group </span>
+            <i className="ri-add-line"></i>{' '}
+          </button>
+        </div>
+      </div>
+      <hr />
+      <p className="p-texts">Recent Chats</p>
       <ul>
         {conversations.map((conversation) => (
           <div className="sidebaritems-container">
