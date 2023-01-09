@@ -5,7 +5,6 @@ import Logout from './Logout';
 function SideNav() {
   return (
     <div className="sidenavcontainer">
-
       <div className="btn-group">
         <div className="btn-container">
           <button
@@ -59,8 +58,8 @@ function SideNav() {
       <div className="btn-container-avatar">
         <div className="circle">
           <img
-            height="48"
-            width="48"
+            height="54"
+            width="53"
             src="http://www.gravatar.com/avatar/9017a5f22556ae0eb7fb0710711ec125?s=128"
           />
         </div>
@@ -89,8 +88,7 @@ function SideNav() {
           </div>
         </div>
       </div>
-      </div>
-
+    </div>
   );
 }
 

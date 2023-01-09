@@ -39,6 +39,21 @@ const Login = () => {
       // if user is logged in, redirect to home page
       navigate('/');
     }
+
+    const eyeIcon = document.getElementById('eye-icon');
+    const passwordInput = document.getElementById('password-input');
+
+    eyeIcon.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.add('ri-eye-line');
+        eyeIcon.classList.remove('ri-eye-off-line');
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('ri-eye-line');
+        eyeIcon.classList.add('ri-eye-off-line');
+      }
+    });
   }, [user]);
 
   return (
@@ -64,15 +79,15 @@ const Login = () => {
           <div className="container">
             <div className="input-box-password">
               <input
-                className="inputpass"
                 type="password"
+                id="password-input"
                 value={password}
                 onChange={handlePasswordChange}
                 spellCheck="false"
                 required
               />
               <label htmlFor="">Password</label>
-              <i className="ri-eye-off-line toggle"></i>
+              <i id="eye-icon" className="ri-eye-off-line"></i>
             </div>
           </div>
 

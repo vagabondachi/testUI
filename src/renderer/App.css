@@ -127,7 +127,6 @@ width: 320px;
 {
   padding-top: 2%;
   font-size: 0.8em;
-
 }
 
 .login-option
@@ -193,6 +192,19 @@ input:is(:focus, :valid) ~ label{
 input:is(:focus){
   border-color: #0890EB;
 
+}
+
+
+
+.eye-icon {
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+.eye-icon.ri-eye-line{
+}
+
+.eye-icon.ri-eye-off-line {
 }
 
 .input-box-password input{
@@ -407,7 +419,7 @@ transition: opacity 2.15s ease, ;
   text-align: center;
   padding-bottom: 40px;
   justify-content: space-between;
-  border-top: 1px solid gray ;
+  
 
 }
 
@@ -427,6 +439,7 @@ transition: opacity 2.15s ease, ;
   position: relative;
   flex-direction: row;
   align-items: center;
+  background-color: #F3F3F5;
 }
 
 
@@ -464,8 +477,8 @@ margin-left: 10px;
 	border-radius: 50%;	/* relative value */
 	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
 	transition: linear 0.25s;
-  height: 48px;
-  width: 48px;
+  height: 62px;
+  width: 62px;
 }
 .circle img {
 	border-radius: 50%;	/* relative value for
@@ -499,7 +512,7 @@ span
 {
 padding:13px;
 position: absolute;
-width: 150px;
+width: 180px;
 left:50px;
 bottom:30px;
 background-color: #fff;
@@ -682,7 +695,7 @@ z-index: 1;
 
 .idle-img
 {
-  width:500px;
+  width:100%;
   align-items: center;
   text-align: center;
 
@@ -691,10 +704,9 @@ z-index: 1;
 {
 margin-top: 10% ;
 height: 100%;
-flex-direction: column;
 align-items: center;
 text-align: center;
-margin-right: 200px;
+
 
 }
 .idle-item
@@ -702,4 +714,6 @@ margin-right: 200px;
   color:rgb(191, 191, 191);
   align-items: center;
   margin-right: 15%;
+  display: absolute;
+  margin-top: -3%;
 }
