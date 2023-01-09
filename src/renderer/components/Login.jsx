@@ -56,14 +56,15 @@ const Login = () => {
                 onChange={handleEmailChange}
                 required
               />
-              <label htmlFor="password">Email/username</label>
+              <label htmlFor="password">Username or email address</label>
             </div>
           </div>
           <br></br>
 
           <div className="container">
-            <div className="input-box">
+            <div className="input-box-password">
               <input
+                className="inputpass"
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
