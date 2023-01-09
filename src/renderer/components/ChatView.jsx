@@ -98,11 +98,11 @@ function Chat() {
 
       <div className="message-container" ref={messageContainerRef}>
         <ul>
-          <div className="circle-msg">
-            <img height="42" width="42" src={faker.image.avatar()} />
-          </div>
           {messages.map((message) => (
-            <li key={message.id}>
+            <li key={message.id}>     
+              <div className="circle-msg">
+                <img height="42" width="42" src={faker.image.avatar()} />
+              </div>
               {message.sender}: {translatedTexts[message.id] || message.text}
               <img
                 style={{
