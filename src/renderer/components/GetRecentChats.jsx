@@ -29,23 +29,32 @@ function RecentChats() {
   };
 
   return (
-    <ul>
-      {conversations.map((conversation) => (
-        <li
-          key={conversation.id}
-          onClick={() => {
-            handleClick(conversation.id);
-          }}
-        >
-          <div className="circle-msg">
-            <img height="42" width="42" src={faker.image.avatar()} />
+    <div className="recents">
+      <ul>
+        {conversations.map((conversation) => (
+          <div className="sidebaritems-container">
+            <li
+              key={conversation.id}
+              onClick={() => {
+                handleClick(conversation.id);
+              }}
+            >
+              <div className="recents-container">
+                <div className="circle-msg">
+                  <img height="33" width="33" src={faker.image.avatar()} />
+                </div>
+                <div className="recentconvo-name">{conversation.name}</div>
+              </div>
+
+              <div>
+                {conversation.latest_time_message &&
+                  conversation.latest_time_message.toDate().toLocaleString()}
+              </div>
+            </li>
           </div>
-          {conversation.name} <br />
-          {conversation.latest_time_message &&
-            conversation.latest_time_message.toDate().toLocaleString()}
-        </li>
-      ))}
-    </ul>
+        ))}
+      </ul>
+    </div>
   );
 }
 

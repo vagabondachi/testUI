@@ -60,10 +60,6 @@ button:hover
   opacity: 2;
 }
 
-li 
-{
-  list-style: none;
-}
 
 a 
 {
@@ -88,6 +84,13 @@ a:hover
 }
 
 
+h1
+{
+  font-size: calc(1vw + 1vh + 1vmin);
+  margin-left: 5%;
+
+}
+
 /************************************************
 	************************************************
 									Users Login
@@ -103,7 +106,7 @@ a:hover
   width: 100vw;
   height: 100vh;
   align-items: center;
-  padding-top: 65px;
+  padding-top: 80px;
 }
 
 .form-container 
@@ -250,11 +253,26 @@ input:is(:focus)
 
 /************************************************
 	************************************************
-									Account Signup
+									Error Msg
 	************************************************
 ************************************************/
 
+.errormsg 
+{
+color: rgb(75, 75, 75);
+font-size: 0.8em;
+text-align:justify;
+text-justify:inter-word;
+}
 
+.errorbox
+{
+  background-color: rgb(253, 241, 241);
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+  border: 1px red solid;
+ 
+}
 /************************************************
 	************************************************
 									Navigation
@@ -264,7 +282,7 @@ input:is(:focus)
 .sidenavcontainer{
 
   float:left;
-  width:10%;
+  width:7.5%;
   height: 100%;
   display: flex;
   position: relative;
@@ -312,8 +330,6 @@ input:is(:focus)
   color:#fff;
 }
 
-
-
 .nav-btn span
 {
 margin: 0;
@@ -349,8 +365,6 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transform: translate(-40%,-50%) rotate(45deg);
 
 }
-
-
 
 .nav-btn .sideborder
 {
@@ -440,40 +454,41 @@ transition: opacity 2.15s ease, ;
 
 .sidebarcontainer{
   float:left;
-  width: 20%;
+  width: 25%;
   height: 100%;
   position: relative;
   flex-direction: row;
   align-items: center;
-  background-color: #F3F3F5;
+  background-color: #F3F3F5; 
+  
 }
 
-
-/*
-.sidebarcontainer{
-position: fixed;
- width:250px;
- height: 100%;
- margin-left: 100px;
-background-color: #F3F3F5;
-z-index: 0;
-}
-
-.sidebar-content
+.sidebaritems-container li
 {
-float: left;
-margin-left: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+
 }
- */
 
 
-/************************************************
-	************************************************
-									Settings
-	************************************************
-************************************************/
+.sidebaritems-container li:focus
+{
+  background-color: #D1D6D9;
+}
 
-/* Circle Avatar Styles */
+.sidebaritems-container li:hover
+{
+  background-color: #D1D6D9;
+  cursor: pointer;
+}
+
+
+
 
 .circle-msg {
 	line-height: 0;		/* remove line-height */
@@ -483,14 +498,46 @@ margin-left: 10px;
 	border-radius: 50%;	/* relative value */
 	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
 	transition: linear 0.25s;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
 .circle-msg img {
 	border-radius: 50%;	/* relative value for
 				   adjustable image size */
 }
+
+.recents 
+{
+  width: 90%;
+  margin: 5%;
+}
+
+ul 
+{
+  padding: 0;  
+}
+
+.recents-container
+{
+  padding:10px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.recentconvo-name
+{
+  margin-left: 5%;
+}
+
+/************************************************
+	************************************************
+									Settings
+	************************************************
+************************************************/
+
+/* Circle Avatar Styles */
 
 
 .circle {
@@ -518,9 +565,6 @@ margin-left: 10px;
 a.circle {
   color: transparent;
 } /* IE fix: removes blue border */
-
-
-
 
 
 .btn-logout {
@@ -603,7 +647,7 @@ z-index: 1;
 
 .chatcontainer{
   float:right;
-  width: 70%;
+  width: 65%;
   height: 100%;
   flex-direction: row;
   align-items: center;

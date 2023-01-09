@@ -15,7 +15,6 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
-
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -32,20 +31,19 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
-
 ipcMain.on('on-login', () => {
-  mainWindow?.setSize(1024,700);
+  mainWindow?.setSize(955, 730);
   mainWindow?.center();
   mainWindow?.setResizable(true);
-  console.log("im login");
-})
+  console.log('im login');
+});
 
 ipcMain.on('on-logout', () => {
-  mainWindow?.setSize(400,700);
+  mainWindow?.setSize(400, 730);
   mainWindow?.center();
   mainWindow?.setResizable(false);
-  console.log("im logout");
-})
+  console.log('im logout');
+});
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -85,12 +83,11 @@ const createWindow = async () => {
     return path.join(RESOURCES_PATH, ...paths);
   };
 
-
   mainWindow = new BrowserWindow({
     show: false,
     width: 400,
-    height: 700,
-    resizable:false,
+    height: 730,
+    resizable: false,
     autoHideMenuBar: true,
     icon: 'assets/icons/logo.ico',
     webPreferences: {
@@ -100,7 +97,6 @@ const createWindow = async () => {
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
   });
-
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 

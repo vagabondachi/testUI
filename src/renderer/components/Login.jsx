@@ -59,6 +59,14 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-container">
           <img src={Logo} alt="chat logo" className="login-logo" />
+
+          {error && (
+            <div className="errorbox">
+              {' '}
+              <p className="errormsg">{error}</p>{' '}
+            </div>
+          )}
+
           <br />
 
           <div className="container">
@@ -94,9 +102,8 @@ const Login = () => {
           </div>
 
           <br />
-          <br />
+
           <button type="submit">Login</button>
-          {error && <p>{error}</p>}
         </div>
       </form>
 
