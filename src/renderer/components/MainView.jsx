@@ -10,6 +10,11 @@ import LoadSettings from './LoadSettings';
 const MainView = () => {
   const user = useSelector((state) => state.user);
   const groupId = useSelector((state) => state.groupId); // get current value of groupId from the store
+  useEffect(() => {
+    if (user) {
+      window.electron.ipcRenderer.sendMessage('on-login');
+    }
+  }, [user]);
 
   return (
     <>

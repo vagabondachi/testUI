@@ -31,7 +31,6 @@ const Login = () => {
       .catch((error) => {
         setError(error.message);
       });
-    window.electron.ipcRenderer.sendMessage('on-login');
   };
 
   useEffect(() => {
@@ -39,7 +38,6 @@ const Login = () => {
       // if user is logged in, redirect to home page
       navigate('/');
     }
-
     const eyeIcon = document.getElementById('eye-icon');
     const passwordInput = document.getElementById('password-input');
 

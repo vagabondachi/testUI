@@ -7,17 +7,19 @@
 
 *{
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
-
-.app{
+.app
+{
   width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
 }
 
-body {
+body 
+{
   position: relative;
   color: #34485E;
   height: 100vh;
@@ -34,7 +36,8 @@ body {
   align-items: center;
 }
 
-button {
+button 
+{
   background-color: #0890EB;
   color: white;
   width: 100%;
@@ -51,35 +54,38 @@ button {
   opacity: 0.9;
 }
 
-
-button:hover {
+button:hover 
+{
   /* transform: scale(1.05); */
   opacity: 2;
 }
 
-li {
+li 
+{
   list-style: none;
 }
 
-a {
+a 
+{
   text-decoration: none;
   margin: 10px;
   font-weight: 600;
   color: #64c1ff;
 }
 
-a:hover {
+a:hover 
+{
   opacity: 1;
   text-decoration: none;
 }
 
-.Hello {
+.Hello 
+{
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
 }
-
 
 
 /************************************************
@@ -89,7 +95,8 @@ a:hover {
 ************************************************/
 
 
-.centered-container-form {
+.centered-container-form 
+{
   font-size: 18px;
   display: flex;
   flex-direction: column;
@@ -99,7 +106,8 @@ a:hover {
   padding-top: 65px;
 }
 
-.form-container {
+.form-container 
+{
 width: 320px;
 }
 
@@ -136,15 +144,16 @@ width: 320px;
   color:  rgb(56, 56, 56);
 }
 
-.container{
+.container
+{
   position: relative;
   width: 100%;
   border-radius:6px;
   background-color: #fff;
-
 }
 
-.input-box input{
+.input-box input
+{
   outline:none;
   height:100%;
   border: 2px solid #ccc;
@@ -155,7 +164,8 @@ width: 320px;
   width: 100%;
 }
 
-.input-box :is(label, i){
+.input-box :is(label, i)
+{
   position:absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -163,24 +173,28 @@ width: 320px;
   transition: all 0.2s linear;
 }
 
-.input-box label{
+.input-box label
+{
   left: 15px ;
   pointer-events: none;
   font-size: 16px;
   font-weight:400;
 }
 
-.input-box i {
+.input-box i 
+{
   left:270px;
   cursor: pointer;
   font-size:20px;
 }
 
-input:is(:focus, :valid) ~ i{
+input:is(:focus, :valid) ~ i
+{
   color:#0890EB;
 }
 
-input:is(:focus, :valid) ~ label{
+input:is(:focus, :valid) ~ label
+{
   color:#0890EB;
   top:0;
   font-weight: 500;
@@ -189,22 +203,16 @@ input:is(:focus, :valid) ~ label{
   font-size: 14px;
 }
 
-input:is(:focus){
+input:is(:focus)
+{
   border-color: #0890EB;
-
 }
 
-
-
-.eye-icon {
+.eye-icon 
+{
   font-size: 18px;
   color: #333;
   cursor: pointer;
-}
-.eye-icon.ri-eye-line{
-}
-
-.eye-icon.ri-eye-off-line {
 }
 
 .input-box-password input{
@@ -217,9 +225,7 @@ input:is(:focus){
   font-size: 16px;
   width: 100%;
 }
-* { 
-  box-sizing: border-box;
-}
+
 
 .input-box-password  :is(label, i){
   position:absolute;
@@ -469,6 +475,24 @@ margin-left: 10px;
 
 /* Circle Avatar Styles */
 
+.circle-msg {
+	line-height: 0;		/* remove line-height */
+	display: inline-block;	/* circle wraps image */
+	margin: 5px;
+  border: 4px solid rgba(200,200,200,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 50px;
+  width: 50px;
+}
+
+.circle-msg img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+
+
 .circle {
 	line-height: 0;		/* remove line-height */
 	display: inline-block;	/* circle wraps image */
@@ -480,6 +504,8 @@ margin-left: 10px;
   height: 62px;
   width: 62px;
 }
+
+
 .circle img {
 	border-radius: 50%;	/* relative value for
 				   adjustable image size */
@@ -492,6 +518,10 @@ margin-left: 10px;
 a.circle {
   color: transparent;
 } /* IE fix: removes blue border */
+
+
+
+
 
 .btn-logout {
   background-color: transparent;
@@ -573,7 +603,7 @@ z-index: 1;
 
 .chatcontainer{
   float:right;
-  width: 65%;
+  width: 70%;
   height: 100%;
   flex-direction: row;
   align-items: center;

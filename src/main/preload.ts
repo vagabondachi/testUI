@@ -3,7 +3,6 @@ import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 export type Channels = 'ipc-example';
 
 const electronHandler = {
-  
   ipcRenderer: {
     sendMessage(channel: Channels, args: unknown[]) {
       ipcRenderer.send(channel, args);
@@ -20,11 +19,11 @@ const electronHandler = {
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
-     resizeOnLogin(){
-      ipcRenderer.send("on-login");
+    resizeOnLogin() {
+      ipcRenderer.send('on-login');
     },
-    resizeOnLogout(){
-      ipcRenderer.send("on-logout");
+    resizeOnLogout() {
+      ipcRenderer.send('on-logout');
     },
   },
 };

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-
 import store from '../store/store';
 import { useSelector } from 'react-redux';
+import { faker } from '@faker-js/faker';
 
 function RecentChats() {
   const [conversations, setConversations] = useState([]);
@@ -37,8 +37,10 @@ function RecentChats() {
             handleClick(conversation.id);
           }}
         >
-          {conversation.name}
-          <br />
+          <div className="circle-msg">
+            <img height="42" width="42" src={faker.image.avatar()} />
+          </div>
+          {conversation.name} <br />
           {conversation.latest_time_message &&
             conversation.latest_time_message.toDate().toLocaleString()}
         </li>

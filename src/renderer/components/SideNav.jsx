@@ -1,6 +1,7 @@
 import React from 'react';
 import store from '../store/store';
 import Logout from './Logout';
+import { faker } from '@faker-js/faker';
 
 function SideNav() {
   return (
@@ -57,11 +58,7 @@ function SideNav() {
 
       <div className="btn-container-avatar">
         <div className="circle">
-          <img
-            height="54"
-            width="53"
-            src="http://www.gravatar.com/avatar/9017a5f22556ae0eb7fb0710711ec125?s=128"
-          />
+          <img height="54" width="53" src={faker.image.avatar()} />
         </div>
 
         <div className="wrapper">
