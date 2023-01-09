@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import store from '../store/store';
@@ -15,6 +15,14 @@ function Chat() {
   const state = store.getState();
   const groupId = state.groupId;
   const translate_to_code = state.languageTranslateTo;
+
+  const messageContainerRef = useRef(null);
+
+  useEffect(() => {
+    const { current } = messageContainerRef;
+
+    current.scrollTo(0, current.scrollHeight);
+  }, [messages]);
 
   /* Listening to the database and updating the messages array. */
   useEffect(() => {
@@ -87,7 +95,7 @@ function Chat() {
         </div>
       </div>
 
-      <div className="message-container">
+      <div className="message-container" ref={messageContainerRef}>
         <ul>
           {messages.map((message) => (
             <li key={message.id}>
