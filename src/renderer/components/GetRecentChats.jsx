@@ -27,6 +27,17 @@ function RecentChats() {
   const handleClick = (conversationId) => {
     store.dispatch({ type: 'SET_GROUP_ID', groupId: conversationId });
   };
+  
+  const getFormattedTime = (date) => {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    let ampm = 'AM';
+    if (hours >= 12) {
+      ampm = 'PM';
+      hours -= 12;
+    }
+    return `${hours}:${minutes} ${ampm}`;
+    };
 
   return (
     <ul>
@@ -42,7 +53,7 @@ function RecentChats() {
           </div>
           {conversation.name} <br />
           {conversation.latest_time_message &&
-            conversation.latest_time_message.toDate().toLocaleString()}
+            getFormattedTime(conversation.latest_time_message.toDate())}
         </li>
       ))}
     </ul>

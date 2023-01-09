@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import store from '../store/store';
 import SendChatMessage from './SendChatMessage';
 import translateIcon from '../../../assets/translate.png';
+import { faker } from '@faker-js/faker';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -99,6 +100,9 @@ function Chat() {
         <ul>
           {messages.map((message) => (
             <li key={message.id}>
+            <div className="circle-msg">
+              <img height="42" width="42" src={faker.image.avatar()} />
+            </div>
               {message.sender}: {translatedTexts[message.id] || message.text}
               <img
                 style={{
