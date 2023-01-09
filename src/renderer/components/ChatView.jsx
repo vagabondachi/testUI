@@ -8,6 +8,7 @@ import translateIcon from '../../../assets/translate.png';
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [groupName, setGroupName] = useState('');
+  const [currentMessageText, setCurrentMessageText] = useState({});
   const db = firebase.firestore();
 
   const state = store.getState();
@@ -37,8 +38,15 @@ function Chat() {
       });
   }, [groupId]);
 
-  const handleTranslate = (id) => {
-    //this would change the message text to translated_message from the document id provided
+  const handleTranslate = (messageId) => {
+    const message = messages.find((m) => m.id === messageId);
+    setCurrentMessageText((prev) => ({
+      ...prev,
+      [messageId]:
+        prev[messageId] === message.text
+          ? message.translated_text
+          : message.text,
+    }));
   };
 
   return (
@@ -53,17 +61,19 @@ function Chat() {
         <ul>
           {messages.map((message) => (
             <li key={message.id}>
-              {message.sender}: {message.text}
-              <img
-                style={{
-                  height: '20px',
-                  margin: '0 5px 0 0',
-                }}
-                src={translateIcon}
-                onClick={() => {
-                  handleTranslate(message.id);
-                }}
-              />
+              {message.sender}: {currentMessageText[message.id] || message.text}
+              {message.translated_text && (
+                <img
+                  style={{
+                    height: '20px',
+                    margin: '0 5px 0 0',
+                  }}
+                  src={translateIcon}
+                  onClick={() => {
+                    handleTranslate(message.id);
+                  }}
+                />
+              )}
             </li>
           ))}
         </ul>

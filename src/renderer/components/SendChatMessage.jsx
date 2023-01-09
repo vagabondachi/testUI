@@ -12,13 +12,16 @@ const SendChatMessage = () => {
   const translate_to_code = state.languageTranslateTo;
 
   const translate = async (text) => {
-    const resp = await fetch('http://localhost:5000/translate', {
-      method: 'POST',
-      body: JSON.stringify({ text }),
-      headers: {
-        'X-translate-to-code': translate_to_code,
-      },
-    });
+    const resp = await fetch(
+      'https://jellyfish-app-4424e.ondigitalocean.app/translate',
+      {
+        method: 'POST',
+        body: JSON.stringify({ text }),
+        headers: {
+          'X-translate-to-code': translate_to_code,
+        },
+      }
+    );
     const data = await resp.json();
     return data.message;
   };
@@ -30,13 +33,14 @@ const SendChatMessage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Add the message to the chat before the translation happens
     db.collection('conversations')
       .doc(groupId)
       .collection('messages')
       .add({
         sender: firebase.auth().currentUser.displayName,
         text: message,
-        original_text: message,
+        translated_text: '', // Set the translated text to an empty string initially
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(function () {
@@ -53,6 +57,25 @@ const SendChatMessage = () => {
           firebase.auth().currentUser.uid
         ),
         latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+
+    // Translate the message in the background and update the translated text in the database
+    const translatedText = await translate(message);
+    db.collection('conversations')
+      .doc(groupId)
+      .collection('messages')
+      .where('text', '==', message)
+      .where('sender', '==', firebase.auth().currentUser.displayName)
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          doc.ref.update({
+            translated_text: translatedText,
+          });
+        });
+      })
+      .catch(function (error) {
+        console.error('Error updating translated text: ', error);
       });
   };
 

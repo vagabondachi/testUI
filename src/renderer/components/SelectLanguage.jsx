@@ -43,8 +43,8 @@ function LanguageRadioButtons() {
         <input
           type="radio"
           name="userLanguage"
-          value="en-US"
-          checked={userLanguage === 'en-US'}
+          value="en"
+          checked={userLanguage === 'en'}
           onChange={handleLanguageChange}
         />
         English
