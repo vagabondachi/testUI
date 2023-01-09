@@ -51,6 +51,7 @@ function Chat() {
 
   return (
     <div className="chatcontainer">
+
       <div className="header">
         <div className="title">
           <h1> {groupName}</h1>
@@ -67,6 +68,7 @@ function Chat() {
         </ul>
       </div>
       <SendChatMessage />
+
     </div>
   );
 }

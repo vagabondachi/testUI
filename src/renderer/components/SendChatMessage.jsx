@@ -13,7 +13,7 @@ const SendChatMessage = () => {
    * members array.
    */
 
- 
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -48,16 +48,14 @@ const SendChatMessage = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-footer-container">
           <div className="textarea-container">
-            <textarea
+            <input
               name="text"
-              rows="14"
-              wrap="soft"
               placeholder="Write Message..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
+            />
           </div>
-        
+
           <div className="btn-footer-container">
             <button className="footer-icon-btn" type="submit">
               <i className="ri-send-plane-fill"></i>

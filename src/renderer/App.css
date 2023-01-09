@@ -113,29 +113,29 @@ width: 320px;
   font-size: 20px;
   font-weight: bold;
 }
-/* 
+/*
 label{
-  display:block; 
-  position:relative; 
-  bottom:-10px; 
-  width:fit-content; 
-  left:10px; 
-  padding:0px 5px; 
+  display:block;
+  position:relative;
+  bottom:-10px;
+  width:fit-content;
+  left:10px;
+  padding:0px 5px;
   background-color:white;
   color: rgb(56, 56, 56);
   font-size: 0.8em;
 }
 
 input{
-  border:1.5px solid #bfbfbf; 
-  height: 30px; 
+  border:1.5px solid #bfbfbf;
+  height: 30px;
   width:300px;
   padding:10px 10px;
   border-radius: 5px;
   font-size: 0.9em;
   display: flex;
   align-items: center;
- 
+
 }
 input:focus-within{
   outline:none;
@@ -143,7 +143,7 @@ input:focus-within{
 } */
 
 
-.login-logo 
+.login-logo
 {
   display: block;
   margin-left: auto;
@@ -153,11 +153,11 @@ input:focus-within{
 }
 
 
-.forgotpass 
+.forgotpass
 {
   padding-top: 2%;
   font-size: 0.8em;
-  
+
 }
 
 .login-option
@@ -207,7 +207,7 @@ input:focus-within{
   pointer-events: none;
   font-size: 16px;
   font-weight:400;
-  padding:0px 5px; 
+  padding:0px 5px;
 }
 .input-box i {
   left:270px;
@@ -224,9 +224,9 @@ input:is(:focus, :valid) ~ label{
   top:0;
   font-weight: 500;
   background-color: #fff;
-  padding:0px 5px; 
+  padding:0px 5px;
   font-size: 12px;
- 
+
 
 }
 
@@ -250,8 +250,23 @@ input:is(:focus){
 ************************************************/
 
 .sidenavcontainer{
-  float:left; 
-  width:100px;  
+
+  float:left;
+  width:10%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #E4E5E7;
+  z-index: 1;
+
+}
+
+
+/* .sidenavcontainer{
+  float:left;
+  width:100px;
   height: 100%;
   display: flex;
   position: fixed;
@@ -259,7 +274,7 @@ input:is(:focus){
   flex-direction: column;
   background-color: #E4E5E7;
   z-index: 1;
-}
+} */
 
 .btn-group {
   text-align: center;
@@ -272,7 +287,7 @@ input:is(:focus){
   text-align: center;
   align-items: center;
   margin-bottom: 10px;
- 
+
  }
 
 .btn-container i {
@@ -366,7 +381,7 @@ transition: opacity 2.15s ease, ;
   transform: translateY(30%);
 
 }
- 
+
 .nav-btn{
   border-radius: 50%;
   height: 60px;
@@ -378,7 +393,7 @@ transition: opacity 2.15s ease, ;
 
 .nav-btn:focus i {
   color:#fff;
-  
+
 }
 
 .nav-btn:focus
@@ -399,7 +414,7 @@ transition: opacity 2.15s ease, ;
   padding-bottom: 40px;
   justify-content: space-between;
   border-top: 1px solid gray ;
-  
+
 }
 
 
@@ -409,6 +424,19 @@ transition: opacity 2.15s ease, ;
 	************************************************
 ************************************************/
 
+
+
+.sidebarcontainer{
+  float:left;
+  width: 20%;
+  height: 100%;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+/*
 .sidebarcontainer{
 position: fixed;
  width:250px;
@@ -423,7 +451,7 @@ z-index: 0;
 float: left;
 margin-left: 10px;
 }
-
+ */
 
 
 /************************************************
@@ -435,7 +463,7 @@ margin-left: 10px;
 /* Circle Avatar Styles */
 
 .circle {
-	line-height: 0;		/* remove line-height */ 
+	line-height: 0;		/* remove line-height */
 	display: inline-block;	/* circle wraps image */
 	margin: 5px;
   border: 4px solid rgba(200,200,200,0.4);
@@ -456,7 +484,7 @@ margin-left: 10px;
 }
 a.circle {
   color: transparent;
-} /* IE fix: removes blue border */	
+} /* IE fix: removes blue border */
 
 .btn-logout {
   background-color: transparent;
@@ -510,7 +538,7 @@ z-index: 1;
 {
   list-style: none;
   font-size: 15px;
-  height: 50px;  
+  height: 50px;
   display: flex;
   cursor: pointer;
   padding: 0 5px 0 10px;
@@ -538,107 +566,85 @@ z-index: 1;
 
 .chatcontainer{
   float:right;
-  width: 100%;
+  width: 65%;
   height: 100%;
-  position: fixed;
-  margin-left: 350px;
   flex-direction: row;
   align-items: center;
-}
-
-.chatview
-{
-  flex-direction: column;
+  position: relative;
 }
 
 
-.message-container 
+.message-container
 {
   height: 70%;
-  background-color: red;
-  width: 79%;
-  margin-top: 20%;
-  margin:5px;
+
   overflow-wrap: break-word;
   overflow-y: scroll;
+  margin:0;
+  left: 0;
 }
 
 .header {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   height: 10%;
   width: 100%;
-  position: relative;
+
 }
 
 .title {
   margin-left:10px;
   font-size: 14px;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .footer
 {
-  flex-direction: row;
-  display: flex;
-  position: relative;
   height: 20%;
   width: 100%;
-  justify-content: space-between; 
-  
+  justify-content: space-between;
+  position: relative;
+  flex-direction: row;
 }
-.footer i 
+
+.form-footer-container
+{
+  position: relative;
+  display: flex;
+}
+
+.footer i
 {
   position: absolute;
   cursor: pointer;
   color: #0890EB;
-  
-}
-
-.form-footer-container 
-{
- width: 100%;
- display: flex;
 
 }
 
-.textarea-container input
-{
-  width: 80%;
-}
 
-.btn-footer-container
-{
-  width:20%;
-  height:10vh;
-  display: block;
-  align-items: center;
-  position: relative;
-  text-align: center;
-  padding: 0;
-}
 
 .footer-icon-btn
 {
   background-color: #34AEFF;
-  width:100%;
-  height: 100%;
-  align-items: center;
-  text-align: center;
+
 }
 
 .footer-icon-btn i
 {
+  align-items: center;
+  text-align: center;
+  font-size: 40px;
   position: inherit;
   Color: #ffffff;
+  padding: 0;
+  margin: 0;
 }
 
 .fieldicon i
 {
-
   color:#999;;
 }
 
-.fieldicon 
+.fieldicon
 {
   width:18%;
   justify-content: center;
@@ -646,25 +652,34 @@ z-index: 1;
   bottom: 100px;
 }
 
-.footer-btn 
+.footer-btn
 {
   background-color: transparent;
 }
 
-textarea
+.btn-footer-container
 {
+  width:12%;
+  height: max-content;
+  margin: 0;
+  padding: 0;
+}
+
+
+.textarea-container input
+{
+  float: left;
   overflow:hidden;
   resize:none;
   margin-top:2%;
   margin-left: 2%;
-  height: 3vh;
-  width: 60vw;
+  width: 60%;
   background-color: rgb(233, 233, 233);
   border-color: transparent ;
   border-radius: 5px;
   outline: none;
   padding: 21px 20px;
-  
+
 }
 
 /************************************************
@@ -678,7 +693,7 @@ textarea
   width:500px;
   align-items: center;
   text-align: center;
- 
+
 }
 .idle-content
 {

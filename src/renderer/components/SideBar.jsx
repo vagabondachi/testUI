@@ -10,7 +10,7 @@ function SideBar() {
 
   return (
     <div className="sidebarcontainer">
-      <div className="sidebar-content">
+
         {/* <div className="sidebarcontainer">
             <div className="sidebar-content"> */}
         {toggle == 'groups' && (
@@ -31,7 +31,6 @@ function SideBar() {
             <Settings />
           </>
         )}
-      </div>
     </div>
   );
 }

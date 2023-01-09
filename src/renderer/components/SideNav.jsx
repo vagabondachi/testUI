@@ -5,6 +5,7 @@ import Logout from './Logout';
 function SideNav() {
   return (
     <div className="sidenavcontainer">
+
       <div className="btn-group">
         <div className="btn-container">
           <button
@@ -88,7 +89,8 @@ function SideNav() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
   );
 }
 
