@@ -552,12 +552,15 @@ z-index: 1;
 }
 
 
-.message-area
+.message-container 
 {
   height: 70%;
-  width: 20%;
-  position: relative;
-
+  background-color: red;
+  width: 79%;
+  margin-top: 20%;
+  margin:5px;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
 }
 
 .header {
@@ -598,7 +601,7 @@ z-index: 1;
 
 }
 
-.textarea-container
+.textarea-container input
 {
   width: 80%;
 }

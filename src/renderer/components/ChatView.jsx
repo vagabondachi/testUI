@@ -57,7 +57,7 @@ function Chat() {
         </div>
       </div>
 
-      <div className="message-area">
+      <div className="message-container">
         <ul>
           {messages.map((message) => (
             <li key={message.id}>
@@ -66,7 +66,6 @@ function Chat() {
           ))}
         </ul>
       </div>
-
       <SendChatMessage />
     </div>
   );
