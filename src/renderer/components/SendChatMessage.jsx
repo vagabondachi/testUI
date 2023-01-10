@@ -37,29 +37,33 @@ const SendChatMessage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    db.collection('conversations')
-      .doc(groupId)
-      .collection('messages')
-      .add({
-        sender: firebase.auth().currentUser.displayName,
-        text: censor(message),
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(function () {
-        console.log('Message sent successfully');
-        setMessage('');
-      })
-      .catch(function (error) {
-        console.error('Error sending message: ', error);
-      });
-    db.collection('conversations')
-      .doc(groupId)
-      .update({
-        members: firebase.firestore.FieldValue.arrayUnion(
-          firebase.auth().currentUser.uid
-        ),
-        latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+    if (message.length > 0) {
+      db.collection('conversations')
+        .doc(groupId)
+        .collection('messages')
+        .add({
+          sender: firebase.auth().currentUser.displayName,
+          text: censor(message),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(function () {
+          console.log('Message sent successfully');
+          setMessage('');
+        })
+        .catch(function (error) {
+          console.error('Error sending message: ', error);
+        });
+      db.collection('conversations')
+        .doc(groupId)
+        .update({
+          members: firebase.firestore.FieldValue.arrayUnion(
+            firebase.auth().currentUser.uid
+          ),
+          latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    } else {
+      // Show an error or disable the send button
+    }
   };
 
   const startRecording = () => {
@@ -122,26 +126,20 @@ const SendChatMessage = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-
-          <div className="btn-footer-container">
-            <button className="footer-icon-btn" type="submit">
-              <i className="ri-send-plane-fill"></i>
-            </button>
+          <div>
+            {' '}
+            {isRecording ? (
+              <button className="fieldicon-btn" onClick={stopRecording}>
+                <i className="ri-mic-fill"></i>
+              </button>
+            ) : (
+              <button className="fieldicon-btn" onClick={startRecording}>
+                <i className="ri-mic-off-fill"></i>
+              </button>
+            )}
           </div>
         </div>
       </form>
-
-      <div className="fieldicon">
-        {isRecording ? (
-          <button className="fieldicon-btn" onClick={stopRecording}>
-            <i className="ri-mic-2-fill"></i>
-          </button>
-        ) : (
-          <button className="fieldicon-btn" onClick={startRecording}>
-            <i className="ri-mic-2-fill"></i>
-          </button>
-        )}
-      </div>
     </div>
   );
 };
