@@ -27,7 +27,7 @@ function RecentChats() {
   const handleClick = (conversationId) => {
     store.dispatch({ type: 'SET_GROUP_ID', groupId: conversationId });
   };
-
+  
   const getFormattedTime = (date) => {
     let hours = date.getHours();
     const minutes = date.getMinutes();
