@@ -5,6 +5,8 @@ import store from '../store/store';
 import SendChatMessage from './SendChatMessage';
 import translateIcon from '../../../assets/translate.png';
 import { faker } from '@faker-js/faker';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -97,40 +99,44 @@ function Chat() {
       </div>
 
       <div className="message-container" ref={messageContainerRef}>
-        <ul>
-          {messages.map((message) => (
-            <li key={message.id}>
-              <div className="listofmessages">
-                <div className="circle-msg">
-                  <img height="32" width="32" src={faker.image.avatar()} />
-                </div>
+        <SimpleBar style={{ height: '100%' }}>
+          <ul>
+            {messages.map((message) => (
+              <li key={message.id}>
+                <div className="listofmessages">
+                  <div className="circle-msg">
+                    <img height="32" width="32" src={faker.image.avatar()} />
+                  </div>
 
-                <div className="viewchat-container">
-                  <small style={{ color: 'gray' }}>
-                    {message.timestamp
-                      ? message.timestamp.toDate
-                        ? new Date(message.timestamp.toDate()).toLocaleString()
-                        : null
-                      : null}
-                  </small>
-                  <br />
-                  {message.sender} :{' '}
-                  {translatedTexts[message.id] || message.text}
-                  <img
-                    style={{
-                      height: '20px',
-                      margin: '0 5px 0 0',
-                    }}
-                    src={translateIcon}
-                    onClick={() => {
-                      handleTranslate(message.id);
-                    }}
-                  />
+                  <div className="viewchat-container">
+                    <small style={{ color: 'gray' }}>
+                      {message.timestamp
+                        ? message.timestamp.toDate
+                          ? new Date(
+                              message.timestamp.toDate()
+                            ).toLocaleString()
+                          : null
+                        : null}
+                    </small>
+                    <br />
+                    {message.sender} :{' '}
+                    {translatedTexts[message.id] || message.text}
+                    <img
+                      style={{
+                        height: '20px',
+                        margin: '0 5px 0 0',
+                      }}
+                      src={translateIcon}
+                      onClick={() => {
+                        handleTranslate(message.id);
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </SimpleBar>
       </div>
       <SendChatMessage />
     </div>

@@ -831,6 +831,12 @@ outline: none;
 
 
 
+
+::-webkit-scrollbar{
+  display:none;
+}
+
+
 .viewchat-container
 {
   width:90%;
