@@ -28,6 +28,17 @@ function RecentChats() {
     store.dispatch({ type: 'SET_GROUP_ID', groupId: conversationId });
   };
 
+  const getFormattedTime = (date) => {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    let ampm = 'AM';
+    if (hours >= 12) {
+      ampm = 'PM';
+      hours -= 12;
+    }
+    return `${hours}:${minutes} ${ampm}`;
+  };
+
   return (
     <div className="recents">
       <div className="add-channel">
@@ -57,13 +68,11 @@ function RecentChats() {
                 <div className="circle-msg">
                   <img height="33" width="33" src={faker.image.avatar()} />
                 </div>
-                <div className="recentconvo-name">{conversation.name}</div>
+                <div className="recentconvo-info">
+                  {conversation.name} <br /> {conversation.name}
+                </div>
               </div>
-
-              <div>
-                {conversation.latest_time_message &&
-                  conversation.latest_time_message.toDate().toLocaleString()}
-              </div>
+              {getFormattedTime(conversation.latest_time_message.toDate())}
             </li>
           </div>
         ))}

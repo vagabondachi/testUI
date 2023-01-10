@@ -19,11 +19,7 @@ function SideBar() {
       {toggle == 'chats' && (
         <div className="containerchats">
           <form class="nosubmit">
-            <input
-              class="nosubmit"
-              type="search"
-              placeholder="Search group..."
-            />
+            <input class="nosubmit" type="search" placeholder="Find group..." />
           </form>
           <GetRecentChats />
         </div>
