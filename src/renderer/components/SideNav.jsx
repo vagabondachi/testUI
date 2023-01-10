@@ -19,7 +19,6 @@ function SideNav() {
           >
             <div className="sideborder"></div>
             <i className="ri-question-answer-fill"></i>
-
             <span> Group Message</span>
           </button>
         </div>
@@ -28,22 +27,6 @@ function SideNav() {
           <button
             className="nav-btn"
             onClick={() => {
-              store.dispatch({
-                type: 'SET_SIDEBAR_VIEW',
-                sidebar: 'groups',
-              });
-            }}
-          >
-            <div className="sideborder"></div>
-            <i className="ri-add-line"></i>
-            <span> Add a channel </span>
-          </button>
-        </div>
-        <div className="btn-container">
-          <button
-            className="nav-btn"
-            onClick={() => {
-              console.log('Clicked on Groups');
               store.dispatch({
                 type: 'SET_SIDEBAR_VIEW',
                 sidebar: 'groups',
@@ -60,7 +43,7 @@ function SideNav() {
       <div className="btn-container-avatar">
         <hr />
         <div className="circle">
-          <img height="54" width="53" src={faker.image.avatar()} />
+          <img src={faker.image.avatar()} />
         </div>
 
         <div className="wrapper">
