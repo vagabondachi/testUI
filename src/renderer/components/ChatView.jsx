@@ -100,20 +100,26 @@ function Chat() {
         <ul>
           {messages.map((message) => (
             <li key={message.id}>
-              <div className="circle-msg">
-                <img height="32" width="32" src={faker.image.avatar()} />
+              <div className="listofmessages">
+                <div className="circle-msg">
+                  <img height="32" width="32" src={faker.image.avatar()} />
+                </div>
+
+                <div className="viewchat-container">
+                  {message.sender} :{' '}
+                  {translatedTexts[message.id] || message.text}
+                  <img
+                    style={{
+                      height: '20px',
+                      margin: '0 5px 0 0',
+                    }}
+                    src={translateIcon}
+                    onClick={() => {
+                      handleTranslate(message.id);
+                    }}
+                  />
+                </div>
               </div>
-              {message.sender}: {translatedTexts[message.id] || message.text}
-              <img
-                style={{
-                  height: '20px',
-                  margin: '0 5px 0 0',
-                }}
-                src={translateIcon}
-                onClick={() => {
-                  handleTranslate(message.id);
-                }}
-              />
             </li>
           ))}
         </ul>
