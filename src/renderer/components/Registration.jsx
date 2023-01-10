@@ -8,49 +8,19 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 function Registration() {
-  const yearSelect = document.getElementById('year');
-  const daySelect = document.getElementById('day');
-
-  function populateDays(month) {
-    while (daySelect.firstChild) {
-      daySelect.removeChild(daySelect.firstChild);
-    }
-
-    let dayNum;
-
-    if (
-      month === 'January' ||
-      month === 'March' ||
-      month === 'May' ||
-      month === 'July' ||
-      month === 'August' ||
-      month === 'October' ||
-      month === 'December'
-    ) {
-      dayNum = 31;
-    } else if (
-      month === 'April' ||
-      month === 'June' ||
-      month === 'September' ||
-      month === 'November'
-    ) {
-      dayNum = 30;
-    } else {
-    }
-
-    for (let i = 1; i <= dayNum; i++) {
-      const option = document.createElement('option');
-      option.textContent = i;
-      daySelect.appendChild(option);
-    }
-  }
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
+  const [year, setYear] = useState('');
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -128,36 +98,38 @@ function Registration() {
             </div>
           </div>
           <br />
-
-          <div className="container">
+        <div className="container">
             <label>Date of Birth</label>
             <br />
-            <span>
-              <select name="month">
+            <span className='month-container'>
+              <select name="month" value={month} onChange={e => setMonth(e.target.value)}>
                 <option value="" selected disabled>
-                  -- Month --
+                  Month
                 </option>
-                <option value="january">January</option>
-                <option value="january">February</option>
-                <option value="january">March</option>
-                <option value="january">April</option>
-                <option value="january">May</option>
-                <option value="january">June</option>
-                <option value="january">July</option>
-                <option value="january">August</option>
-                <option value="january">September</option>
-                <option value="january">October</option>
-                <option value="january">November</option>
-                <option value="january">Decemeber</option>
+                {months.map((month, index) => (
+                  <option key={index} value={index + 1}>{month}</option>
+                ))}
               </select>
             </span>
-
-            <span>
-              <select name="day" id="day"></select>
+            <span className='days-container'>
+              <select name="day" id="day" value={day} onChange={e => setDay(e.target.value)}>
+                <option value="" selected disabled>
+                  Day
+                </option>
+                {Array.from({length: 31}, (_,i) => i+1).map(day => (
+                  <option key={day} value={day}>{day}</option>
+                ))}
+              </select>
             </span>
-
-            <span>
-              <select name="year" id="year"></select>
+            <span className='year-container'>
+              <select name="year" id="year" value={year} onChange={e => setYear(e.target.value)}>
+                <option value="" selected disabled>
+                  Year
+                </option>
+                {Array.from({length: new Date().getFullYear()-1900}, (_,i) => i+1901).map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
             </span>
           </div>
           <br />
