@@ -106,11 +106,16 @@ function Chat() {
                 </div>
 
                 <div className="viewchat-container">
-              <small style={{ color: 'gray' }}>
- { message.timestamp ? (message.timestamp.toDate ? new Date(message.timestamp.toDate()).toLocaleString() : null) : null }
-              </small>
-              <br/>
-                  {message.sender} :{' '}
+                  <small style={{ color: 'gray' }}>
+                    {message.sender}{' '}
+                    {message.timestamp
+                      ? message.timestamp.toDate
+                        ? new Date(message.timestamp.toDate()).toLocaleString()
+                        : null
+                      : null}
+                  </small>
+                  <br />
+
                   {translatedTexts[message.id] || message.text}
                   <img
                     style={{
