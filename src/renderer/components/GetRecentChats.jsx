@@ -29,7 +29,7 @@ function RecentChats() {
   };
 
   const getFormattedTime = (date) => {
-    const hours = date.getHours();
+    let hours = date.getHours();
     const minutes = date.getMinutes();
     let ampm = 'AM';
     if (hours >= 12) {
@@ -40,44 +40,50 @@ function RecentChats() {
   };
 
   return (
-    <div className="recents">
-      <div className="add-channel">
-        <div className="label-add">
-          <p className="p-texts">Group Messages</p>
-        </div>
-        <div className="btn-add-container">
-          <button className="btn-create-group">
-            {' '}
-            <span> Create group </span>
-            <i className="ri-add-line"></i>{' '}
-          </button>
-        </div>
-      </div>
-      <hr />
-      <p className="p-texts">Recent Chats</p>
-      <ul>
-        {conversations.map((conversation) => (
-          <div className="sidebaritems-container">
-            <li
-              key={conversation.id}
-              onClick={() => {
-                handleClick(conversation.id);
-              }}
-            >
-              <div className="recents-container">
-                <div className="circle-msg">
-                  <img height="33" width="33" src={faker.image.avatar()} />
-                </div>
-                <div className="recentconvo-info">
-                  {conversation.name} <br /> {conversation.name}
-                </div>
-              </div>
-              {getFormattedTime(conversation.latest_time_message.toDate())}
-            </li>
+    <>
+      <form className="nosubmit">
+        <input className="nosubmit" type="search" placeholder="Find group..." />
+      </form>
+      <div className="recents">
+        <div className="add-channel">
+          <div className="label-add">
+            <p className="p-texts">Group Messages</p>
           </div>
-        ))}
-      </ul>
-    </div>
+          <div className="btn-add-container">
+            <button className="btn-create-group">
+              {' '}
+              <span> Create group </span>
+              <i className="ri-add-line"></i>{' '}
+            </button>
+          </div>
+        </div>
+        <hr />
+        <p className="p-texts">Recent Chats</p>
+        <ul>
+          {conversations.map((conversation) => (
+            <div className="sidebaritems-container">
+              <li
+                key={conversation.id}
+                onClick={() => {
+                  handleClick(conversation.id);
+                }}
+              >
+                <div className="recents-container">
+                  <div className="circle-msg">
+                    <img height="33" width="33" src={faker.image.avatar()} />
+                  </div>
+                  <div className="recentconvo-info">
+                    {conversation.name} <br /> {conversation.name}
+                  </div>
+                </div>
+                {conversation.latest_time_message &&
+                  getFormattedTime(conversation.latest_time_message.toDate())}
+              </li>
+            </div>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

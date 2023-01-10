@@ -133,14 +133,12 @@ const SendChatMessage = () => {
 
       <div className="fieldicon">
         {isRecording ? (
-          <button className="footer-btn" onClick={stopRecording}>
+          <button className="fieldicon-btn" onClick={stopRecording}>
             <i className="ri-mic-2-fill"></i>
-            stop
           </button>
         ) : (
-          <button className="footer-btn" onClick={startRecording}>
+          <button className="fieldicon-btn" onClick={startRecording}>
             <i className="ri-mic-2-fill"></i>
-            start
           </button>
         )}
       </div>

@@ -20,20 +20,11 @@
 
 body 
 {
-  position: relative;
   color: #34485E;
   height: 100vh;
-  /* background: linear-gradient(
-    200.96deg,
-    #a1d6ff -29.09%,
-    #4a97df 51.77%,
-    #2c509e 129.35%
-  ); */
-  font-family: sans-serif;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0%;
 }
 
 button 
@@ -94,6 +85,7 @@ h1
 .p-texts
 {
   font-size: calc(0.3em + 0.2em + 1vmin);
+  cursor:default;
 }
 
 
@@ -321,6 +313,7 @@ hr{
 
 .btn-group {
   text-align: center;
+  
 }
 
 .btn-container{
@@ -330,6 +323,7 @@ hr{
   text-align: center;
   align-items: center;
   margin-bottom: 10px;
+
 
  }
 
@@ -453,7 +447,6 @@ transition: opacity 2.15s ease, ;
   padding-bottom: 40px;
   justify-content: space-between;
   
-
 }
 
 
@@ -462,6 +455,8 @@ transition: opacity 2.15s ease, ;
 									Sidebar
 	************************************************
 ************************************************/
+
+
 
 form.nosubmit {
   border: none;
@@ -509,9 +504,9 @@ input.nosubmit {
 }
 
 
-.sidebaritems-container li:focusc
+.sidebaritems-container li:focus
 {
-  background-color: #D1D6D9;
+  background-color: red;
 }
 
 .sidebaritems-container li:hover
@@ -519,6 +514,64 @@ input.nosubmit {
   background-color: #D1D6D9;
   cursor: pointer;
 }
+
+
+
+
+.nav-btn span
+{
+margin: 0;
+padding: 10px 0px 10px 0px;
+border-radius:6px;
+background-color: white;
+position:absolute;
+left:120%;
+top:5%;
+width: 150px;
+font-size: 15px;
+--scale:0;
+opacity: 0;
+transform: translateY(-10%) scale(var(--scale));
+transition: opacity 0.15s ease, transform 0.15s ease;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.nav-btn:hover span{
+  --scale:1;
+  opacity: 1;
+}
+
+.nav-btn span::before{
+  content:"";
+  position: absolute;
+  width: 15px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: inherit;
+  left:0;
+  top:50%;
+  transform: translate(-40%,-50%) rotate(45deg);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -657,6 +710,7 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	transition: linear 0.25s;
   height: calc(2.35vw + 2.45vh + 1vmin);
   width: calc(2.35vw + 2.45vh + 1vmin);
+  cursor: pointer;
 }
 
 .circle img 
@@ -759,7 +813,7 @@ z-index: 1;
 
 .chatcontainer{
   float:right;
-  width: 65%;
+  width: 66%;
   height: 100%;
   flex-direction: row;
   align-items: center;
@@ -769,8 +823,7 @@ z-index: 1;
 
 .message-container
 {
-  height: 70%;
-
+  height: 77%;
   overflow-wrap: break-word;
   overflow-y: scroll;
   margin:0;
@@ -779,30 +832,30 @@ z-index: 1;
 
 .header {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-  height: 10%;
+  height: 8%;
   width: 100%;
 
 }
 
 .title {
-  margin-left:10px;
+
   font-size: 14px;
   font-weight: bold;
 }
 
 .footer
 {
-  height: 20%;
+  height: 8%;
   width: 100%;
-  justify-content: space-between;
   position: relative;
-  flex-direction: row;
+ 
 }
 
 .form-footer-container
 {
-  position: relative;
+  width: 100%;
   display: flex;
+
 }
 
 .footer i
@@ -813,49 +866,56 @@ z-index: 1;
 
 }
 
+/* send button */
 .footer-icon-btn
 {
   background-color: #34AEFF;
-
 }
 
 .footer-icon-btn i
 {
   align-items: center;
   text-align: center;
-  font-size: 40px;
+  font-size: calc(1vw + 1vh + 1vmin);
   position: inherit;
   Color: #ffffff;
-  padding: 0;
-  margin: 0;
+
 }
 
+.btn-footer-container
+{
+height:fit-content;
+
+}
+
+
+/* mic icon */
 .fieldicon i
 {
-  color:#999;;
+  color:#999;
+  font-size: calc(1vw + 1vh + 1vmin);
 }
 
 .fieldicon
 {
   width:18%;
-  justify-content: center;
-  position:absolute;
-  bottom: 100px;
+  position:relative;
+  bottom: 60px;
+  left:70%;
+ 
 }
 
-.footer-btn
+.fieldicon-btn
 {
   background-color: transparent;
+  
 }
 
-.btn-footer-container
+.textarea-container
 {
-  width:12%;
-  height: max-content;
-  margin: 0;
-  padding: 0;
+  width: 90%;
+  padding-right: 2%;
 }
-
 
 .textarea-container input
 {
@@ -863,8 +923,8 @@ z-index: 1;
   overflow:hidden;
   resize:none;
   margin-top:2%;
-  margin-left: 2%;
-  width: 60%;
+  margin-left: 0%;
+  width: 100%;
   background-color: rgb(233, 233, 233);
   border-color: transparent ;
   border-radius: 5px;
@@ -889,7 +949,7 @@ z-index: 1;
 .idle-content
 {
 margin-top: 10% ;
-height: 100%;
+
 align-items: center;
 text-align: center;
 
