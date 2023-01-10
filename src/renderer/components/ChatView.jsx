@@ -106,6 +106,11 @@ function Chat() {
                 </div>
 
                 <div className="viewchat-container">
+              <small style={{ color: 'gray' }}>
+                {' '}
+                {new Date(message.timestamp.toDate()).toLocaleString()}
+              </small>
+              <br/>
                   {message.sender} :{' '}
                   {translatedTexts[message.id] || message.text}
                   <img
@@ -120,10 +125,6 @@ function Chat() {
                   />
                 </div>
               </div>
-              <small style={{ color: 'gray' }}>
-                {' '}
-                {new Date(message.timestamp.toDate()).toLocaleString()}
-              </small>
             </li>
           ))}
         </ul>
