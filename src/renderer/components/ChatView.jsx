@@ -63,6 +63,31 @@ function Chat() {
     const data = await resp.json();
     return data.message;
   };
+  function formatTimestamp(timestamp) {
+    const messageDate = new Date(timestamp.toDate());
+    const today = new Date();
+    const yesterday = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() - 1
+    );
+  
+    if (
+      messageDate.getFullYear() === today.getFullYear() &&
+      messageDate.getMonth() === today.getMonth() &&
+      messageDate.getDate() === today.getDate()
+    ) {
+      return `Today at ${messageDate.toLocaleTimeString()}`;
+    } else if (
+      messageDate.getFullYear() === yesterday.getFullYear() &&
+      messageDate.getMonth() === yesterday.getMonth() &&
+      messageDate.getDate() === yesterday.getDate()
+    ) {
+      return `Yesterday at ${messageDate.toLocaleTimeString()}`;
+    } else {
+      return messageDate.toLocaleDateString();
+    }
+  }
 
   const handleTranslate = async (messageId) => {
     // Find the message that needs to be translated
@@ -106,6 +131,7 @@ function Chat() {
                 </div>
 
                 <div className="viewchat-container">
+<<<<<<< HEAD
                   <small style={{ color: 'gray' }}>
                     {message.sender}{' '}
                     {message.timestamp
@@ -116,6 +142,13 @@ function Chat() {
                   </small>
                   <br />
 
+=======
+              <small style={{ color: 'gray' }}>
+              { message.timestamp ? formatTimestamp(message.timestamp) : null }
+              </small>
+              <br/>
+                  {message.sender} :{' '}
+>>>>>>> c3001087f9305e121300ac7905dfdb66803a94c6
                   {translatedTexts[message.id] || message.text}
                   <img
                     style={{

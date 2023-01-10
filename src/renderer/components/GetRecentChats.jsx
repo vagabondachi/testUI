@@ -66,8 +66,7 @@ function RecentChats() {
                 key={conversation.id}
                 onClick={() => {
                   handleClick(conversation.id);
-                }}
-              >
+                }}>
                 <div className="recents-container">
                   <div className="circle-msg">
                     <img height="33" width="33" src={faker.image.avatar()} />
