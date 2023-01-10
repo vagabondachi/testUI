@@ -107,8 +107,7 @@ function Chat() {
 
                 <div className="viewchat-container">
               <small style={{ color: 'gray' }}>
-                {' '}
-                {new Date(message.timestamp.toDate()).toLocaleString()}
+ { message.timestamp ? (message.timestamp.toDate ? new Date(message.timestamp.toDate()).toLocaleString() : null) : null }
               </small>
               <br/>
                   {message.sender} :{' '}
