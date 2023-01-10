@@ -120,6 +120,10 @@ function Chat() {
                   />
                 </div>
               </div>
+              <small style={{ color: 'gray' }}>
+                {' '}
+                {new Date(message.timestamp.toDate()).toLocaleString()}
+              </small>
             </li>
           ))}
         </ul>
