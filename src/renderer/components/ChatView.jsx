@@ -114,6 +114,7 @@ function Chat() {
                   handleTranslate(message.id);
                 }}
               />
+              <small style={{color: 'gray'}}> {new Date(message.timestamp.toDate()).toLocaleString()}</small>
             </li>
           ))}
         </ul>
