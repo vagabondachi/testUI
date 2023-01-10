@@ -37,33 +37,29 @@ const SendChatMessage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (message.length > 0) {
-      db.collection('conversations')
-        .doc(groupId)
-        .collection('messages')
-        .add({
-          sender: firebase.auth().currentUser.displayName,
-          text: censor(message),
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
-        .then(function () {
-          console.log('Message sent successfully');
-          setMessage('');
-        })
-        .catch(function (error) {
-          console.error('Error sending message: ', error);
-        });
-      db.collection('conversations')
-        .doc(groupId)
-        .update({
-          members: firebase.firestore.FieldValue.arrayUnion(
-            firebase.auth().currentUser.uid
-          ),
-          latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-    } else {
-      // Show an error or disable the send button
-    }
+    db.collection('conversations')
+      .doc(groupId)
+      .collection('messages')
+      .add({
+        sender: firebase.auth().currentUser.displayName,
+        text: censor(message),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(function () {
+        console.log('Message sent successfully');
+        setMessage('');
+      })
+      .catch(function (error) {
+        console.error('Error sending message: ', error);
+      });
+    db.collection('conversations')
+      .doc(groupId)
+      .update({
+        members: firebase.firestore.FieldValue.arrayUnion(
+          firebase.auth().currentUser.uid
+        ),
+        latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+      });
   };
 
   const startRecording = () => {

@@ -6,15 +6,49 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Registration() {
+  const yearSelect = document.getElementById('year');
+  const daySelect = document.getElementById('day');
+
+  function populateDays(month) {
+    while (daySelect.firstChild) {
+      daySelect.removeChild(daySelect.firstChild);
+    }
+
+    let dayNum;
+
+    if (
+      month === 'January' ||
+      month === 'March' ||
+      month === 'May' ||
+      month === 'July' ||
+      month === 'August' ||
+      month === 'October' ||
+      month === 'December'
+    ) {
+      dayNum = 31;
+    } else if (
+      month === 'April' ||
+      month === 'June' ||
+      month === 'September' ||
+      month === 'November'
+    ) {
+      dayNum = 30;
+    } else {
+    }
+
+    for (let i = 1; i <= dayNum; i++) {
+      const option = document.createElement('option');
+      option.textContent = i;
+      daySelect.appendChild(option);
+    }
+  }
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
-
   const navigate = useNavigate();
-
   const user = useSelector((state) => state.user);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -92,6 +126,40 @@ function Registration() {
             </div>
           </div>
           <br />
+
+          <div className="container">
+            <label>Date of Birth</label>
+            <br />
+            <span>
+              <select name="month">
+                <option value="" selected disabled>
+                  -- Month --
+                </option>
+                <option value="january">January</option>
+                <option value="january">February</option>
+                <option value="january">March</option>
+                <option value="january">April</option>
+                <option value="january">May</option>
+                <option value="january">June</option>
+                <option value="january">July</option>
+                <option value="january">August</option>
+                <option value="january">September</option>
+                <option value="january">October</option>
+                <option value="january">November</option>
+                <option value="january">Decemeber</option>
+              </select>
+            </span>
+
+            <span>
+              <select name="day" id="day"></select>
+            </span>
+
+            <span>
+              <select name="year" id="year"></select>
+            </span>
+          </div>
+          <br />
+
           <br />
 
           <button type="submit">Continue</button>
