@@ -106,6 +106,7 @@ function Chat() {
                 </div>
 
                 <div className="viewchat-container">
+<<<<<<< HEAD
                   <small style={{ color: 'gray' }}>
                     {message.sender} :{' '}
                     {message.timestamp
@@ -116,6 +117,13 @@ function Chat() {
                   </small>
                   <br />
 
+=======
+              <small style={{ color: 'gray' }}>
+              { message.timestamp ? formatTimestamp(message.timestamp) : null }
+              </small>
+              <br/>
+                  {message.sender} :{' '}
+>>>>>>> f10306eb3db3c4cf5f7dcfe93d18630a203392df
                   {translatedTexts[message.id] || message.text}
                   <img
                     style={{
