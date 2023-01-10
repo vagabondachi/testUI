@@ -27,7 +27,7 @@ function RecentChats() {
   const handleClick = (conversationId) => {
     store.dispatch({ type: 'SET_GROUP_ID', groupId: conversationId });
   };
-  
+
   const getFormattedTime = (date) => {
     let hours = date.getHours();
     const minutes = date.getMinutes();
@@ -66,7 +66,8 @@ function RecentChats() {
                 key={conversation.id}
                 onClick={() => {
                   handleClick(conversation.id);
-                }}>
+                }}
+              >
                 <div className="recents-container">
                   <div className="circle-msg">
                     <img height="33" width="33" src={faker.image.avatar()} />

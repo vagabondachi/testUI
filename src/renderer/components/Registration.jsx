@@ -4,6 +4,8 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 function Registration() {
   const yearSelect = document.getElementById('year');
