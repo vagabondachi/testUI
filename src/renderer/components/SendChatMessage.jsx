@@ -36,33 +36,37 @@ const SendChatMessage = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    db.collection('conversations')
-      .doc(groupId)
-      .collection('messages')
-      .add({
-        sender: firebase.auth().currentUser.displayName,
-        text: censor(message),
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(function () {
-        console.log('Message sent successfully');
-        setMessage('');
-      })
-      .catch(function (error) {
-        console.error('Error sending message: ', error);
-      });
-    db.collection('conversations')
-      .doc(groupId)
-      .update({
-        members: firebase.firestore.FieldValue.arrayUnion(
-          firebase.auth().currentUser.uid
-        ),
-        latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+    if (message.length > 0) {
+      db.collection('conversations')
+        .doc(groupId)
+        .collection('messages')
+        .add({
+          sender: firebase.auth().currentUser.displayName,
+          text: censor(message),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(function () {
+          console.log('Message sent successfully');
+          setMessage('');
+        })
+        .catch(function (error) {
+          console.error('Error sending message: ', error);
+        });
+      db.collection('conversations')
+        .doc(groupId)
+        .update({
+          members: firebase.firestore.FieldValue.arrayUnion(
+            firebase.auth().currentUser.uid
+          ),
+          latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    } else {
+      console.log('Message is empty');
+    }
   };
 
   const startRecording = () => {
+    setRecordingStatus(true);
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       const newRecorder = RecordRTC(stream, {
         type: 'audio',
@@ -72,10 +76,10 @@ const SendChatMessage = () => {
       newRecorder.startRecording();
       setRecorder(newRecorder);
     });
-    setRecordingStatus(true);
   };
 
   const stopRecording = () => {
+    setRecordingStatus(false);
     recorder.stopRecording(() => {
       const audioBlob = recorder.getBlob();
 
@@ -107,35 +111,34 @@ const SendChatMessage = () => {
           console.error(error);
         });
     });
-    setRecordingStatus(false);
   };
 
   return (
     <div className="footer">
-      <form onSubmit={handleSubmit}>
-        <div className="form-footer-container">
-          <div className="textarea-container">
+      <div className="form-footer-container">
+        <div className="textarea-container">
+          <form onSubmit={handleSubmit}>
             <input
               name="text"
               placeholder="Write Message..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-          </div>
-          <div>
-            {' '}
-            {isRecording ? (
-              <button className="fieldicon-btn" onClick={stopRecording}>
-                <i className="ri-mic-fill"></i>
-              </button>
-            ) : (
-              <button className="fieldicon-btn" onClick={startRecording}>
-                <i className="ri-mic-off-fill"></i>
-              </button>
-            )}
-          </div>
+          </form>
         </div>
-      </form>
+        <div>
+          {' '}
+          {isRecording ? (
+            <button className="fieldicon-btn" onClick={stopRecording}>
+              <i className="ri-mic-fill"></i>
+            </button>
+          ) : (
+            <button className="fieldicon-btn" onClick={startRecording}>
+              <i className="ri-mic-off-fill"></i>
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
