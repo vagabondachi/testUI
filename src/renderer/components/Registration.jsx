@@ -36,29 +36,60 @@ function Registration() {
       setError("Password must contain at least one special character, one uppercase letter and one number.");
       return;
     }
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        user.user
-          .updateProfile({
-            displayName: username,
+    // check if user is 18 years or older
+    let age = calculateAge(month, day, year);
+    if (age < 18) {
+      setError("You must be 18 years or older to register.");
+      return;
+    }
+    firebase.firestore().collection('users')
+      .where("username", "==", username)
+      .get()
+      .then(snapshot => {
+        if(snapshot.size !== 0){
+          setError("This username is already taken. Please choose another.")
+          return;
+        }
+        // continue with registration
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then((user) => {
+            user.user
+              .updateProfile({
+                displayName: username,
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+            firebase.firestore().collection('users').doc(user.user.uid).set({
+              userId: user.user.uid,
+              userLanguage: 'en',
+              translateToLanguage: 'en',
+              username: username,
+            });
           })
           .catch((error) => {
+            setError(error.message);
             console.log(error);
           });
-        firebase.firestore().collection('users').doc(user.user.uid).set({
-          userId: user.user.uid,
-          userLanguage: 'en',
-          translateToLanguage: 'en',
-        });
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error.message);
         console.log(error);
       });
   };
-
+  
+  const calculateAge = (month, day, year) => {
+    let today = new Date();
+    let birthdate = new Date(year, month-1, day);
+    let age = today.getFullYear() - birthdate.getFullYear();
+    let m = today.getMonth() - birthdate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+        age--;
+    }
+    return age;
+  }
   useEffect(() => {
     if (user) {
       // if user is logged in, redirect to home page

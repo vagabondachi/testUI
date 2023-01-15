@@ -5,6 +5,7 @@ import 'firebase/auth';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import MainView from './components/MainView';
+import VerifyEmail from './components/VerifyEmail';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 
 import store from './store/store';
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/" element={<MainView />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
         </Routes>
       </Router>
     </div>
