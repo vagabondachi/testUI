@@ -52,16 +52,13 @@ function Chat() {
   }, [groupId]);
 
   const translate = async (text) => {
-    const resp = await fetch(
-      'https://jellyfish-app-4424e.ondigitalocean.app/translate',
-      {
-        method: 'POST',
-        body: JSON.stringify({ text }),
-        headers: {
-          'X-translate-to-code': translate_to_code,
-        },
-      }
-    );
+    const resp = await fetch('https://speech-chi.vercel.app/translate', {
+      method: 'POST',
+      body: JSON.stringify({ text }),
+      headers: {
+        'X-translate-to-code': translate_to_code,
+      },
+    });
     const data = await resp.json();
     return data.message;
   };

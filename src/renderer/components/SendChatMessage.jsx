@@ -84,7 +84,7 @@ const SendChatMessage = () => {
       form.append('mp3_file', audioBlob);
 
       // Send the form to the API endpoint using fetch with a custom header.
-      fetch('https://jellyfish-app-4424e.ondigitalocean.app/upload_mp3', {
+      fetch('https://speech-chi.vercel.app/upload_mp3', {
         method: 'POST',
         body: form,
         headers: {
