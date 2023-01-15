@@ -21,9 +21,21 @@ function Registration() {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
+
+  function validatePassword(password) {
+    let hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/g.test(password);
+    let hasUpperCase = /[A-Z]/.test(password);
+    let hasNumber = /\d/.test(password);
+
+    return hasSpecialChar && hasUpperCase && hasNumber;
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    if (!validatePassword(password)) {
+      setError("Password must contain at least one special character, one uppercase letter and one number.");
+      return;
+    }
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
