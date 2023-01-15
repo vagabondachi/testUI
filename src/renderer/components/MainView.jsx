@@ -6,19 +6,25 @@ import { useSelector } from 'react-redux';
 import Login from './Login';
 import Idle from '../../../assets/icons/startconvopage-art.png';
 import LoadSettings from './LoadSettings';
+import { useNavigate } from 'react-router-dom';
 
 const MainView = () => {
   const user = useSelector((state) => state.user);
-  const groupId = useSelector((state) => state.groupId); // get current value of groupId from the store
+  const groupId = useSelector((state) => state.groupId);
+
+  const navigate = useNavigate();
   useEffect(() => {
     if (user) {
       window.electron.ipcRenderer.sendMessage('on-login');
     }
+    // if (!user.emailVerified) {
+    //   navigate('/verify-email');
+    // }
   }, [user]);
 
   return (
     <>
-      {user ? (
+      {user && user.emailVerified ? (
         <>
           <LoadSettings />
           <SideNav />
@@ -42,6 +48,8 @@ const MainView = () => {
             </div>
           )}
         </>
+      ) : user && !user.emailVerified ? (
+        navigate('/verify-email')
       ) : (
         <Login />
       )}
