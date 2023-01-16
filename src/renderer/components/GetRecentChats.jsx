@@ -53,7 +53,15 @@ function RecentChats() {
             <button className="btn-create-group">
               {' '}
               <span> Create group </span>
-              <i className="ri-add-line"></i>{' '}
+              <i
+                className="ri-add-line"
+                onClick={() =>
+                  store.dispatch({
+                    type: 'SET_SIDEBAR_VIEW',
+                    sidebar: 'groups',
+                  })
+                }
+              ></i>{' '}
             </button>
           </div>
         </div>

@@ -8,21 +8,24 @@ function CreateGroupForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    db.collection('conversations')
-      .add({
-        name: groupName,
-        created_at: firebase.firestore.FieldValue.serverTimestamp(),
-        type: 'group',
-        latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
-        members: [],
-      })
-      .then(function () {
-        console.log('Group created successfully');
-      })
-      .catch(function (error) {
-        console.error('Error adding group: ', error);
-      });
+    if (groupName.length > 0) {
+      db.collection('conversations')
+        .add({
+          name: groupName,
+          created_at: firebase.firestore.FieldValue.serverTimestamp(),
+          type: 'group',
+          latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+          members: [],
+        })
+        .then(function () {
+          console.log('Group created successfully');
+        })
+        .catch(function (error) {
+          console.error('Error adding group: ', error);
+        });
+    } else {
+      console.log('Please enter a group name');
+    }
   };
 
   return (

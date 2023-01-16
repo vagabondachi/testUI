@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import store from '../store/store';
 import Logout from './Logout';
 import { faker } from '@faker-js/faker';
 
 function SideNav() {
+  const [settings, showSettings] = useState(false);
   return (
     <div className="sidenavcontainer">
       <div className="btn-group">
@@ -42,13 +43,18 @@ function SideNav() {
 
       <div className="btn-container-avatar">
         <hr />
-        <div className="circle">
+        <div
+          className="circle"
+          onClick={() => {
+            showSettings(!settings);
+          }}
+        >
           <img src={faker.image.avatar()} />
         </div>
 
         <div className="wrapper">
           <div className="content">
-            <ul className="menu">
+            <ul className={settings ? 'menu shown' : 'menu hidden'}>
               <li
                 className="item"
                 onClick={() => {
@@ -65,7 +71,7 @@ function SideNav() {
                 <i className="ri-logout-box-r-fill"></i>
                 <Logout />
               </li>
-              <li></li>
+              {/* <li></li> */}
             </ul>
           </div>
         </div>

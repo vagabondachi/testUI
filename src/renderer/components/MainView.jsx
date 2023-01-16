@@ -7,19 +7,18 @@ import Login from './Login';
 import Idle from '../../../assets/icons/startconvopage-art.png';
 import LoadSettings from './LoadSettings';
 import { useNavigate } from 'react-router-dom';
+import VerifyEmail from './VerifyEmail';
 
 const MainView = () => {
   const user = useSelector((state) => state.user);
   const groupId = useSelector((state) => state.groupId);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     if (user) {
       window.electron.ipcRenderer.sendMessage('on-login');
     }
-    // if (!user.emailVerified) {
-    //   navigate('/verify-email');
-    // }
   }, [user]);
 
   return (
@@ -49,7 +48,7 @@ const MainView = () => {
           )}
         </>
       ) : user && !user.emailVerified ? (
-        navigate('/verify-email')
+        <VerifyEmail />
       ) : (
         <Login />
       )}
