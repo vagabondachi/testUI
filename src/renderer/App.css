@@ -654,6 +654,10 @@
    pointer-events: auto;
  }
  
+ .pointer {
+   cursor: pointer;
+ }
+ 
  .show {
    display: block;
  }
@@ -845,4 +849,3 @@
    display: absolute;
    margin-top: -3%;
  }
- 

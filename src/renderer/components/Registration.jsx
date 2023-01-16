@@ -68,6 +68,13 @@ function Registration() {
               translateToLanguage: 'en',
               username: username,
             });
+            user.user.sendEmailVerification().then(function() {
+              // Email sent.
+              setSuccess(true);
+            }).catch(function(error) {
+              // An error happened.
+              setError(error.message);
+            });
           })
           .catch((error) => {
             setError(error.message);
@@ -78,8 +85,7 @@ function Registration() {
         setError(error.message);
         console.log(error);
       });
-  };
-  
+    };
   const calculateAge = (month, day, year) => {
     let today = new Date();
     let birthdate = new Date(year, month-1, day);
