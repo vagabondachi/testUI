@@ -654,6 +654,10 @@ span {
   pointer-events: auto;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .show {
   display: block;
 }

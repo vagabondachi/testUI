@@ -5,6 +5,8 @@ const initialState = {
   groupId: null,
   user: null,
   sidebar: 'chats',
+  userLang: 'en',
+  languageTranslateTo: 'en',
 };
 
 // Reducer
@@ -35,6 +37,8 @@ function Reducer(state = initialState, action) {
         ...state,
         languageTranslateTo: action.languageTranslateTo,
       };
+    case 'RESET_STATE':
+      return initialState;
     default:
       return state;
   }

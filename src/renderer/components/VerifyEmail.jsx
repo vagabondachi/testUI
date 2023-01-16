@@ -12,12 +12,32 @@ const VerifyEmail = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    async function sendVerification() {
+      try {
+        await user.sendEmailVerification();
+        setShowReload(true);
+        setStatus(
+          "We've sent you a link to confirm your email address.\nPlease check your inbox or spam folder."
+        );
+      } catch (error) {
+        console.error(error);
+        setStatus(
+          'Error sending verification email. Click on resend verification email to try again.'
+        );
+      }
+    }
+    sendVerification();
+  }, []);
+
   const handleVerifyEmail = async () => {
     setStatus('Sending verification email...');
     try {
       await user.sendEmailVerification();
       setShowReload(true);
-      setStatus('Verification email sent. Please check your inbox.');
+      setStatus(
+        'We sent you another verification email. Please check your inbox.'
+      );
     } catch (error) {
       console.error(error);
       setStatus('Error sending verification email. Please try again.');
@@ -39,8 +59,15 @@ const VerifyEmail = () => {
 
   return (
     <div>
-      <button onClick={handleVerifyEmail}>Verify Email</button>
+      <h1>You've Successfuly signed up!</h1>
       <p>{status}</p>
+      <p>
+        Did not receive?
+        <a onClick={handleVerifyEmail} className="pointer">
+          Resend email.
+        </a>
+      </p>
+
       {showReload && (
         <button onClick={emailVerificationListener}>Check Verification</button>
       )}
