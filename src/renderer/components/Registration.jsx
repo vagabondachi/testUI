@@ -169,7 +169,7 @@ function Registration() {
                 <option value="" selected disabled>
                   Year
                 </option>
-                {Array.from({length: new Date().getFullYear()-1900}, (_,i) => i+1901).map(year => (
+                {Array.from({length: new Date().getFullYear()-1900}, (_,i) => i+1960).map(year => (
                   <option key={year} value={year}>{year}</option>
                 ))}
               </select>
