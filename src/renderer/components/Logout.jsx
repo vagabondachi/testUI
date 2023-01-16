@@ -8,7 +8,7 @@ function Logout() {
   function handleLogout() {
     firebase.auth().signOut();
     window.electron.ipcRenderer.sendMessage('on-logout');
-    navigate('/login');
+
   }
 
   return (

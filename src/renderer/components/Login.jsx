@@ -28,14 +28,15 @@ const Login = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+ 	
       .catch((error) => {
-        setError(error.message);
+        setError("Email or Password is incorrect");
       });
   };
 
   useEffect(() => {
     if (user) {
-      // if user is logged in, redirect to home page
+      	window.electron.ipcRenderer.sendMessage('on-login');
       navigate('/');
     }
     const eyeIcon = document.getElementById('eye-icon');
@@ -62,8 +63,7 @@ const Login = () => {
 
           {error && (
             <div className="errorbox">
-              {' '}
-              <p className="errormsg">{error}</p>{' '}
+              <p id="errormsg"><span><i class="ri-information-line"  id="error-icon"/></span> {error}</p>
             </div>
           )}
 
