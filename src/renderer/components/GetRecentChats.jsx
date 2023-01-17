@@ -18,6 +18,8 @@ function RecentChats() {
         const newConversations = snapshot.docs
           .map((doc) => ({
             id: doc.id,
+            latest_sender: doc.data().latest_sender,
+            latest_message: doc.data().latest_message,
             ...doc.data(),
           }))
           .sort((a, b) => b.latest_time_message - a.latest_time_message);
@@ -32,9 +34,9 @@ function RecentChats() {
   const getFormattedTime = (date) => {
     let hours = date.getHours();
     const minutes = date.getMinutes();
-    let ampm = 'AM';
+    let ampm = 'am';
     if (hours >= 12) {
-      ampm = 'PM';
+      ampm = 'pm';
       hours -= 12;
     }
     return `${hours}:${minutes} ${ampm}`;
@@ -43,36 +45,32 @@ function RecentChats() {
   const [newChat, showCreateNewChat] = useState(false);
 
   return (
-  <>
-    <form className="nosubmit">
-      <input className="nosubmit" type="search" placeholder="Find group..." />
-    </form>
-    <div id="quick-actions">
-      <ul>
-        <li><i class="ri-at-line"/> Mentions</li>
-        <li><i class="ri-star-smile-fill"/> Starred</li>
-      </ul>
-    </div>
-
-    <div className="add-channel">
+    <>
+      <form className="nosubmit">
+        <input className="nosubmit" type="search" placeholder="Find group..." />
+      </form>
+      <div id="quick-actions">
+        <ul>
+          <li><i class="ri-at-line"/> Mentions</li>
+          <li><i class="ri-star-smile-fill"/> Starred</li>
+        </ul>
+      </div>
+      <div className="add-channel">
         <p>Team Messages</p>
         <div className="btn-add-container">
-            <button className="btn-create-group">
-              <span> Create group </span>
-              <i className="ri-add-line" onClick={() => { showCreateNewChat(!newChat); }}/>
-            </button>
+          <button className="btn-create-group">
+            <span> Create group </span>
+            <i className="ri-add-line" onClick={() => { showCreateNewChat(!newChat); }}/>
+          </button>
+        </div>
+      </div>
+      <div className="wrapper">
+        <div className="content">
+          <div className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}>
+            <CreateGroupForm/>
           </div>
         </div>
-<div className="wrapper">
-          <div className="content">
-            <div className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}>
-             <CreateGroupForm/>
-            </div>
-          </div>
-        </div>
-
-
-
+      </div>
       <div className="recents">
         <p>Recent Chats</p>
         <ul>
@@ -88,12 +86,20 @@ function RecentChats() {
                   <div className="circle-msg">
                     <img height="33" width="33" src={faker.image.avatar()} />
                   </div>
-                  <div className="recentconvo-info">
-                    {conversation.name} <br /> {conversation.name}
+                  <div className="recentconvo-info"> <b>{conversation.name}</b>
+                    <p className="recentSender_Message_Date">
+                      {conversation.latest_sender && conversation.latest_message && 
+                      conversation.latest_time_message
+                      ? (conversation.latest_sender +
+                        ': ' +
+                        conversation.latest_message.substring(0, 18) +
+                        '... • ' +
+                        getFormattedTime(conversation.latest_time_message.toDate())
+                      )
+                      : ''}
+                    </p>
                   </div>
                 </div>
-                {conversation.latest_time_message &&
-                  getFormattedTime(conversation.latest_time_message.toDate())}
               </li>
             </div>
           ))}
