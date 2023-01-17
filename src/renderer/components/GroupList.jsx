@@ -30,8 +30,7 @@ function GroupList() {
 
   return (
     <ul>
-      <b>Create Group: </b>
-      <CreateGroup />
+      <b> Recently Joined: </b>
       {groups.map((group) => (
         <li key={group.id} onClick={() => handleClick(group.id)}>
           {group.name}

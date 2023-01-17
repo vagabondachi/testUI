@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import store from '../store/store';
 import { useSelector } from 'react-redux';
 import { faker } from '@faker-js/faker';
+import CreateGroupForm from './CreateGroup';
 
 function RecentChats() {
   const [conversations, setConversations] = useState([]);
@@ -39,34 +40,41 @@ function RecentChats() {
     return `${hours}:${minutes} ${ampm}`;
   };
 
+  const [newChat, showCreateNewChat] = useState(false);
+
   return (
-    <>
-      <form className="nosubmit">
-        <input className="nosubmit" type="search" placeholder="Find group..." />
-      </form>
-      <div className="recents">
-        <div className="add-channel">
-          <div className="label-add">
-            <p className="p-texts">Group Messages</p>
-          </div>
-          <div className="btn-add-container">
+  <>
+    <form className="nosubmit">
+      <input className="nosubmit" type="search" placeholder="Find group..." />
+    </form>
+    <div id="quick-actions">
+      <ul>
+        <li><i class="ri-at-line"/> Mentions</li>
+        <li><i class="ri-star-smile-fill"/> Starred</li>
+      </ul>
+    </div>
+
+    <div className="add-channel">
+        <p>Team Messages</p>
+        <div className="btn-add-container">
             <button className="btn-create-group">
-              {' '}
               <span> Create group </span>
-              <i
-                className="ri-add-line"
-                onClick={() =>
-                  store.dispatch({
-                    type: 'SET_SIDEBAR_VIEW',
-                    sidebar: 'groups',
-                  })
-                }
-              ></i>{' '}
+              <i className="ri-add-line" onClick={() => { showCreateNewChat(!newChat); }}/>
             </button>
           </div>
         </div>
-        <hr />
-        <p className="p-texts">Recent Chats</p>
+<div className="wrapper">
+          <div className="content">
+            <div className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}>
+             <CreateGroupForm/>
+            </div>
+          </div>
+        </div>
+
+
+
+      <div className="recents">
+        <p>Recent Chats</p>
         <ul>
           {conversations.map((conversation) => (
             <div className="sidebaritems-container">

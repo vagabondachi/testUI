@@ -263,30 +263,6 @@ hr {
 	padding: 0%;
 }
 
-.sidenavcontainer {
-	float: left;
-	width: calc(3vw + 3vh + 3vmin);
-	height: 100%;
-	display: flex;
-	position: relative;
-	justify-content: space-between;
-	flex-direction: column;
-	background-color: #e4e5e7;
-	z-index: 1;
-}
-
-/* .sidenavcontainer{
-   float:left;
-   width:100px;
-   height: 100%;
-   display: flex;
-   position: fixed;
-   justify-content: space-between;
-   flex-direction: column;
-   background-color: #E4E5E7;
-   z-index: 1;
- } */
-
 .btn-group {
 	text-align: center;
 }
@@ -434,15 +410,7 @@ input.nosubmit {
 	position: relative;
 }
 
-.sidebarcontainer {
-	float: left;
-	width: 25%;
-	height: 100%;
-	position: relative;
-	flex-direction: row;
-	align-items: center;
-	background-color: #f3f3f5;
-}
+
 
 .sidebaritems-container li {
 	background-color: #fff;
@@ -767,13 +735,9 @@ select {
 	opacity: 2;
 }
 
-.chatcontainer {
-	float: right;
-	width: 65%;
-	height: 100%;
-	position: relative;
-	flex-direction: column;
-}
+
+
+
 
 .message-container {
 	height: 77%;
@@ -783,38 +747,52 @@ select {
 	left: 0;
 }
 
-.header {
+header {
 	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-	height: 10%;
+	height: 5%;
 	width: 100%;
-	margin: 0;
-	padding: 0;
+	padding: 5% 0% 6% 0%;
+	justify-content: space-between;
+	display: flex;
 }
 
-.title {
-	padding-top: 2%;
-	font-size: 14px;
-	font-weight: bold;
+header i {
+	vertical-align: middle;
+	font-size: 25px;
+	margin-right: 20px;
 }
+
+h1 #GroupChat-name {
+	font-size: 20px;
+	display: inline;
+}
+
 
 .footer {
-	float: left;
+
 	height: 10%;
 	width: 100%;
 	padding: 0px;
-	position: relative;
 	justify-content: space-between;
-	flex-direction: row;
 	border-radius: 20px;
+	display: inline;
 }
 
-.form-footer-container {
-	width: 95%;
-	display: flex;
-	padding-right: 2%;
-	justify-content: space-between;
-	background-color: rgb(233, 233, 233);
-	border-radius: 5px;
+
+#footer-content {
+	width: 100%;
+	padding: 0px 10px 0px 10px;
+}
+
+#message-area {
+	border-radius: 50px;
+	width: 80%;
+	background-color: #F5F5F5;
+	border-radius: 20px;
+	border: transparent;
+	outline: none;
+	padding: 21px 20px;
+	display: inline-block;
 }
 
 /* mic icon */
@@ -828,24 +806,10 @@ select {
 	color: #999;
 }
 
-.textarea-container {
-	width: 100%;
-	background-color: rgb(233, 233, 233);
-	border-radius: 5px;
-	justify-content: space-between;
-}
-
-.textarea-container input {
-	float: left;
-	overflow: hidden;
-	resize: none;
-	width: 100%;
-	height: 100%;
-	background-color: rgb(233, 233, 233);
-	border-color: transparent;
-	border-radius: 5px;
-	outline: none;
-	padding: 21px 20px;
+#icons-grp {
+	display: inline;
+	position: relative;
+	top: 20%;
 }
 
 /************************************************
@@ -873,4 +837,105 @@ select {
 	margin-right: 15%;
 	display: absolute;
 	margin-top: -3%;
+}
+
+/************************************************
+   ************************************************
+                   Add new Channel Popup
+   ************************************************
+ ************************************************/
+#create-group {
+	padding: 5%;
+	font-size: 1em;
+	margin-top: 20px;
+	border-radius: 10px;
+	border: 1px slategrey solid;
+	outline: none;
+}
+
+#addChatPoPBox-container {
+	padding: 20px;
+}
+
+.addChatPoPBox {
+	position: absolute;
+	width: 350px;
+	height: 40%;
+	left: 200px;
+	top: 200px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+	/* opacity: 0; */
+	transition: 0.2s ease;
+	z-index: 1;
+	pointer-events: auto;
+}
+
+.show {
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+
+/************************************************
+   ************************************************
+                   Main View Containers
+   ************************************************
+ ************************************************/
+
+.chatcontainer {
+	width: 70%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#chat-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+
+}
+
+.sidenavcontainer {
+	width: 8%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#sidenavcontents {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	background-color: #E4E5E7;
+
+}
+
+.sidebarcontainer {
+	width: 22%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#sidebar-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #F3F3F5;
+
 }

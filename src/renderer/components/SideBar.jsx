@@ -10,23 +10,25 @@ function SideBar() {
 
   return (
     <div className="sidebarcontainer">
-      {toggle == 'groups' && (
-        <>
-          <h1>Discover</h1>
-          <GroupList />
-        </>
-      )}
-      {toggle == 'chats' && (
-        <>
-          <GetRecentChats />
-        </>
-      )}
-      {toggle == 'settings' && (
-        <>
-          <h1>Settings</h1>
-          <Settings />
-        </>
-      )}
+      <div id="sidebar-content">
+        {toggle == 'groups' && (
+          <>
+            <h1>Discover</h1>
+            <GroupList />
+          </>
+        )}
+        {toggle == 'chats' && (
+          <>
+            <GetRecentChats />
+          </>
+        )}
+        {toggle == 'settings' && (
+          <>
+            <h1>Settings</h1>
+            <Settings />
+          </>
+        )}
+      </div>
     </div>
   );
 }

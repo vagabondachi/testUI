@@ -115,29 +115,21 @@ const SendChatMessage = () => {
 
   return (
     <div className="footer">
-      <div className="form-footer-container">
-        <div className="textarea-container">
+      <div id="footer-content">
           <form onSubmit={handleSubmit}>
             <input
+              id="message-area"
               name="text"
               placeholder="Write Message..."
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-          </form>
+              onChange={(e) => setMessage(e.target.value)}/>
+           <i class="ri-emotion-happy-line"/> 
+          <div id="icons-grp">
+          {isRecording ? ( <i className="ri-mic-off-line" onClick={stopRecording}/>) : (
+<i className="ri-mic-line" onClick={startRecording}/>)}
         </div>
-        <div>
-          {' '}
-          {isRecording ? (
-            <button className="fieldicon-btn" onClick={stopRecording}>
-              <i className="ri-mic-fill"></i>
-            </button>
-          ) : (
-            <button className="fieldicon-btn" onClick={startRecording}>
-              <i className="ri-mic-off-fill"></i>
-            </button>
-          )}
-        </div>
+          </form> 
+       
       </div>
     </div>
   );

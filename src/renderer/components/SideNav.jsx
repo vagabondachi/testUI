@@ -7,6 +7,7 @@ function SideNav() {
   const [settings, showSettings] = useState(false);
   return (
     <div className="sidenavcontainer">
+<div id="sidenavcontents">
       <div className="btn-group">
         <div className="btn-container">
           <button
@@ -20,7 +21,7 @@ function SideNav() {
           >
             <div className="sideborder"></div>
             <i className="ri-question-answer-fill"></i>
-            <span> Group Message</span>
+            <span> Team Message</span>
           </button>
         </div>
 
@@ -75,6 +76,7 @@ function SideNav() {
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -29,22 +29,13 @@ function CreateGroupForm() {
   };
 
   return (
-    // <div id="myModal" className='modal'>
-    //   <div className='modal-content'>
-    //     <span className="close">&times;</span>
-    <form onSubmit={handleSubmit}>
-      <label>
-        Group Name:
-        <input
-          type="text"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-        />
-      </label>
-      <button type="submit">Create Group</button>
-    </form>
-    // </div>
-    // </div>
+  <form onSubmit={handleSubmit}>
+    <div id='addChatPoPBox-container'>   
+      <h1>Create a Channel</h1>     
+      <label>Channel Name<input id="create-group" type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} placeholder="e.g Sunny Squad"/></label>
+      <button id="create-group" type="submit">Create Channel</button>
+    </div>     
+  </form>
   );
 }
 

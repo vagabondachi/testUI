@@ -32,6 +32,7 @@ const MainView = () => {
             <ChatView />
           ) : (
             <div className="chatcontainer">
+<div id="chat-content">
               <div className="idle-content">
                 <div className="idle-item">
                   <img src={Idle} alt="idle-logo" className="idle-img"></img>
@@ -45,6 +46,7 @@ const MainView = () => {
                 </div>
               </div>
             </div>
+</div>
           )}
         </>
       ) : user && !user.emailVerified ? (
