@@ -466,12 +466,12 @@ ul {
 .recents-container {
 	padding: 10px;
 	align-items: center;
-	text-align: center;
+	/*text-align: center;*/
 	display: flex;
 }
 
 .recentconvo-info {
-	margin-left: 5%;
+	/*margin-left: 5%;*/
 	display: block;
 }
 
@@ -489,6 +489,11 @@ ul {
 .label-add {
 	float: left;
 }
+
+.recentSender_Message_Date {
+	font-size: 12px;
+	margin: 0;
+  }
 
 /* Button create new group */
 .btn-add-container {
