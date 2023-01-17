@@ -516,14 +516,20 @@ ul {
 .recents-container {
   padding: 10px;
   align-items: center;
-  text-align: center;
+  /* text-align: center;  */
   display: flex;
 }
 
+.recentSender_Message_Date {
+  font-size: 12px;
+  margin: 0;
+}
+
 .recentconvo-info {
-  margin-left: 5%;
+  /* margin-left: 5%; */
   display: block;
 }
+
 .recentconvo-name {
   color: #0890eb;
 }

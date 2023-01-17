@@ -17,6 +17,8 @@ function RecentChats() {
         const newConversations = snapshot.docs
           .map((doc) => ({
             id: doc.id,
+            latest_sender: doc.data().latest_sender,
+            latest_message: doc.data().latest_message,
             ...doc.data(),
           }))
           .sort((a, b) => b.latest_time_message - a.latest_time_message);
@@ -31,9 +33,9 @@ function RecentChats() {
   const getFormattedTime = (date) => {
     let hours = date.getHours();
     const minutes = date.getMinutes();
-    let ampm = 'AM';
+    let ampm = 'am';
     if (hours >= 12) {
-      ampm = 'PM';
+      ampm = 'pm';
       hours -= 12;
     }
     return `${hours}:${minutes} ${ampm}`;
@@ -81,11 +83,22 @@ function RecentChats() {
                     <img height="33" width="33" src={faker.image.avatar()} />
                   </div>
                   <div className="recentconvo-info">
-                    {conversation.name} <br /> {conversation.name}
+                    <b>{conversation.name}</b>
+                    <p className="recentSender_Message_Date">
+                      {conversation.latest_sender && conversation.latest_message
+                        ? (
+                            conversation.latest_sender +
+                            ': ' +
+                            conversation.latest_message
+                          ).substring(0, 18) +
+                          '... • ' +
+                          getFormattedTime(
+                            conversation.latest_time_message.toDate()
+                          )
+                        : 'No messages yet'}
+                    </p>
                   </div>
                 </div>
-                {conversation.latest_time_message &&
-                  getFormattedTime(conversation.latest_time_message.toDate())}
               </li>
             </div>
           ))}

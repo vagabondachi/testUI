@@ -59,6 +59,8 @@ const SendChatMessage = () => {
             firebase.auth().currentUser.uid
           ),
           latest_time_message: firebase.firestore.FieldValue.serverTimestamp(),
+          latest_message: censor(message),
+          latest_sender: firebase.auth().currentUser.displayName,
         });
     } else {
       console.log('Message is empty');
