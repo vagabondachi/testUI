@@ -10,38 +10,30 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
-
   const user = useSelector((state) => state.user);
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
- 	
       .catch((error) => {
         setError("Email or Password is incorrect");
       });
   };
-
   useEffect(() => {
     if (user) {
-      	window.electron.ipcRenderer.sendMessage('on-login');
+      window.electron.ipcRenderer.sendMessage('on-login');
       navigate('/');
     }
     const eyeIcon = document.getElementById('eye-icon');
     const passwordInput = document.getElementById('password-input');
-
     eyeIcon.addEventListener('click', () => {
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
@@ -57,43 +49,27 @@ const Login = () => {
 
   return (
     <div className="centered-container-form">
-      <form onSubmit={handleSubmit}>
-        <div className="form-container">
-          <img src={Logo} alt="chat logo" className="login-logo" />
-
-          {error && (
-            <div className="errorbox">
-              <p id="errormsg"><span><i class="ri-information-line"  id="error-icon"/></span> {error}</p>
-            </div>
-          )}
-
+        <header id="login">Welcome</header>
+        <p id="subheader"> We're happy to see you here! </p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-container">
+              {error && (
+                <div className="errorbox">
+                  <p id="errormsg"><span><i class="ri-information-line"  id="error-icon"/></span> {error}</p>
+                </div>
+              )}
           <br />
-
           <div className="container">
             <div className="input-box">
-              <input
-                type="text"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-              <label htmlFor="password">Username or email address</label>
+              <label htmlFor="email">Email address</label>
+                <input type="text" value={email} onChange={handleEmailChange} required/>   
             </div>
           </div>
-          <br></br>
-
           <div className="container">
-            <div className="input-box-password">
-              <input
-                type="password"
-                id="password-input"
-                value={password}
-                onChange={handlePasswordChange}
-                spellCheck="false"
-                required
-              />
-              <label htmlFor="">Password</label>
-              <i id="eye-icon" className="ri-eye-off-line"></i>
+            <div className="input-box">
+              <label htmlFor="password">Password</label>
+                <input type="password" id="password-input" value={password} onChange={handlePasswordChange} spellCheck="false" required/>   
+                  <i id="eye-icon" className="ri-eye-off-line"></i>           
             </div>
           </div>
 

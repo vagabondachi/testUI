@@ -37,7 +37,33 @@ function LanguageRadioButtons() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label>My Language</label>
+      <select name="userLanguage">
+      <option value="en">English</option>
+      <option value="zh">Chinese</option>
+      <option value="ja-JP">Japanese</option>
+      <option value="fil-PH	">Tagalog</option>
+      </select>
+
+      <br></br>
+      <label>Translation Language</label>
+      <select name="translateToLanguage">
+      <option value="en">English</option>
+      <option value="zh-CN">Chinese</option>
+      <option value="ja">Japanese</option>
+      <option value="tl">Tagalog</option>
+      </select>
+            <br></br>
+      <br></br>
+
+      <input type="submit" value="Save Changes"/>
+    </form>
+  );
+}
+
+export default LanguageRadioButtons;
+
+   {/* <label>
         <b>Choose your language:</b>
         <br />
         <input
@@ -75,9 +101,8 @@ function LanguageRadioButtons() {
           onChange={handleLanguageChange}
         />
         Tagalog
-      </label>
-
-      <label>
+      </label> */}
+      {/* <label>
         <b>
           <br />
           Translate messages to:
@@ -119,10 +144,5 @@ function LanguageRadioButtons() {
         />
         Tagalog
       </label>
-      <br />
-      <button type="submit">Save</button>
-    </form>
-  );
-}
-
-export default LanguageRadioButtons;
+      <br /> */}
+  

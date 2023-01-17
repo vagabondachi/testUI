@@ -93,7 +93,7 @@ function Chat() {
   return (
     <div className="chatcontainer">
     <div id="chat-content">
-      <header>
+      <header id="chatview-header">
        <h1 id="GroupChat-name"> {groupName}</h1>
         <i class="ri-information-fill"/>
       </header>

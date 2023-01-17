@@ -6,36 +6,60 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import PWDRequisite from './PWSRequisite';
+import Modal from './Modal';
 
 function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [pwdRequisite, setPWDRequisite] = useState(false);
+  const [checks,setChecks] = useState({
+    capsLetterCheck: false,
+    numCheck: false,
+    pwdLengthCheck: false,
+    specialCharCheck:false,
+  }); 
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
   const [year, setYear] = useState('');
+  const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
+
   const user = useSelector((state) => state.user);
   const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
-  function validatePassword(password) {
-    let hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/g.test(password);
-    let hasUpperCase = /[A-Z]/.test(password);
-    let hasNumber = /\d/.test(password);
+  const handleOnChange = (e) => {
+  setPassword(e.target.value);
+  };
+  const handleOnFocus = () => {
+  setPWDRequisite(true);
+  };
+ const handleOnBlur = () => {
+  setPWDRequisite(false);
+  };
+ const handleOnKeyUp = (e) => {
+  const {value} = e.target;
+  const capsLetterCheck = /[A-Z]/.test(value);
+  const numCheck = /[0-9]/.test(value);
+  const pwdLengthCheck = value.length > 8;
+  const specialCharCheck = /[!@#$%^&*]/.test(value);
+  setChecks({
+    capsLetterCheck,
+    numCheck,
+    pwdLengthCheck,
+    specialCharCheck
+  })
+  };
 
-    return hasSpecialChar && hasUpperCase && hasNumber;
-  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!validatePassword(password)) {
-      setError("Password must contain at least one special character, one uppercase letter and one number.");
-      return;
-    }
     // check if user is 18 years or older
     let age = calculateAge(month, day, year);
     if (age < 18) {
@@ -96,6 +120,8 @@ function Registration() {
     }
     return age;
   }
+
+
   useEffect(() => {
     if (user) {
       // if user is logged in, redirect to home page
@@ -104,50 +130,53 @@ function Registration() {
   }, [user]);
 
   return (
-    <div className="centered-container-form">
+    <div className="centered-container-form"> <Modal open={openModal} onClose={()=> setOpenModal(false)}/>
+      <header id="register">Create an account</header>
       <form onSubmit={handleSubmit}>
         <div className="form-container">
-          <div className="loginheader">Create an account</div>
-          <br />
+          
+          {error && ( 
+            <div className="errorbox">
+              <p id="errormsg"><i class="ri-information-line"  id="error-icon"/> {error}</p>
+            </div>
+          )}
           <div className="container">
             <div className="input-box">
+              <label htmlFor="password">Email address</label>
               <input
                 type="text"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
               />
-              <label htmlFor="password">Email address</label>
             </div>
           </div>
-          <br />
+
+  
 
           <div className="container">
             <div className="input-box">
-              <input
-                type="text"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                required
-              />
               <label htmlFor="password">Username</label>
+                <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} required/>      
             </div>
           </div>
-          <br />
+
 
           <div className="container">
             <div className="input-box">
-              <input
-                type="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
               <label htmlFor="password">Password</label>
+              <input id="password" type="password" value={password} onChange={handleOnChange} onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyUp={handleOnKeyUp} required/>    
             </div>
+            {pwdRequisite ? (<PWDRequisite 
+            capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+            numFlag={checks.numCheck ? "valid" : "invalid"}
+            pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+            specialCharFlag={checks.specialCharCheck ? "valid" : "invalid"}
+            />) : null}
           </div>
-          <br />
+
         <div className="container">
+         <div className="input-box">
             <label>Date of Birth</label>
             <br />
             <span className='month-container'>
@@ -179,17 +208,18 @@ function Registration() {
                   <option key={year} value={year}>{year}</option>
                 ))}
               </select>
-            </span>
+             </span>
+            </div>
           </div>
-          <br />
-
-          <br />
-
-          <button type="submit">Continue</button>
+       
+<div id="TOScontainer">
+      <input type="checkbox" onClick={() => setOpenModal(true)}/> <label>I agree to the terms and condition</label>
+</div>
+      
+             
+       <button  id="registersubmit" type="submit">Continue</button>
         </div>
       </form>
-      {error && <p>{error}</p>}
-
       <div className="login-option">
         Already have an account?
         <Link to="/login">Sign In</Link>

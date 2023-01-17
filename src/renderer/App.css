@@ -26,20 +26,20 @@ body {
 }
 
 button {
-	background-color: #0890eb;
+	background-color: #2874BA;
 	color: white;
 	width: 100%;
 	height: 100%;
 	padding: 15px 20px;
+	margin-top: 30px;
 	border-radius: 10px;
 	border: none;
 	appearance: none;
 	font-size: 1.2rem;
-	/* box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-     0px 18px 88px -4px rgba(24, 39, 75, 0.14); */
 	transition: all ease-in 0.1s;
 	cursor: pointer;
 	opacity: 0.9;
+
 }
 
 button:hover {
@@ -66,10 +66,7 @@ a:hover {
 	margin: 20px 0;
 }
 
-h1 {
-	font-size: calc(1vw + 1vh + 1vmin);
-	margin: 0;
-}
+
 
 .p-texts {
 	font-size: calc(0.3em + 0.2em + 1vmin);
@@ -86,19 +83,19 @@ h1 {
 	font-size: 18px;
 	display: flex;
 	flex-direction: column;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	align-items: center;
-	padding-top: 80px;
 }
 
 .form-container {
 	width: 320px;
 }
 
-.subheader {
+#subheader {
 	color: rgb(56, 56, 56);
-	padding-bottom: 50;
+	padding: 0;
+	margin: 0;
 }
 
 .loginheader {
@@ -126,7 +123,7 @@ h1 {
 
 .login-option {
 	font-size: 0.8em;
-	padding-top: 20px;
+	padding: 30px 0px 20px 0px;
 	color: rgb(56, 56, 56);
 }
 
@@ -134,56 +131,28 @@ h1 {
 	position: relative;
 	width: 100%;
 	border-radius: 6px;
-	background-color: #fff;
+	margin-top: 15px;
+	padding: 0;
 }
 
 .input-box input {
 	outline: none;
 	height: 100%;
-	border: 2px solid #ccc;
-	padding: 15px 10px 15px 10px;
+	border: 2px solid #DFEAF5;
+	padding: 10px 10px 15px 10px;
 	transition: all 0.2s linear;
-	border-radius: 6px;
+	border-radius: 10px;
 	font-size: 16px;
 	width: 100%;
-}
-
-.input-box :is(label, i) {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	color: #999;
-	transition: all 0.2s linear;
+	background-color: #DFEAF5;
+	margin-top: 5px;
 }
 
 .input-box label {
-	left: 15px;
-	pointer-events: none;
-	font-size: 16px;
+	color: #707070;
+	margin-bottom: 10px;
+	font-size: 18px;
 	font-weight: 400;
-}
-
-.input-box i {
-	left: 270px;
-	cursor: pointer;
-	font-size: 20px;
-}
-
-input:is(:focus, :valid)~i {
-	color: #0890eb;
-}
-
-input:is(:focus, :valid)~label {
-	color: #0890eb;
-	top: 0;
-	font-weight: 500;
-	background-color: #fff;
-	padding: 0px 5px 0px 5px;
-	font-size: 14px;
-}
-
-input:is(:focus) {
-	border-color: #0890eb;
 }
 
 .eye-icon {
@@ -195,30 +164,30 @@ input:is(:focus) {
 .input-box-password input {
 	outline: none;
 	height: 100%;
-	border: 2px solid #ccc;
-	padding: 15px 65px 15px 10px;
+	border: 2px solid #DFEAF5;
+	padding: 10px 10px 15px 10px;
 	transition: all 0.2s linear;
-	border-radius: 6px;
+	border-radius: 10px;
 	font-size: 16px;
 	width: 100%;
+	background-color: #DFEAF5;
+	margin-top: 5px;
 }
 
-.input-box-password :is(label, i) {
+input:is(:focus) {
+	border-color: #0890eb;
+}
+
+.input-box :is(i) {
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	transform: translateY(-50%);
 	color: #999;
 	transition: all 0.2s linear;
 }
 
-.input-box-password label {
-	left: 15px;
-	pointer-events: none;
-	font-size: 16px;
-	font-weight: 400;
-}
 
-.input-box-password i {
+.input-box i {
 	left: 270px;
 	cursor: pointer;
 	font-size: 20px;
@@ -235,7 +204,6 @@ input:is(:focus) {
 	font-size: 0.8em;
 	text-align: justify;
 	text-justify: inter-word;
-
 }
 
 .errorbox {
@@ -248,7 +216,7 @@ input:is(:focus) {
 #error-icon {
 	color: rgb(255, 150, 150);
 	font-size: 20px;
-
+	vertical-align: middle;
 }
 
 /************************************************
@@ -696,16 +664,47 @@ span {
                    Registration View
    ************************************************
  ************************************************/
+#login {
+	font-size: 24px;
+	font-weight: 600;
+	color: #707070;
+	margin: 90px 0px 0px 0px;
+
+}
+
+#register {
+	font-size: 24px;
+	font-weight: 600;
+	color: #707070;
+	float: left;
+	margin-top: 30px;
+}
+
+#termsandprivacy {
+	width: 320px;
+	font-size: 12px;
+	text-align: center;
+}
 
 select {
 	padding: 15px 10px 15px 10px;
 	width: 100px;
-	background-color: #fff;
-	border-radius: 6px;
-	border: 2px solid #ccc;
+	background-color: #DFEAF5;
+	border-radius: 10px;
+	border: none;
 	font-size: 16px;
-	color: #999;
+	color: #707070;
 	outline: none;
+
+}
+
+option {
+	background-color: #ffffff;
+}
+
+#TOScontainer {
+	margin-top: 15px;
+	font-size: 15px;
 }
 
 /************************************************
@@ -747,7 +746,7 @@ select {
 	left: 0;
 }
 
-header {
+header #chatview-header {
 	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 	height: 5%;
 	width: 100%;
@@ -938,4 +937,95 @@ ul {
 	flex-direction: column;
 	background-color: #F3F3F5;
 
+}
+
+/************************************************
+   ************************************************
+                   Password
+   ************************************************
+ ************************************************/
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+	color: green;
+}
+
+.valid:before {
+	position: relative;
+	left: -10px;
+	content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+	color: red;
+}
+
+.invalid:before {
+	position: relative;
+	left: -10px;
+	content: "✖";
+}
+
+.message p {
+	font-size: 15px;
+	padding: 0;
+	margin: 5px 0px 0px 15px;
+}
+
+.overlay {
+	background-color: rgba(0, 0, 0, 0.09);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.modalContainer {
+	max-width: 350px;
+	height: 550px;
+	width: 100%;
+	position: fixed;
+	top: 10%;
+	left: 5%;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 1rem 2rem;
+	margin-top: 2rem;
+	height: 500px;
+	overflow-y: scroll;
+}
+
+#title-termsofservice {
+	text-align: center;
+	font-size: 30px;
+}
+
+#subheadTOS {
+	font-size: 15px;
+	font-weight: 550;
+}
+
+#descriptionTOS {
+	font-size: 13px;
+}
+
+#privacypolicylist {
+	list-style-type: disc;
+}
+
+#btnContainer {
+	padding: 0;
+	border: none;
+	color: #ffffff;
+	width: 100%;
+	font-size: 13px;
+	font-weight: 600;
 }

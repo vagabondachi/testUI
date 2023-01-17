@@ -63,13 +63,12 @@ function RecentChats() {
             </button>
           </div>
         </div>
-<div className="wrapper">
-          <div className="content">
+
+      
             <div className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}>
              <CreateGroupForm/>
             </div>
-          </div>
-        </div>
+   
 
 
 
