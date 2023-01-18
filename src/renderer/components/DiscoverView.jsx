@@ -56,7 +56,7 @@ function DiscoverView() {
                     <img id="img-discover-cover" src={faker.image.cats()} />
                     <img id="img-discover" src={faker.image.avatar()} />
                     <div id="discover-item">{group.name}</div>
-                    <button id="modalJoinGrp" onClick={() => setOpenModal(handleClick=>)}>
+                    <button id="modalJoinGrp" onClick={() => { handleClick(group.id); setOpenModal(true); }}>
                     Join
                     </button>  
                     <DiscoverModal
