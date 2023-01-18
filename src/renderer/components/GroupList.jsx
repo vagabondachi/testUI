@@ -12,6 +12,12 @@ function GroupList() {
   const [groups, setGroups] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
+  const modalStates = groups.reduce((acc, group) => {
+    acc[group.id] = false;
+    return acc;
+  }, {});
+  const [modals, setModals] = useState(modalStates);
+
   const db = firebase.firestore();
 
   useEffect(() => {
@@ -31,6 +37,10 @@ function GroupList() {
   const handleClick = (groupId) => {
     console.log(`Clicked on group ${groupId}`);
     store.dispatch({ type: 'SET_GROUP_ID', groupId: groupId });
+    setModals((prevModals) => ({
+      ...prevModals,
+      [groupId]: true
+    }));
   };
 
   return (
@@ -41,12 +51,16 @@ function GroupList() {
             <img id="img-discover-cover" src={faker.image.cats()} />
             <img id="img-discover" src={faker.image.avatar()} />
             <div id="discover-item">{group.name}</div>
-            <button id="modalJoinGrp" onClick={() => setOpenModal(group.id)}>
+            <button id="modalJoinGrp" onClick={() => handleClick(group.id)}>
               Join
             </button>
             <DiscoverModal
-              open={openModal}
-              onClose={() => setOpenModal(false)}
+              open={modals[group.id]}
+              groupId={group.id}
+              onClose={() => setModals((prevModals) => ({
+                ...prevModals,
+                [group.id]: false
+              }))}
             />
           </li>
         ))}

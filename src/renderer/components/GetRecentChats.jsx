@@ -100,24 +100,24 @@ function RecentChats() {
                 <div className="recentconvo-info">
                   <div id="recentsheader">
                     <div id="recentsheader-name">
-                      {conversation.name.substring(0, 8)}
+                      {conversation.name.substring(0, 9)}
                     </div>
-                    {/* <div id="recentsheader-time">
-                      {getFormattedTime(
-                        conversation.latest_time_message.toDate()
-                      )}
-                    </div> */}
+                     <div id="recentsheader-time">
+                    {
+                    conversation.latest_time_message
+                      ?
+                      '___________' +getFormattedTime(
+                          conversation.latest_time_message.toDate()
+                        )
+                      : ''}
+                    </div>
                   </div>
                   <p className="recentSender_Message_Date">
                     {conversation.latest_sender &&
-                    conversation.latest_message &&
-                    conversation.latest_time_message
+                    conversation.latest_message
                       ? conversation.latest_sender +
-                        ': ' +
-                        conversation.latest_message.substring(0, 18) +
-                        getFormattedTime(
-                          conversation.latest_time_message.toDate()
-                        )
+                        ':  ' +
+                        conversation.latest_message.substring(0, 8)
                       : ''}
                   </p>
                 </div>
