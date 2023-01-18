@@ -1,7 +1,35 @@
-import React from 'react';
-import GroupList from './GroupList';
+import React, { useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import store from '../store/store';
+import CreateGroup from './CreateGroup';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+import { faker } from '@faker-js/faker';
+import DiscoverModal from './DiscoverModal';
 
 function DiscoverView() {
+  const [groups, setGroups] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const db = firebase.firestore();
+  useEffect(() => {
+    db.collection('conversations')
+      .where('type', '==', 'group')
+      .onSnapshot((snapshot) => {
+        const newGroups = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .sort((a, b) => b.created_at - a.created_at);
+        setGroups(newGroups);
+      });
+  }, []);
+
+  const handleClick = (groupId) => {
+    console.log(`Clicked on group ${groupId}`);
+    store.dispatch({ type: 'SET_GROUP_ID', groupId: groupId });
+  };
   return (
     <div id="discover-container">
       <div id="discover-content">

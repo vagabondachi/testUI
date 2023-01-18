@@ -1,5 +1,4 @@
 import React from 'react';
-import GroupList from './GroupList';
 import GetRecentChats from './GetRecentChats';
 import { useSelector } from 'react-redux';
 import Settings from './SettingsView';
