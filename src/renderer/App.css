@@ -1076,6 +1076,14 @@ color:#3298db;
    ************************************************
  ************************************************/
 
+#modalJoinGrp{
+width: 90%;
+height: 50px;
+font-size: 15px;
+margin: 0px;
+
+
+}
 
 #discover-container{
 	width: 100%;
