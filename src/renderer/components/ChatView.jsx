@@ -6,7 +6,7 @@ import SendChatMessage from './SendChatMessage';
 import translateIcon from '../../../assets/translate.png';
 import { faker } from '@faker-js/faker';
 import SimpleBar from 'simplebar-react';
-import Joyride from 'react-joyride'
+import Joyride from 'react-joyride';
 import 'simplebar/dist/simplebar.min.css';
 
 function Chat() {
@@ -53,16 +53,13 @@ function Chat() {
   }, [groupId]);
 
   const translate = async (text) => {
-    const resp = await fetch(
-      'https://speech-chi.vercel.app/translate',
-      {
-        method: 'POST',
-        body: JSON.stringify({ text }),
-        headers: {
-          'X-translate-to-code': translate_to_code,
-        },
-      }
-    );
+    const resp = await fetch('https://speech-chi.vercel.app/translate', {
+      method: 'POST',
+      body: JSON.stringify({ text }),
+      headers: {
+        'X-translate-to-code': translate_to_code,
+      },
+    });
     const data = await resp.json();
     return data.message;
   };
@@ -93,12 +90,13 @@ function Chat() {
   const [steps, setSteps] = useState([
     {
       target: '#transl8',
-      content: 'Hi!! When you click this icon, it will translate it into your desired languaged which is configured on the setting tab.',
+      content:
+        'Hi!! When you click this icon, it will translate the text message into your desired language which is configured on the settings tab.',
     },
     {
-    target: '#transl8',
-    content: 'After your click it, it will translate into your desired language and you can turn it back by just clicking the ',
-  },
+      target: '#transl8',
+      content: 'You can revert the orignal text message by clicking again ',
+    },
   ]);
   const [isTourOpen, setIsTourOpen] = useState(false);
   const handleTourCallback = (data) => {
@@ -137,7 +135,8 @@ function Chat() {
                     <br />
                     {message.sender} :{' '}
                     {translatedTexts[message.id] || message.text}
-                    <img id='transl8'
+                    <img
+                      id="transl8"
                       style={{
                         height: '20px',
                         margin: '0 5px 0 0',
@@ -152,22 +151,28 @@ function Chat() {
               </li>
             ))}
           </ul>
-      <Joyride
-        key={isTourOpen}
-        steps={steps}
-        run={isTourOpen}
-        callback={handleTourCallback}
-        styles={{
-          options: {
-            arrowColor: '#fff',
-            backgroundColor: '#fff',
-            overlayColor: 'rgba(0, 0, 0, 0.5)',
-            primaryColor: '#333',
-            textColor: '#000000',
-            width: '350px',
-          },
-        }}
-      />
+          <Joyride
+            hideCloseButton
+            showProgress
+            showSkipButton
+            steps={[]}
+            continuous
+            scrollToFirstStep
+            key={isTourOpen}
+            steps={steps}
+            run={isTourOpen}
+            callback={handleTourCallback}
+            styles={{
+              options: {
+                arrowColor: '#fff',
+                backgroundColor: '#fff',
+                overlayColor: 'rgba(0, 0, 0, 0.5)',
+                primaryColor: '#333',
+                textColor: '#000000',
+                width: '350px',
+              },
+            }}
+          />
         </SimpleBar>
       </div>
       <SendChatMessage />

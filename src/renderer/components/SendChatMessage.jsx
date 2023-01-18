@@ -129,24 +129,29 @@ const SendChatMessage = () => {
   });
   const [steps, setSteps] = useState([
     {
-      target: '#meesage-area',
-      content: 'Hi!! here you will put your message here.',
+      target: '#message-area',
+      content: 'Hi!! This is where you type in your text/s',
+      placement: 'top',
     },
     {
       target: '#message-area',
-      content: 'After you put your message you can enter it.',
+      content: 'Just hit keyboard enter key to send your message',
+      placement: 'top',
     },
     {
       target: '#btnmic',
-      content: 'Here is the mic icon.',
+      content: 'This is your speech-to-text mic',
+      placement: 'top-end',
     },
     {
       target: '#btnmic',
-      content: 'Click it and it will start to record, also you can see that the icon will change.',
+      content: 'Click it to start recording',
+      placement: 'top-end',
     },
     {
       target: '#btnmic',
-      content: 'After you speak, click it again and wait it to render to text.',
+      content: 'Click it again. Texts will render soon after.',
+      placement: 'top-end',
     },
   ]);
   const [isTourOpen, setIsTourOpen] = useState(false);
@@ -172,31 +177,38 @@ const SendChatMessage = () => {
           />
 
           {isRecording ? (
-            <button id='btnmic' onClick={stopRecording}>
+            <button id="btnmic" onClick={stopRecording}>
               <i id="offmic" className="ri-mic-off-line" />
             </button>
           ) : (
-            <button id='btnmic' onClick={startRecording}>
+            <button id="btnmic" onClick={startRecording}>
               <i id="onmic" className="ri-mic-line" />
             </button>
           )}
         </div>
-      <Joyride
-        key={isTourOpen}
-        steps={steps}
-        run={isTourOpen}
-        callback={handleTourCallback}
-        styles={{
-          options: {
-            arrowColor: '#fff',
-            backgroundColor: '#fff',
-            overlayColor: 'rgba(0, 0, 0, 0.5)',
-            primaryColor: '#333',
-            textColor: '#000000',
-            width: '350px',
-          },
-        }}
-      />
+        <Joyride
+          hideCloseButton
+          showProgress
+          showSkipButton
+          steps={[]}
+          continuous
+          scrollToFirstStep
+          key={isTourOpen}
+          steps={steps}
+          run={isTourOpen}
+          callback={handleTourCallback}
+          styles={{
+            options: {
+              textColor: '#fff',
+              arrowColor: '#fff',
+              backgroundColor: '#fff',
+              overlayColor: 'rgba(0, 0, 0, 0.5)',
+              primaryColor: '#333',
+              textColor: '#000000',
+              width: '350px',
+            },
+          }}
+        />
       </form>
     </div>
   );

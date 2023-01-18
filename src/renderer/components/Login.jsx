@@ -11,7 +11,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const handleEmailChange = (event) => {
@@ -92,14 +91,13 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="forgotpass">
+          {/* <div className="forgotpass">
             <Link to="">Forgot password?</Link>
-          </div>
+          </div> */}
 
           <br />
 
           <button type="submit">Login</button>
-          <button onClick={() => setIsTourOpen(true)}>Start Tour</button>
         </div>
       </form>
 

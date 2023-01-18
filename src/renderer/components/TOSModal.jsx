@@ -10,7 +10,7 @@ const TOSModal = ({ open, onClose }) => {
             Age requirements and responsibility of parents and guardians
           </p>
           <p id="descriptionTOS">
-            By accessing our services, you confirm that you’re at least 13 years
+            By accessing our services, you confirm that you’re at least 15 years
             old and meet the minimum age of digital consent in your country. We
             maintain a list of minimum ages around the world as a resource for
             you, but we aren’t able to guarantee that it is always accurate.If
