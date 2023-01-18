@@ -102,11 +102,11 @@ function RecentChats() {
                     <div id="recentsheader-name">
                       {conversation.name.substring(0, 8)}
                     </div>
-                    <div id="recentsheader-time">
+                    {/* <div id="recentsheader-time">
                       {getFormattedTime(
                         conversation.latest_time_message.toDate()
                       )}
-                    </div>
+                    </div> */}
                   </div>
                   <p className="recentSender_Message_Date">
                     {conversation.latest_sender &&
@@ -114,7 +114,10 @@ function RecentChats() {
                     conversation.latest_time_message
                       ? conversation.latest_sender +
                         ': ' +
-                        conversation.latest_message.substring(0, 18)
+                        conversation.latest_message.substring(0, 18) +
+                        getFormattedTime(
+                          conversation.latest_time_message.toDate()
+                        )
                       : ''}
                   </p>
                 </div>
