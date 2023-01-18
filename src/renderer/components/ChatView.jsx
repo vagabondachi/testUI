@@ -110,7 +110,7 @@ function Chat() {
                   <div className="viewchat-container">
                     <small style={{ color: 'gray' }}>
                       {message.timestamp
-                        ? message.timestamp.toDate
+                        ? message.timestamp
                           ? new Date(
                               message.timestamp.toDate()
                             ).toLocaleString()

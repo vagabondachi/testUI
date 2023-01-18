@@ -264,11 +264,11 @@ function Registration() {
           </div>
 
           <div id="TOScontainer">
-            <input type="checkbox" onClick={() => setOpenModal(true)} />{' '}
+            <input type="checkbox" onChange={(e) => setChecks({ ...checks, checkbox: e.target.checked })} onClick={() => setOpenModal(true)} />{' '}
             <label>I agree to the terms and condition</label>
           </div>
 
-          <button id="registersubmit" type="submit">
+          <button id="registersubmit" type="submit"  disabled={!checks.checkbox}>
             Continue
           </button>
         </div>
