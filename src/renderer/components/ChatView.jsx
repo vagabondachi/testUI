@@ -91,12 +91,11 @@ function Chat() {
   };
 
   return (
-    <div className="chatcontainer">
-    <div id="chat-content">
-      <header id="chatview-header">
-       <h1 id="GroupChat-name"> {groupName}</h1>
-        <i class="ri-information-fill"/>
-      </header>
+    <>
+      <div id="chatview-header">
+        <h1 id="GroupChat-name"> {groupName}</h1>
+        <i class="ri-information-fill" />
+      </div>
 
       <div className="message-container" ref={messageContainerRef}>
         <SimpleBar style={{ height: '100%' }}>
@@ -139,8 +138,7 @@ function Chat() {
         </SimpleBar>
       </div>
       <SendChatMessage />
-    </div>
-    </div>
+    </>
   );
 }
 

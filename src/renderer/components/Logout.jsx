@@ -14,10 +14,8 @@ function Logout() {
   }
 
   return (
-    <button className="btn-logout" onClick={handleLogout}>
-      Log out
-    </button>
-  );
+   <p id="item-category" onClick={handleLogout}>Log out</p>
+  )
 }
 
 export default Logout;

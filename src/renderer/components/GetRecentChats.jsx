@@ -49,64 +49,80 @@ function RecentChats() {
       <form className="nosubmit">
         <input className="nosubmit" type="search" placeholder="Find group..." />
       </form>
-      <div id="quick-actions">
-        <ul>
-          <li><i class="ri-at-line"/> Mentions</li>
-          <li><i class="ri-star-smile-fill"/> Starred</li>
-        </ul>
-      </div>
-      <div className="add-channel">
-        <p>Team Messages</p>
-        <div className="btn-add-container">
+      <div className="recents">
+        <div id="quick-actions">
+          <ul>
+            <li>
+              <i class="ri-at-line" /> Mentions
+            </li>
+            <li>
+              <i class="ri-star-smile-fill" /> Starred
+            </li>
+          </ul>
+        </div>
+        <div className="add-channel">
+          <p>Team Messages</p>
+          <div className="btn-add-container">
             <button className="btn-create-group">
               <span> Create group </span>
-              <i className="ri-add-line" onClick={() => { showCreateNewChat(!newChat); }}/>
+
+              <i
+                className="ri-chat-new-fill"
+                onClick={() => {
+                  showCreateNewChat(!newChat);
+                }}
+              />
             </button>
           </div>
         </div>
 
-      
-            <div className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}>
-             <CreateGroupForm/>
-            </div>
-   
+        <div
+          className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}
+        >
+          <CreateGroupForm />
+        </div>
 
-
-
-      <div className="recents">
-        <p>Recent Chats</p>
-        <ul>
-          {conversations.map((conversation) => (
-            <div className="sidebaritems-container">
-              <li
-                key={conversation.id}
-                onClick={() => {
-                  handleClick(conversation.id);
-                }}
-              >
-                <div className="recents-container">
-                  <div className="circle-msg">
-                    <img height="33" width="33" src={faker.image.avatar()} />
-                  </div>
-                  <div className="recentconvo-info"> <b>{conversation.name}</b>
-                    <p className="recentSender_Message_Date">
-                      {conversation.latest_sender && conversation.latest_message && 
-                      conversation.latest_time_message
-                      ? (conversation.latest_sender +
-                        ': ' +
-                        conversation.latest_message.substring(0, 18) +
-                        '... • ' +
-                        getFormattedTime(conversation.latest_time_message.toDate())
-                      )
-                      : ''}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </div>
-          ))}
-        </ul>
+        <p id="recent-subheader">Recent Chats</p>
       </div>
+      <ul>
+        {conversations.map((conversation) => (
+          <li
+            key={conversation.id}
+            onClick={() => {
+              handleClick(conversation.id);
+            }}
+          >
+            <div className="sidebaritems-container">
+              <div className="recents-container">
+                <div className="circle-msg">
+                  <img height="33" width="33" src={faker.image.avatar()} />
+                </div>
+                <div className="recentconvo-info">
+                  <div id="recentsheader">
+                    <div id="recentsheader-name">
+                      {conversation.name.substring(0, 8)}
+                    </div>
+                    <div id="recentsheader-time">
+                      {getFormattedTime(
+                        conversation.latest_time_message.toDate()
+                      )}
+                    </div>
+                  </div>
+                  <p className="recentSender_Message_Date">
+                    {conversation.latest_sender &&
+                    conversation.latest_message &&
+                    conversation.latest_time_message
+                      ? conversation.latest_sender +
+                        ': ' +
+                        conversation.latest_message.substring(0, 18)
+                      : ''}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

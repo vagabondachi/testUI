@@ -29,14 +29,16 @@ function GroupList() {
   };
 
   return (
-    <ul>
-      <b> Recently Joined: </b>
-      {groups.map((group) => (
-        <li key={group.id} onClick={() => handleClick(group.id)}>
-          {group.name}
-        </li>
-      ))}
-    </ul>
+    <div className="recents">
+      <ul>
+        <b> Recently Joined: </b>
+        {groups.map((group) => (
+          <li key={group.id} onClick={() => handleClick(group.id)}>
+            {group.name}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

@@ -6,14 +6,15 @@ import { faker } from '@faker-js/faker';
 function SideNav() {
   const [settings, showSettings] = useState(false);
   return (
+
     <div className="sidenavcontainer">
-<div id="sidenavcontents">
-      <div className="btn-group">
-        <div className="btn-container">
-          <button
-            className="nav-btn"
-            onClick={() => {
-              store.dispatch({
+      <div id="sidenavcontents">
+
+        <div className="btn-group">
+
+         <div className="btn-container">
+          <button className="nav-btn" onClick={() => {
+                store.dispatch({
                 type: 'SET_SIDEBAR_VIEW',
                 sidebar: 'chats',
               });
@@ -43,7 +44,6 @@ function SideNav() {
       </div>
 
       <div className="btn-container-avatar">
-        <hr />
         <div
           className="circle"
           onClick={() => {
@@ -53,8 +53,7 @@ function SideNav() {
           <img src={faker.image.avatar()} />
         </div>
 
-        <div className="wrapper">
-          <div className="content">
+
             <ul className={settings ? 'menu shown' : 'menu hidden'}>
               <li
                 className="item"
@@ -66,16 +65,11 @@ function SideNav() {
                 }}
               >
                 <i className="ri-settings-4-fill"></i>
-                <span>Settings</span>
+                <p id="item-category">Settings</p>
               </li>
-              <li className="item">
-                <i className="ri-logout-box-r-fill"></i>
-                <Logout />
-              </li>
-              {/* <li></li> */}
+              <li className="item" id="topborderdivider">
+                <i className="ri-logout-box-r-fill"></i><Logout/></li>
             </ul>
-          </div>
-        </div>
       </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('on-login', () => {
-  mainWindow?.setSize(955, 730);
+  mainWindow?.setSize(1080, 730);
   mainWindow?.center();
   mainWindow?.setResizable(true);
   console.log('im login');

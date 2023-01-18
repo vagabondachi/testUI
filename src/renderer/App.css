@@ -224,30 +224,19 @@ input:is(:focus) {
                    Navigation
    ************************************************
  ************************************************/
-hr {
-	border: 0;
-	border-top: 1px solid #bababa;
-	margin: 0px 10px 25px 10px;
-	padding: 0%;
-}
+
 
 .btn-group {
 	text-align: center;
 }
 
 .btn-container {
-	top: 20px;
-	position: relative;
-	padding-bottom: 10%;
-	text-align: center;
+	display: flex;
 	align-items: center;
-	margin-bottom: 10px;
-}
-
-.btn-container i {
-	cursor: pointer;
-	font-size: calc(1vw + 1vh + 0.5vmin);
-	color: #345e59;
+	flex-direction: column;
+	margin-top: 25px;
+	left: 10%;
+	width: 100%;
 }
 
 .nav-btn:hover i {
@@ -274,6 +263,7 @@ hr {
 .nav-btn:hover span {
 	--scale: 1;
 	opacity: 1;
+z-index: 1;
 }
 
 .nav-btn span::before {
@@ -283,9 +273,9 @@ hr {
 	height: 14px;
 	border-radius: 2px;
 	background-color: inherit;
-	left: 0;
+	left: -40%;
 	top: 50%;
-	transform: translate(-40%, -50%) rotate(45deg);
+	transform: rotate(45deg);
 }
 
 .nav-btn .sideborder {
@@ -308,9 +298,9 @@ hr {
 .nav-btn:focus .sideborder {
 	--scale: 1;
 	opacity: 1;
-	height: calc(2vw + 2vh + 1vmin);
-	width: calc(0.15vw + 0.15vh + 0.3vmin);
-	transform: translateY(-25%);
+	height: 100%;
+	width: 15%;
+	left: -40%;
 	transition: opacity 2.15s ease;
 }
 
@@ -318,19 +308,28 @@ hr {
 	--scale: 1;
 	opacity: 1;
 	top: 20%;
+	left: -40%;
 	height: 20px;
 	width: 5px;
-	transform: translateY(30%);
+
 }
 
 .nav-btn {
 	border-radius: 50%;
 	height: calc(2vw + 3vh + 0.5vmin);
 	width: calc(2vw + 3vh + 0.5vmin);
-	padding: 15% 0px;
-	background-color: #fff;
+	background-color: rgb(251, 251, 251);
+	align-items: center;
+	display: flex;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	justify-content: center;
 }
 
+.nav-btn i{
+color:#34485E;
+}
 .nav-btn:focus i {
 	color: #fff;
 }
@@ -357,6 +356,23 @@ hr {
                    Sidebar
    ************************************************
  ************************************************/
+#recentsheader {
+	display: flex;
+	justify-content: space-between;
+}
+
+#recentsheader-name {
+	font-size: 1rem;
+	display: inline;
+}
+
+#recentsheader-time {
+	font-size: 0.8rem;
+	display: inline;
+}
+
+
+
 
 form.nosubmit {
 	border: none;
@@ -378,23 +394,11 @@ input.nosubmit {
 	position: relative;
 }
 
-
-
-.sidebaritems-container li {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-	width: 100%;
-	display: flex;
-	margin-bottom: 20px;
-	justify-content: space-between;
-}
-
-.sidebaritems-container li:focus {
+.sidebaritems-container:focus {
 	background-color: red;
 }
 
-.sidebaritems-container li:hover {
+.sidebaritems-container:hover {
 	background-color: #d1d6d9;
 	cursor: pointer;
 }
@@ -456,7 +460,15 @@ input.nosubmit {
 
 .recents {
 	width: 90%;
-	margin: 5%;
+	margin: 5px 5px 5px 10px;
+}
+ul{
+margin: 0;
+}
+#recent-subheader{
+font-size: 14px;
+border-top: 1px solid rgb(213, 213, 213) ;
+padding-top: 10px;
 }
 
 ul {
@@ -466,12 +478,10 @@ ul {
 .recents-container {
 	padding: 10px;
 	align-items: center;
-	/*text-align: center;*/
 	display: flex;
 }
 
 .recentconvo-info {
-	/*margin-left: 5%;*/
 	display: block;
 }
 
@@ -484,6 +494,9 @@ ul {
 	align-items: center;
 	position: relative;
 	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+	height: 40px;
 }
 
 .label-add {
@@ -493,7 +506,7 @@ ul {
 .recentSender_Message_Date {
 	font-size: 12px;
 	margin: 0;
-  }
+}
 
 /* Button create new group */
 .btn-add-container {
@@ -502,13 +515,14 @@ ul {
 
 .btn-create-group {
 	background-color: transparent;
-	width: 10%;
+	width: 100%;
 	margin-top: 5%;
+
 }
 
 .btn-create-group i {
 	color: #3298db;
-	font-size: 30px;
+	font-size: 22px;
 }
 
 .btn-create-group span {
@@ -525,6 +539,7 @@ ul {
 	transform: translateY(-100%) scale(var(--scale));
 	transition: opacity 0.15s ease, transform 0.15s ease;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	z-index: 1;
 }
 
 .btn-create-group:hover span {
@@ -606,10 +621,11 @@ span {
 }
 
 .menu {
-	padding: 13px;
 	position: absolute;
-	width: 180px;
-	left: 50px;
+	width: 150px;
+	height: 140px;
+	border-radius: 10px;
+	left: 55px;
 	bottom: 30px;
 	background-color: #fff;
 	border-radius: 10px;
@@ -628,41 +644,42 @@ span {
 	display: none;
 }
 
+.item {
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+	align-items: center;
+	margin: 5px;
+
+}
+
+#topborderdivider {
+	border-top: 1px solid #ededed;
+}
+
 .item i {
 	color: #999;
 	font-size: 20px;
+	vertical-align: middle;
+	padding-left: 20px;
 }
 
-.item:focus i {
-	color: #3298db;
+.item:hover i {
+	color: #3298DB;
 }
 
-/* .btn-container-avatar:hover .menu {
-   opacity: 1;
-   pointer-events: auto;
-   display: block;
- } */
-
-.content .item {
-	list-style: none;
-	font-size: 15px;
-	height: 50px;
-	display: flex;
-	cursor: pointer;
-	padding: 0 5px 0 10px;
-	align-items: center;
-	margin-bottom: 2px;
-	border-radius: 5px;
+#item-category {
+	padding-right: 30px;
+	font-weight: 600;
 }
 
-.content .item:hover {
-	background-color: rgb(213, 213, 213);
+#item-category:hover {
+	padding-right: 30px;
+	color: #3298DB;
 }
 
-.content .item span {
-	font-size: 19px;
-	margin-left: 8px;
-}
+
+
 
 /************************************************
    ************************************************
@@ -751,19 +768,22 @@ option {
 	left: 0;
 }
 
-header #chatview-header {
+#chatview-header {
 	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 	height: 5%;
 	width: 100%;
-	padding: 5% 0% 6% 0%;
+	padding: 5% 0% 6% 5%;
 	justify-content: space-between;
 	display: flex;
+	align-items: center;
 }
 
-header i {
+#chatview-header i {
 	vertical-align: middle;
 	font-size: 25px;
-	margin-right: 20px;
+	margin-right: 40px;
+color:#3298DB;
+
 }
 
 h1 #GroupChat-name {
@@ -772,8 +792,8 @@ h1 #GroupChat-name {
 }
 
 
-.footer {
-
+#footer {
+	border-top: 1px solid rgb(210, 210, 210);
 	height: 10%;
 	width: 100%;
 	padding: 0px;
@@ -782,34 +802,45 @@ h1 #GroupChat-name {
 	display: inline;
 }
 
+#footer form{
+margin: 0;
+padding: 0;
+}
 
-#footer-content {
-	width: 100%;
-	padding: 0px 10px 0px 10px;
+.footer-content {
+	width: inherit;
+	height: inherit;
+padding: 8px;
+	
 }
 
 #message-area {
 	border-radius: 50px;
-	width: 80%;
-	background-color: #F5F5F5;
+	width: 90%;
 	border-radius: 20px;
 	border: transparent;
 	outline: none;
-	padding: 21px 20px;
-	display: inline-block;
+	padding-left:10px;
+	display: inline;
 }
 
 /* mic icon */
 
-.fieldicon-btn {
-	background-color: transparent;
-	float: right;
-}
 
-.fieldicon-btn i {
-	color: #999;
+#btnmic{
+	background-color: #3298db;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
 }
+#btnmic i{
+align-items: center;
+justify-content: center;
+padding-top: 5px;
 
+}
 #icons-grp {
 	display: inline;
 	position: relative;
@@ -822,25 +853,17 @@ h1 #GroupChat-name {
    ************************************************
  ************************************************/
 
-.idle-img {
-	width: 100%;
-	align-items: center;
-	text-align: center;
-}
-
 .idle-content {
-	margin-top: 10%;
-
 	align-items: center;
 	text-align: center;
 }
+#idle-img {
 
-.idle-item {
+	width: 60%;
+	margin-top: 5%;
+}
+#idle-item {
 	color: rgb(191, 191, 191);
-	align-items: center;
-	margin-right: 15%;
-	display: absolute;
-	margin-top: -3%;
 }
 
 /************************************************
@@ -894,6 +917,16 @@ ul {
                    Main View Containers
    ************************************************
  ************************************************/
+
+#nullExploreLink {
+cursor: pointer;
+}
+#nullExploreLink i{
+vertical-align: middle;
+font-size: 20px;
+color:#3298db;
+
+}
 
 .chatcontainer {
 	width: 70%;
