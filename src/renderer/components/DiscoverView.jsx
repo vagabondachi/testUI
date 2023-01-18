@@ -50,13 +50,13 @@ function DiscoverView() {
           <p id="discoverTagline">
             There's always a unique place for a unique being
           </p>
-          <form className="discover">
+          {/* <form className="discover">
             <input
               className="discover"
               type="search"
               placeholder="Find group..."
             />
-          </form>
+          </form> */}
         </div>
         <SimpleBar style={{ height: '60%' }}>
           <ul>
@@ -64,20 +64,25 @@ function DiscoverView() {
               <li className="discover-container-items" key={group.id}>
                 <img id="img-discover-cover" src={faker.image.cats()} />
                 <img id="img-discover" src={faker.image.avatar()} />
-                <div id="discover-item">{group.name}</div>
-                <button id="modalJoinGrp" onClick={() => handleClick(group.id)}>
-                  Join
-                </button>
-                <DiscoverModal
-                  open={modals[group.id]}
-                  groupId={group.id}
-                  onClose={() =>
-                    setModals((prevModals) => ({
-                      ...prevModals,
-                      [group.id]: false,
-                    }))
-                  }
-                />
+                <div id="infoGrp">
+                  <div id="discover-item">{group.name}</div>
+                  <button
+                    id="modalJoinGrp"
+                    onClick={() => handleClick(group.id)}
+                  >
+                    Join
+                  </button>
+                  <DiscoverModal
+                    open={modals[group.id]}
+                    groupId={group.id}
+                    onClose={() =>
+                      setModals((prevModals) => ({
+                        ...prevModals,
+                        [group.id]: false,
+                      }))
+                    }
+                  />
+                </div>
               </li>
             ))}
           </ul>
