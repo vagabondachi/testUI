@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Logout from './Logout';
+import logout from './Logout';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../../assets/icons/blue.png';
+import Logout from './Logout';
 
 const VerifyEmail = () => {
   const [status, setStatus] = useState('');
@@ -58,8 +60,9 @@ const VerifyEmail = () => {
   };
 
   return (
-    <div>
-      <h1>You've Successfuly signed up!</h1>
+    <div className="containerVerification">
+      <img src={logo} alt="logo-logo" id="logo-img"></img>
+      <h1>You've successfuly signed up!</h1>
       <p>{status}</p>
       <p>
         Did not receive?
@@ -67,7 +70,10 @@ const VerifyEmail = () => {
           Resend email.
         </a>
       </p>
-      <Logout />
+      <div id="goback">
+        <i class="ri-arrow-left-line" />
+        <Logout />
+      </div>
     </div>
   );
 };
