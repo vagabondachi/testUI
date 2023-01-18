@@ -569,6 +569,44 @@ ul {
    ************************************************
  ************************************************/
 
+#subheadLang{
+font-weight: 400;
+}
+
+#languageSettings form{
+width: 90%;
+}
+
+#languageSettings {
+margin-top: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#languageSettings label{
+display: block;
+margin-bottom: 10px;
+}
+
+#languageSettings select{
+width: 100%;
+background-color: transparent;
+border: 1px solid #999;
+padding: 10px;
+}
+#languageSettings input[type=submit]{
+border-radius: 7px;
+padding: 10px 20px 10px 20px;
+background-color: #3298DB;
+color: #ffffff;
+border: none;
+cursor: pointer;
+margin-top: 20px;
+width: 100%;
+}
+
+
 /* Circle Avatar Styles */
 
 .circle {
@@ -1076,7 +1114,9 @@ color:#3298db;
    ************************************************
  ************************************************/
 
-
+#infoGrp{
+width: 90%;
+}
 form.discover {
 	border: none;
 	padding: 0;
@@ -1106,8 +1146,7 @@ margin: 0px;
 #discover-container{
 	width: 100%;
 	height: 100%;
-	display: inline-flex;
-	justify-content: space-between;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 }

@@ -37,33 +37,39 @@ function LanguageRadioButtons() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>My Language</label>
-      <select name="userLanguage" value={userLanguage} onChange={handleLanguageChange}>
-      <option value="en">English</option>
-      <option value="zh">Chinese</option>
-      <option value="ja-JP">Japanese</option>
-      <option value="fil-PH	">Tagalog</option>
+      <label>Change Language</label>
+      <select
+        name="userLanguage"
+        value={userLanguage}
+        onChange={handleLanguageChange}
+      >
+        <option value="en">English</option>
+        <option value="zh">Chinese</option>
+        <option value="ja-JP">Japanese</option>
+        <option value="fil-PH	">Tagalog</option>
       </select>
 
-      <br></br>
+      <h2 id="subheadLang"> Message Translation</h2>
       <label>Translation Language</label>
-      <select name="translateToLanguage" value={translateToLanguage} onChange={handleLanguageChange}>
-      <option value="en">English</option>
-      <option value="zh-CN">Chinese</option>
-      <option value="ja">Japanese</option>
-      <option value="tl">Tagalog</option>
+      <select
+        name="translateToLanguage"
+        value={translateToLanguage}
+        onChange={handleLanguageChange}
+      >
+        <option value="en">English</option>
+        <option value="zh-CN">Chinese</option>
+        <option value="ja">Japanese</option>
+        <option value="tl">Tagalog</option>
       </select>
-            <br></br>
-      <br></br>
-
-      <input type="submit" value="Save Changes"/>
+      <input type="submit" value="Save Changes" />
     </form>
   );
 }
 
 export default LanguageRadioButtons;
 
-   {/* <label>
+{
+  /* <label>
         <b>Choose your language:</b>
         <br />
         <input
@@ -101,8 +107,10 @@ export default LanguageRadioButtons;
           onChange={handleLanguageChange}
         />
         Tagalog
-      </label> */}
-      {/* <label>
+      </label> */
+}
+{
+  /* <label>
         <b>
           <br />
           Translate messages to:
@@ -144,5 +152,5 @@ export default LanguageRadioButtons;
         />
         Tagalog
       </label>
-      <br /> */}
-  
+      <br /> */
+}
