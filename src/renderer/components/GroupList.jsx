@@ -3,6 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import store from '../store/store';
 import CreateGroup from './CreateGroup';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+import { faker } from '@faker-js/faker';
 
 function GroupList() {
   const [groups, setGroups] = useState([]);
@@ -29,16 +32,21 @@ function GroupList() {
   };
 
   return (
-    <div className="recents">
+    <SimpleBar style={{ height: '60%' }}>
       <ul>
-        <b> Recently Joined: </b>
         {groups.map((group) => (
-          <li key={group.id} onClick={() => handleClick(group.id)}>
-            {group.name}
+          <li
+            className="discover-container-items"
+            key={group.id}
+            onClick={() => handleClick(group.id)}
+          >
+            <img id="img-discover-cover" src={faker.image.cats()} />
+            <img id="img-discover" src={faker.image.avatar()} />
+            <div id="discover-item">{group.name}</div>
           </li>
         ))}
       </ul>
-    </div>
+    </SimpleBar>
   );
 }
 

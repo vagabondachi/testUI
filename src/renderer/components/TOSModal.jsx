@@ -1,5 +1,5 @@
 import React from 'react';
-const Modal = ({ open, onClose }) => {
+const TOSModal = ({ open, onClose }) => {
   if (!open) return null;
   return (
     <div className="overlay">
@@ -228,4 +228,4 @@ const Modal = ({ open, onClose }) => {
   );
 };
 
-export default Modal;
+export default TOSModal;

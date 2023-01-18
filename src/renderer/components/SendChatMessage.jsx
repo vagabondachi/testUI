@@ -13,6 +13,7 @@ const SendChatMessage = () => {
   const userLang = state.userLang;
   const [recorder, setRecorder] = useState(null);
   const [isRecording, setRecordingStatus] = useState(false);
+  const [groupName, setGroupName] = useState('');
 
   const censor = (text) => {
     const words = text.split(' ');
@@ -115,6 +116,17 @@ const SendChatMessage = () => {
     });
   };
 
+  useEffect(() => {
+    db.collection('conversations')
+      .doc(groupId)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setGroupName(doc.data().name);
+        }
+      });
+  });
+
   return (
     <div id="footer">
       <form onSubmit={handleSubmit}>
@@ -122,7 +134,7 @@ const SendChatMessage = () => {
           <input
             id="message-area"
             name="text"
-            placeholder="Write Message..."
+            placeholder={'Message ' + groupName}
             value={message}
             autoFocus
             onChange={(e) => setMessage(e.target.value)}

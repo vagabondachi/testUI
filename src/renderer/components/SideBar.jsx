@@ -3,6 +3,7 @@ import GroupList from './GroupList';
 import GetRecentChats from './GetRecentChats';
 import { useSelector } from 'react-redux';
 import Settings from './SettingsView';
+import DiscoverCategories from './DiscoverCategories';
 
 function SideBar() {
   /* Getting the state of the sidebar from the redux store. */
@@ -13,8 +14,8 @@ function SideBar() {
       <div id="sidebar-content">
         {toggle == 'groups' && (
           <>
-            <h1>Discover</h1>
-            <GroupList />
+            <h1 id="sidebar-header">Discover</h1>
+            <DiscoverCategories />
           </>
         )}
         {toggle == 'chats' && (
