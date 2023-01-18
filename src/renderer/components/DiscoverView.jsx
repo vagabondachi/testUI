@@ -18,7 +18,30 @@ function DiscoverView() {
             />
           </form>
         </div>
-        <GroupList></GroupList>
+        <SimpleBar style={{ height: '60%' }}>
+          <ul>
+            {groups.map((group) => (
+              <li className="discover-container-items" key={group.id}>
+                <img id="img-discover-cover" src={faker.image.cats()} />
+                <img id="img-discover" src={faker.image.avatar()} />
+                <div id="discover-item">{group.name}</div>
+                <button
+                  id="modalJoinGrp"
+                  onClick={() => {
+                    handleClick(group.id);
+                    setOpenModal(true);
+                  }}
+                >
+                  Join
+                </button>
+                <DiscoverModal
+                  open={openModal}
+                  onClose={() => setOpenModal(false)}
+                />
+              </li>
+            ))}
+          </ul>
+        </SimpleBar>
       </div>
     </div>
   );
