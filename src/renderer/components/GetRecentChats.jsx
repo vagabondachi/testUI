@@ -46,11 +46,11 @@ function RecentChats() {
 
   return (
     <>
-      <form className="nosubmit">
+      {/* <form className="nosubmit">
         <input className="nosubmit" type="search" placeholder="Find group..." />
-      </form>
+      </form> */}
       <div className="recents">
-        <div id="quick-actions">
+        {/* <div id="quick-actions">
           <ul>
             <li>
               <i class="ri-at-line" /> Mentions
@@ -59,12 +59,12 @@ function RecentChats() {
               <i class="ri-star-smile-fill" /> Starred
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="add-channel">
           <p>Team Messages</p>
           <div className="btn-add-container">
             <button className="btn-create-group">
-              <span> Create group </span>
+              <span> Create Channel </span>
               <i
                 className="ri-chat-new-fill"
                 onClick={() => {
@@ -74,12 +74,12 @@ function RecentChats() {
             </button>
           </div>
         </div>
+
         <div
           className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}
         >
           <CreateGroupForm />
         </div>
-
         <p id="recent-subheader">Recent Chats</p>
       </div>
       <ul>
@@ -102,7 +102,7 @@ function RecentChats() {
                     </div>
                     <div id="recentsheader-time">
                       {conversation.latest_time_message
-                        ? '___________' +
+                        ? '' +
                           getFormattedTime(
                             conversation.latest_time_message.toDate()
                           )
