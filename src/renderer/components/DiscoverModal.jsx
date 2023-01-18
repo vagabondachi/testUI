@@ -7,10 +7,11 @@ const DiscoverModal = ({ open, onClose }) => {
     <>
       <div className="overlayJoin">
         <div className="modalContainerJoin">
-          <img src={faker.image.avatar()} />
+          <img className="modalimg" src={faker.image.avatar()} />
           <div className="modalRight">
             <div className="contentJoin">
-              <h1>hello</h1>
+              <h1>Hello!</h1>
+              <p>This is a start of something incredible! </p>
             </div>
             <div className="btnContainerJoin">
               <button className="Joinbtn">Send a message</button>
