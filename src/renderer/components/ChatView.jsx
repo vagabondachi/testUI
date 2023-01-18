@@ -6,6 +6,7 @@ import SendChatMessage from './SendChatMessage';
 import translateIcon from '../../../assets/translate.png';
 import { faker } from '@faker-js/faker';
 import SimpleBar from 'simplebar-react';
+import Joyride from 'react-joyride'
 import 'simplebar/dist/simplebar.min.css';
 
 function Chat() {
@@ -89,7 +90,23 @@ function Chat() {
       });
     }
   };
-
+  const [steps, setSteps] = useState([
+    {
+      target: '#transl8',
+      content: 'Hi!! When you click this icon, it will translate it into your desired languaged which is configured on the setting tab.',
+    },
+    {
+    target: '#transl8',
+    content: 'After your click it, it will translate into your desired language and you can turn it back by just clicking the ',
+  },
+  ]);
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const handleTourCallback = (data) => {
+    const { action, index, type } = data;
+    if (type === 'step:before') {
+      // do something on step change
+    }
+  };
   return (
     <>
       <div id="chatview-header">
@@ -120,14 +137,14 @@ function Chat() {
                     <br />
                     {message.sender} :{' '}
                     {translatedTexts[message.id] || message.text}
-                    <img
+                    <img id='transl8'
                       style={{
                         height: '20px',
                         margin: '0 5px 0 0',
                       }}
                       src={translateIcon}
                       onClick={() => {
-                        handleTranslate(message.id);
+                        handleTranslate(message.id), setIsTourOpen(true);
                       }}
                     />
                   </div>
@@ -135,6 +152,22 @@ function Chat() {
               </li>
             ))}
           </ul>
+      <Joyride
+        key={isTourOpen}
+        steps={steps}
+        run={isTourOpen}
+        callback={handleTourCallback}
+        styles={{
+          options: {
+            arrowColor: '#fff',
+            backgroundColor: '#fff',
+            overlayColor: 'rgba(0, 0, 0, 0.5)',
+            primaryColor: '#333',
+            textColor: '#000000',
+            width: '350px',
+          },
+        }}
+      />
         </SimpleBar>
       </div>
       <SendChatMessage />

@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import RecordRTC from 'recordrtc';
 import store from '../store/store';
 import bannedWords from './bannedWords';
+import Joyride from 'react-joyride';
 
 const SendChatMessage = () => {
   const [message, setMessage] = useState('');
@@ -126,6 +127,35 @@ const SendChatMessage = () => {
         }
       });
   });
+  const [steps, setSteps] = useState([
+    {
+      target: '#meesage-area',
+      content: 'Hi!! here you will put your message here.',
+    },
+    {
+      target: '#message-area',
+      content: 'After you put your message you can enter it.',
+    },
+    {
+      target: '#btnmic',
+      content: 'Here is the mic icon.',
+    },
+    {
+      target: '#btnmic',
+      content: 'Click it and it will start to record, also you can see that the icon will change.',
+    },
+    {
+      target: '#btnmic',
+      content: 'After you speak, click it again and wait it to render to text.',
+    },
+  ]);
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const handleTourCallback = (data) => {
+    const { action, index, type } = data;
+    if (type === 'step:before') {
+      // do something on step change
+    }
+  };
 
   return (
     <div id="footer">
@@ -138,18 +168,35 @@ const SendChatMessage = () => {
             value={message}
             autoFocus
             onChange={(e) => setMessage(e.target.value)}
+            onClick={() => setIsTourOpen(true)}
           />
 
           {isRecording ? (
-            <button id="btnmic" onClick={stopRecording}>
-              <i className="ri-mic-off-line" />
+            <button id='btnmic' onClick={stopRecording}>
+              <i id="offmic" className="ri-mic-off-line" />
             </button>
           ) : (
-            <button id="btnmic" onClick={startRecording}>
-              <i className="ri-mic-line" />
+            <button id='btnmic' onClick={startRecording}>
+              <i id="onmic" className="ri-mic-line" />
             </button>
           )}
         </div>
+      <Joyride
+        key={isTourOpen}
+        steps={steps}
+        run={isTourOpen}
+        callback={handleTourCallback}
+        styles={{
+          options: {
+            arrowColor: '#fff',
+            backgroundColor: '#fff',
+            overlayColor: 'rgba(0, 0, 0, 0.5)',
+            primaryColor: '#333',
+            textColor: '#000000',
+            width: '350px',
+          },
+        }}
+      />
       </form>
     </div>
   );

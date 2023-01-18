@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import { useSelector } from 'react-redux';
-
+import Joyride from 'react-joyride';
 function LanguageRadioButtons() {
   const [userLanguage, setUserLanguage] = useState('');
   const [translateToLanguage, setTranslateToLanguage] = useState('');
@@ -34,23 +34,44 @@ function LanguageRadioButtons() {
       translateToLanguage: translateToLanguage,
     });
   };
-
+  const [steps, setSteps] = useState([
+    {
+      target: '#userlang',
+      content: 'This is where you choose your own language.',
+    },
+    {
+      target: '#translang',
+      content: 'This is where you choose your translate language.',
+    },
+    {
+      target: '#done',
+      content: 'Click this to save your setting.',
+    },
+  ]);
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const handleTourCallback = (data) => {
+    const { action, index, type } = data;
+    if (type === 'step:before') {
+      // do something on step change
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
+      <h2 id="subheadLang"> Message Translation</h2>
+      
       <label>Change Language</label>
       <select
         name="userLanguage"
         value={userLanguage}
         onChange={handleLanguageChange}
+        id="userlang"
       >
         <option value="en">English</option>
         <option value="zh">Chinese</option>
         <option value="ja-JP">Japanese</option>
         <option value="fil-PH	">Tagalog</option>
       </select>
-
-      <h2 id="subheadLang"> Message Translation</h2>
-      <label>Translation Language</label>
+      <label  id="translang" >Translation Language</label>
       <select
         name="translateToLanguage"
         value={translateToLanguage}
@@ -61,8 +82,26 @@ function LanguageRadioButtons() {
         <option value="ja">Japanese</option>
         <option value="tl">Tagalog</option>
       </select>
-      <input type="submit" value="Save Changes" />
+      <input id="done" type="submit" value="Save Changes" />
+      <p onClick={() => setIsTourOpen(true)}>Guide</p>
+      <Joyride
+        key={isTourOpen}
+        steps={steps}
+        run={isTourOpen}
+        callback={handleTourCallback}
+        styles={{
+          options: {
+            arrowColor: '#fff',
+            backgroundColor: '#fff',
+            overlayColor: 'rgba(0, 0, 0, 0.5)',
+            primaryColor: '#333',
+            textColor: '#000000',
+            width: '350px',
+          },
+        }}
+      />
     </form>
+    
   );
 }
 
