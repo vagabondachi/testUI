@@ -17,7 +17,7 @@ function LanguageRadioButtons() {
   }, []);
 
   const handleLanguageChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.options[event.target.selectedIndex].value;
     const name = event.target.name;
     if (name === 'userLanguage') {
       setUserLanguage(value);
@@ -38,7 +38,7 @@ function LanguageRadioButtons() {
   return (
     <form onSubmit={handleSubmit}>
       <label>My Language</label>
-      <select name="userLanguage">
+      <select name="userLanguage" value={userLanguage} onChange={handleLanguageChange}>
       <option value="en">English</option>
       <option value="zh">Chinese</option>
       <option value="ja-JP">Japanese</option>
@@ -47,7 +47,7 @@ function LanguageRadioButtons() {
 
       <br></br>
       <label>Translation Language</label>
-      <select name="translateToLanguage">
+      <select name="translateToLanguage" value={translateToLanguage} onChange={handleLanguageChange}>
       <option value="en">English</option>
       <option value="zh-CN">Chinese</option>
       <option value="ja">Japanese</option>
