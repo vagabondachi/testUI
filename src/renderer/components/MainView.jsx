@@ -9,7 +9,7 @@ import LoadSettings from './LoadSettings';
 import { useNavigate } from 'react-router-dom';
 import VerifyEmail from './VerifyEmail';
 import ContentView from './ContentView';
-
+import DiscoverView from './DiscoverView';
 const MainView = () => {
   const user = useSelector((state) => state.user);
   const groupId = useSelector((state) => state.groupId);

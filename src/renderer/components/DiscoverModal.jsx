@@ -13,9 +13,9 @@ const DiscoverModal = ({ open, onClose }) => {
               <h1>hello</h1>
             </div>
             <div className="btnContainerJoin">
-              <button className="Joinbtn">Yes</button>
+              <button className="Joinbtn">Send a message</button>
               <button className="CancelJoinbtn" onClick={onClose}>
-                Cancel
+                Continue Exploring
               </button>
             </div>
           </div>

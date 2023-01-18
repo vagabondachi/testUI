@@ -1076,6 +1076,24 @@ color:#3298db;
    ************************************************
  ************************************************/
 
+
+form.discover {
+	border: none;
+	padding: 0;
+}
+
+input.discover {
+	width: 500px;
+	border: none;
+	display: block;
+	padding: 10px;
+	margin-top: 3%;
+	border-radius: 6px;
+	background-color: #ffffff;
+	outline-color: #3298DB;
+}
+
+
 #modalJoinGrp{
 width: 90%;
 height: 50px;
@@ -1108,8 +1126,22 @@ border-radius:10px;
 margin-top: 20px;
 margin-bottom: 20px;
 align-items: center;
+display: flex;
+flex-direction: column;
 }
 
+#discoverHeader{
+font-size: 25px;
+font-weight: 500;
+color: #DFEAF5;
+margin-top: 50px;
+padding: 0;
+}
+#discoverTagline{
+color: #DFEAF5;
+font-size: 15px;
+margin: 0;
+}
 
 #img-discover{
 border-radius: 50%;

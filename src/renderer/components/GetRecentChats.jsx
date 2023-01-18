@@ -65,7 +65,6 @@ function RecentChats() {
           <div className="btn-add-container">
             <button className="btn-create-group">
               <span> Create group </span>
-
               <i
                 className="ri-chat-new-fill"
                 onClick={() => {
@@ -75,7 +74,6 @@ function RecentChats() {
             </button>
           </div>
         </div>
-
         <div
           className={newChat ? 'addChatPoPBox shown' : 'addChatPopBox hidden'}
         >
@@ -102,19 +100,17 @@ function RecentChats() {
                     <div id="recentsheader-name">
                       {conversation.name.substring(0, 9)}
                     </div>
-                     <div id="recentsheader-time">
-                    {
-                    conversation.latest_time_message
-                      ?
-                      '___________' +getFormattedTime(
-                          conversation.latest_time_message.toDate()
-                        )
-                      : ''}
+                    <div id="recentsheader-time">
+                      {conversation.latest_time_message
+                        ? '___________' +
+                          getFormattedTime(
+                            conversation.latest_time_message.toDate()
+                          )
+                        : ''}
                     </div>
                   </div>
                   <p className="recentSender_Message_Date">
-                    {conversation.latest_sender &&
-                    conversation.latest_message
+                    {conversation.latest_sender && conversation.latest_message
                       ? conversation.latest_sender +
                         ':  ' +
                         conversation.latest_message.substring(0, 8)
