@@ -523,7 +523,7 @@ ul {
 .btn-create-group {
 	background-color: transparent;
 	width: 100%;
-	margin-top: 5%;
+	margin-top: 10%;
 
 }
 
@@ -533,12 +533,14 @@ ul {
 }
 
 .btn-create-group span {
+	z-index: 1;	
 	margin: 0;
 	padding: 10px 0px 10px 0px;
 	border-radius: 6px;
 	background-color: white;
 	position: absolute;
-	left: 50%;
+	top:200%;
+	left: 30%;
 	width: 150px;
 	font-size: 15px;
 	--scale: 0;
@@ -546,12 +548,15 @@ ul {
 	transform: translateY(-100%) scale(var(--scale));
 	transition: opacity 0.15s ease, transform 0.15s ease;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	z-index: 1;
+
+	
 }
 
 .btn-create-group:hover span {
 	--scale: 1;
 	opacity: 1;
+
+
 }
 
 .btn-create-group span::before {
@@ -561,9 +566,10 @@ ul {
 	height: 14px;
 	border-radius: 2px;
 	background-color: inherit;
-	left: 50%;
-	top: 80%;
+	left: 80%;
+	top: -10%;
 	transform: translate(-40%) rotate(45deg);
+
 }
 
 /************************************************
