@@ -53,7 +53,7 @@ function Chat() {
 
   const translate = async (text) => {
     const resp = await fetch(
-      'https://jellyfish-app-4424e.ondigitalocean.app/translate',
+      'https://speech-chi.vercel.app/translate',
       {
         method: 'POST',
         body: JSON.stringify({ text }),
