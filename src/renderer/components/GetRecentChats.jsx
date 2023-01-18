@@ -69,6 +69,7 @@ function RecentChats() {
         </div>
         <hr />
         <p className="p-texts">Recent Chats</p>
+
         <ul>
           {conversations.map((conversation) => (
             <div className="sidebaritems-container">
@@ -85,7 +86,9 @@ function RecentChats() {
                   <div className="recentconvo-info">
                     <b>{conversation.name}</b>
                     <p className="recentSender_Message_Date">
-                      {conversation.latest_sender && conversation.latest_message
+                      {conversation.latest_sender &&
+                      conversation.latest_message &&
+                      conversation.latest_time_message
                         ? (
                             conversation.latest_sender +
                             ': ' +

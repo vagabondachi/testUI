@@ -491,6 +491,7 @@ const bannedWords = [
   'くたばれ',
   '死ねえ',
   'hudas',
+  'tite',
   'tangina',
   'taena',
   'anak ka ng puta',
