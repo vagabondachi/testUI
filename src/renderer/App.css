@@ -8,13 +8,13 @@
 * {
 	font-family: 'Poppins', sans-serif;
 	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 .app {
 	width: 100vw;
 	height: 100vh;
-	padding: 0;
-	margin: 0;
 }
 
 body {
@@ -1016,6 +1016,7 @@ color:#3298db;
 .sidebarcontainer {
 	width: 22%;
 	height: 100%;
+	overflow-y: scroll;
 	display: inline-block;
 	vertical-align: top;
 }

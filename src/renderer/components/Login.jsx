@@ -5,11 +5,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Logo from '../../../assets/icons/blue.png';
 import eye from '../../../assets/icons/eye-off-line.png';
+import Joyride from 'react-joyride';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+  const [steps, setSteps] = useState([
+    {
+      target: '#em-input',
+      content: 'This is where you enter your email address',
+    },
+  ]);
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const handleTourCallback = (data) => {
+    const { action, index, type } = data;
+    if (type === 'step:before') {
+      // do something on step change
+    }
+  };
+
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const handleEmailChange = (event) => {
@@ -50,6 +66,7 @@ const Login = () => {
   return (
     <div className="centered-container-form">
       <header id="login">Welcome</header>
+      <p id="em-input">Test If nagana</p>
       <p id="subheader"> We're happy to see you here! </p>
       <form onSubmit={handleSubmit}>
         <div className="form-container">
@@ -97,12 +114,29 @@ const Login = () => {
           <br />
 
           <button type="submit">Login</button>
+          <button onClick={() => setIsTourOpen(true)}>Start Tour</button>
         </div>
       </form>
 
       <div className="login-option">
         New user?<Link to="/register">Create an account</Link>
       </div>
+      <Joyride
+        key={isTourOpen}
+        steps={steps}
+        run={isTourOpen}
+        callback={handleTourCallback}
+        styles={{
+          options: {
+            arrowColor: '#fff',
+            backgroundColor: '#fff',
+            overlayColor: 'rgba(0, 0, 0, 0.5)',
+            primaryColor: '#333',
+            textColor: '#000000',
+            width: '350px',
+          },
+        }}
+      />
     </div>
   );
 };
