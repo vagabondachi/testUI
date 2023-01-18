@@ -58,7 +58,7 @@ function LanguageRadioButtons() {
   return (
     <form onSubmit={handleSubmit}>
       <h2 id="subheadLang"> Message Translation</h2>
-      
+
       <label>Change Language</label>
       <select
         name="userLanguage"
@@ -71,7 +71,7 @@ function LanguageRadioButtons() {
         <option value="ja-JP">Japanese</option>
         <option value="fil-PH	">Tagalog</option>
       </select>
-      <label  id="translang" >Translation Language</label>
+      <label id="translang">Translation Language</label>
       <select
         name="translateToLanguage"
         value={translateToLanguage}
@@ -85,6 +85,12 @@ function LanguageRadioButtons() {
       <input id="done" type="submit" value="Save Changes" />
       <p onClick={() => setIsTourOpen(true)}>Guide</p>
       <Joyride
+        hideCloseButton
+        showProgress
+        showSkipButton
+        steps={[]}
+        continuous
+        scrollToFirstStep
         key={isTourOpen}
         steps={steps}
         run={isTourOpen}
@@ -101,7 +107,6 @@ function LanguageRadioButtons() {
         }}
       />
     </form>
-    
   );
 }
 

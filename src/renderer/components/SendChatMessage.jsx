@@ -176,15 +176,15 @@ const SendChatMessage = () => {
             onClick={() => setIsTourOpen(true)}
           />
 
-          {isRecording ? (
+          {/* {isRecording ? (
             <button id="btnmic" onClick={stopRecording}>
-              <i id="offmic" className="ri-mic-off-line" />
+              <i id="offmic" className="ri-mic-line" />
             </button>
-          ) : (
-            <button id="btnmic" onClick={startRecording}>
-              <i id="onmic" className="ri-mic-line" />
-            </button>
-          )}
+          ) : ( */}
+          <button id="btnmic" onClick={startRecording}>
+            <i id="onmic" className="ri-mic-off-line" />
+          </button>
+          {/* )} */}
         </div>
         <Joyride
           hideCloseButton
